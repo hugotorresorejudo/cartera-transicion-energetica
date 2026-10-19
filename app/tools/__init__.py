@@ -30,3 +30,29 @@ def cargar(id_: str):
 
 def todos() -> list[str]:
     return sorted(MODULOS)
+
+
+CATALOGO = {
+    "t01": ("Tarifas y potencia contratada", "¿PVPC, fija o indexada? ¿Qué potencia contratar?"),
+    "t02": ("Autoconsumo fotovoltaico", "¿Compensa instalar placas, de qué potencia y cuánto ahorras?"),
+    "t03": ("Explorador de precios OMIE", "Cuándo es barata la luz y cuánto vale un kWh solar."),
+    "t04": ("Vehículo eléctrico: TCO y carga", "Coste total frente a gasolina, diésel o híbrido y cuándo cargar."),
+    "t05": ("ACS: bomba de calor vs termo o gas", "Agua caliente: coste, VAN del cambio y emisiones."),
+    "t06": ("Batería doméstica", "¿Compensa añadir almacenamiento a tus placas?"),
+    "t07": ("Cargador doméstico y potencia", "Potencia del cargador y de tu contrato para el coche eléctrico."),
+    "t08": ("Aerotermia vs caldera", "Calefacción y ACS: aerotermia frente a caldera de gas."),
+    "t09": ("Inducción vs gas", "Cocina: placa de inducción frente a gas."),
+    "t10": ("Huella de carbono doméstica", "Emisiones anuales de tu hogar y qué las reduce."),
+    "t11": ("Ayudas y deducciones", "IRPF, IBI, ICIO y ayudas Next Generation."),
+    "t12": ("Rehabilitación de envolvente", "Aislamiento y ventanas: ahorro y retorno."),
+    "t13": ("Solar térmica", "Captadores para agua caliente: ahorro y retorno."),
+    "t14": ("Autoconsumo colectivo", "Comunidad energética o autoconsumo compartido en un bloque."),
+    "t15": ("Desplazamiento de cargas", "Cuándo poner lavadora, lavavajillas o termo."),
+    "t16": ("Calibración con Datadis", "Sube tu curva de carga real y afina las cifras."),
+    "t17": ("Señal horaria de mix y emisiones", "Cuándo consumir para emitir menos CO₂."),
+    "t18": ("Climatización de verano", "Split o bomba de calor reversible: consumo y coste."),
+    "t19": ("Inventario y consumo fantasma", "A dónde va tu consumo y cuánto es stand-by."),
+    "t20": ("Curvas agregadas OMIE", "Cómo se forma el precio marginal del mercado diario."),
+    "t21": ("Explorador de LCOE", "Coste nivelado de cada tecnología frente al precio capturado."),
+    "t22": ("Tarifa de gas y butano", "TUR frente a mercado libre y butano."),
+}

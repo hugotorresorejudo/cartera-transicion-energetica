@@ -23,3 +23,7 @@ cab = "# Generado por scripts/merge_refs.py a partir de docs/refs/*.yaml. No edi
 (RAIZ / "app" / "data" / "referencias.yaml").write_text(
     cab + yaml.safe_dump(salida, allow_unicode=True, sort_keys=True, width=100), encoding="utf-8")
 print(len(salida), "entradas;", sum(1 for v in salida.values() if v.get("verificado")), "verificadas;", len(errs), "errores")
+
+import json  # noqa: E402
+
+(RAIZ / "app" / "data" / "referencias.json").write_text(json.dumps(salida, ensure_ascii=False), encoding="utf-8")

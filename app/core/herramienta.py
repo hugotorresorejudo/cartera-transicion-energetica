@@ -131,6 +131,7 @@ def ejecutar(herr_id: str, parametros: Parametros, modelo: Callable, kpis: list,
             sintetico=datos.es_sintetico(), n_mc=n_mc, semilla=seed)
     res.refs_pendientes = ref().pendientes(usadas)
     res.extra["refs_usadas"] = sorted(usadas)
+    res.extra["kpi_tornado"] = tornado_kpi
     return res
 
 

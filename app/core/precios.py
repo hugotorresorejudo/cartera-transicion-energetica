@@ -13,10 +13,10 @@ ANIO_REF_CALENDARIO = 2023  # año no bisiesto con 8760 h para asignar periodos
 
 def anio_precios() -> int:
     """Año de aplicación de la ponderación de futuros del PVPC (año de los datos, acotado a la tabla)."""
-    tabla = ref().get("tarifa.pvpc_peso_futuros")
+    anios = [int(k) for k in ref().get("tarifa.pvpc_peso_futuros")]
     fecha = datos.meta().get("actualizado") or ""
-    a = int(fecha[:4]) if fecha[:4].isdigit() else max(tabla)
-    return min(max(a, min(tabla)), max(tabla))
+    a = int(fecha[:4]) if fecha[:4].isdigit() else max(anios)
+    return min(max(a, min(anios)), max(anios))
 
 
 def periodos() -> np.ndarray:

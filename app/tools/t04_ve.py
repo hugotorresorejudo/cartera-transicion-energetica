@@ -41,11 +41,11 @@ def _interp_vr(tabla: dict, N: float):
 def _f_temp(cp):
     """Multiplicador anual de consumo por temperatura: media mensual de f(T) con T de la serie TMY (min, moda, max)."""
     tab = ref().get("ve.factor_temperatura_consumo")
-    ts = sorted(tab)
+    ts = sorted(tab, key=float)
     t = clima.t2m(cp)
     from core.termico import DIAS_MES
     tm = np.array([t[i:i + d * 24].mean() for i, d in zip(np.cumsum(np.r_[0, DIAS_MES[:-1]]) * 24, DIAS_MES)])
-    out = [float(np.mean(np.interp(tm, ts, [tab[k][i] for k in ts]))) for i in range(3)]
+    out = [float(np.mean(np.interp(tm, [float(k) for k in ts], [tab[k][i] for k in ts]))) for i in range(3)]
     return out
 
 

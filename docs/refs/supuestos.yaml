@@ -90,6 +90,42 @@ acs.volumenes_comerciales_l:
   - 200
   - 300
   verificado: false
+almacenamiento.capacidades_candidatas_kwh:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Capacidades evaluadas en el dimensionado de la batería (0 = sin batería).
+  unidad: kWh
+  url: ''
+  valor:
+  - 0
+  - 5
+  - 10
+  - 15
+  verificado: false
+almacenamiento.dim_fv_factor:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: La FV de partida de T06 cubre este múltiplo del consumo anual (limitada por el área disponible).
+  unidad: '-'
+  url: ''
+  valor: 1.0
+  verificado: false
+almacenamiento.n_muestras_dimensionado:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Muestras Monte Carlo para la curva VAN(capacidad).
+  unidad: muestras
+  url: ''
+  valor: 60
+  verificado: false
+almacenamiento.reposicion_factor:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Coste de reponer la batería al final de su vida respecto del CAPEX inicial (bajada de precios).
+  unidad: fracción del CAPEX
+  url: ''
+  valor: 0.6
+  verificado: false
 forma.acs:
   fecha_consulta: '2026-10-19'
   fuente: Supuesto del autor (hipótesis de modelado)

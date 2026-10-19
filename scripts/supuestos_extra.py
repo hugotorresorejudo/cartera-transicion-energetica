@@ -56,3 +56,9 @@ S += [
     ("gas.cuota_fija_evitable", R3(0, 0, 0), "€/año", "Cuota fija de gas que se evita al abandonar el gas (0 si quedan otros usos de gas)."),
     ("acs.horas_deposito_tipo", 24, "h", "Horizonte diario de la programación."),
 ]
+S += [
+    ("almacenamiento.reposicion_factor", 0.6, "fracción del CAPEX", "Coste de reponer la batería al final de su vida respecto del CAPEX inicial (bajada de precios)."),
+    ("almacenamiento.capacidades_candidatas_kwh", [0, 5, 10, 15], "kWh", "Capacidades evaluadas en el dimensionado de la batería (0 = sin batería)."),
+    ("almacenamiento.dim_fv_factor", 1.0, "-", "La FV de partida de T06 cubre este múltiplo del consumo anual (limitada por el área disponible)."),
+    ("almacenamiento.n_muestras_dimensionado", 60, "muestras", "Muestras Monte Carlo para la curva VAN(capacidad)."),
+]

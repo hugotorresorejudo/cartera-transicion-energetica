@@ -4,6 +4,8 @@ from __future__ import annotations
 from contextlib import contextmanager
 from pathlib import Path
 
+import json
+
 import yaml
 
 RUTA = Path(__file__).resolve().parent.parent / "data" / "referencias.yaml"
@@ -86,10 +88,26 @@ class Referencias:
         return sorted(k for k in usadas if self._d.get(k, {}).get("verificado") is False)
 
 
+def _claves_str(x):
+    """Normaliza las claves de los mapas a cadenas (YAML las lee como números, JSON como cadenas)."""
+    if isinstance(x, dict):
+        return {str(k): _claves_str(v) for k, v in x.items()}
+    if isinstance(x, list):
+        return [_claves_str(v) for v in x]
+    return x
+
+
 def cargar(ruta: Path | str = RUTA) -> Referencias:
-    with open(ruta, encoding="utf-8") as f:
-        datos = yaml.safe_load(f) or {}
-    return Referencias(datos)
+    """Carga referencias.yaml (fuente de verdad); en el navegador usa la copia JSON generada por merge_refs.py,
+    que se lee mucho más rápido que el YAML en Pyodide."""
+    ruta = Path(ruta)
+    js = ruta.with_suffix(".json")
+    if js.exists() and js.stat().st_mtime >= ruta.stat().st_mtime - 5:
+        datos = json.loads(js.read_text(encoding="utf-8"))
+    else:
+        with open(ruta, encoding="utf-8") as f:
+            datos = yaml.safe_load(f) or {}
+    return Referencias(_claves_str(datos))
 
 
 _REF: Referencias | None = None

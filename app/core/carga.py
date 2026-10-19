@@ -2,13 +2,14 @@
 from __future__ import annotations
 
 import numpy as np
-from scipy.optimize import linprog
 
 
 def plan_lp(precios, disponible, p_max_kw, energia_kwh, dt: float = 1.0):
     """Resuelve con HiGHS (scipy.optimize.linprog): min Σ p_t x_t s.a. Σ x_t = E, 0 ≤ x_t ≤ P·Δt·a_t.
 
     Devuelve (x (T,), coste) o (None, nan) si es infactible."""
+    from scipy.optimize import linprog  # import diferido: scipy.optimize pesa en Pyodide
+
     p = np.asarray(precios, float)
     a = np.asarray(disponible, float)
     res = linprog(c=p, A_eq=np.ones((1, p.size)), b_eq=[energia_kwh], bounds=[(0.0, p_max_kw * dt * ai) for ai in a],
