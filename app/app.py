@@ -4,7 +4,10 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-import numpy as np
+import numpy as np  # noqa: F401
+import pandas  # noqa: F401  (declara las dependencias de Pyodide para que shinylive las cargue)
+import scipy.optimize  # noqa: F401
+import yaml  # noqa: F401
 from shiny import App, reactive, render, ui
 
 import config
@@ -339,7 +342,7 @@ def server(input, output, session):
                 class_="metodo")
 
         @output(id=f"{tid}_dl_csv")
-        @render.download(filename=f"{tid}_tabla.csv")
+        @render.download_button(filename=f"{tid}_tabla.csv")
         def _dl_csv():
             res = resultados[tid].get()
             filas = res.tabla
@@ -354,7 +357,7 @@ def server(input, output, session):
                                     resultados[tid].get())
 
         @output(id=f"{tid}_dl_esc")
-        @render.download(filename=f"escenario_{tid}.json")
+        @render.download_button(filename=f"escenario_{tid}.json")
         def _dl_esc():
             yield escenarios.a_json(_esc_actual())
 

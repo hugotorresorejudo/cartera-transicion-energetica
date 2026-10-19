@@ -150,13 +150,15 @@ def escala_factura(perfil: Perfil, S: dict, rng, P_kw=None):
     return post / prior, importe
 
 
-def simular_pmax(perfil_equipos, n: int, rng, dias: int = 365, limitador: str | None = None, P_actual: float | None = None):
+def simular_pmax(perfil_equipos, n: int, rng, dias: int = 365, limitador: str | None = None, P_actual: float | None = None,
+                 potencias: dict | None = None):
     """Demanda máxima anual (kW, cuartohoraria) por simultaneidad de aparatos. Devuelve (pmax (n,), pesos (n,)).
 
     Cada día cada aparato está en el pico con probabilidad p·(días activos/365). Si se conoce la respuesta sobre el limitador y la
     potencia actual, se ponderan las muestras por la coherencia entre los días con exceso simulados y la respuesta."""
     r = ref()
-    pot = r.get("simultaneidad.potencia_efectiva_kw")
+    pot = dict(r.get("simultaneidad.potencia_efectiva_kw"))
+    pot.update(potencias or {})  # p. ej. {"ve": [3.7, 3.7, 3.7]} para un cargador concreto
     prob = r.get("simultaneidad.prob_pico_diario")
     activos = r.get("simultaneidad.dias_activos")
     mapa = {k: k for k in ("induccion", "horno", "termo_electrico", "aire_acondicionado", "calefaccion_electrica", "ve", "piscina")}
@@ -185,3 +187,28 @@ def potencia_optima(pmax, pesos, alpha, normalizadas):
         if float(np.sum(pesos[pmax > P])) <= alpha:
             return P
     return normalizadas[-1]
+
+
+def demanda_calefaccion_util(perfil: Perfil, edad: str | None = None):
+    """(min, moda, max) en kWh/año de demanda útil de calefacción: superficie × kWh/m²·año de la zona × factor de antigüedad."""
+    r = ref()
+    m2 = superficie_m2(perfil)
+    f = r.get("calefaccion.demanda_vs_anio_construccion")[edad or r.get("perfil.edad_vivienda_defecto")]
+    return tuple(m2 * x * f for x in r.get("calefaccion.demanda_kwh_m2_ano_por_zona")[letra_zona(perfil)])
+
+
+def demanda_refrigeracion_util(perfil: Perfil):
+    """(min, moda, max) en kWh/año de demanda útil de refrigeración de la parte climatizada."""
+    r = ref()
+    fr = r.get("perfil.fraccion_superficie_climatizada_refrig")
+    d = r.get("refrigeracion.demanda_kwh_m2_ano_por_zona")[letra_zona(perfil)]
+    m2 = superficie_m2(perfil)
+    return tuple(m2 * fr[1] * x for x in d)
+
+
+def acs_util_cte_kwh(perfil: Perfil) -> float:
+    """Energía útil anual de ACS con la demanda de referencia del CTE DB-HE 4 (28 L/persona·día a 60 ºC)."""
+    r = ref()
+    v = termico.demanda_ref_cte_l_dia(n_personas(perfil))
+    q = termico.energia_util_mensual(np.array([v]), r.get("acs.t_referencia_c"), clima.t_red_mensual(perfil.cp))[0]
+    return float(np.sum(q * termico.DIAS_MES))

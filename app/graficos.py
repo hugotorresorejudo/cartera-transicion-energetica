@@ -20,7 +20,8 @@ plt.rcParams.update({
 
 
 def _fig(h=3.4):
-    fig, ax = plt.subplots(figsize=(6.4, h), constrained_layout=True)
+    fig, ax = plt.subplots(figsize=(6.4, h))
+    fig.set_tight_layout(True)
     return fig, ax
 
 
@@ -88,7 +89,8 @@ def dibujar(g: dict):
 
 def tornado(filas: list, titulo: str = "Sensibilidad (parámetro en P10 / P90)", unidad: str = ""):
     filas = filas[:8][::-1]
-    fig, ax = plt.subplots(figsize=(6.4, 0.45 * len(filas) + 1.2), constrained_layout=True)
+    fig, ax = plt.subplots(figsize=(6.4, 0.45 * len(filas) + 1.2))
+    fig.set_tight_layout(True)
     base = filas[0]["base"] if filas else 0
     for i, f in enumerate(filas):
         lo, hi = f["bajo"], f["alto"]

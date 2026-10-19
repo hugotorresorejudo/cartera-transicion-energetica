@@ -165,7 +165,7 @@ def modelo(S, ctx, rng):
 KPIS = [
     {"id": "van", "nombre": "VAN a 25 años", "unidad": "€", "clave": "van", "tipo": "ahorro", "prob": ("Probabilidad de VAN > 0", lambda v: v > 0)},
     {"id": "ahorro1", "nombre": "Ahorro del primer año", "unidad": "€/año", "clave": "ahorro1", "tipo": "ahorro"},
-    {"id": "payback", "nombre": "Plazo de recuperación", "unidad": "años", "clave": "payback", "fmt": "{:.1f}"},
+    {"id": "payback", "nombre": "Plazo de recuperación", "unidad": "años", "clave": "payback", "fmt": "{:.1f}", "inf_ok": True},
     {"id": "Pp", "nombre": "Potencia pico recomendada", "unidad": "kWp", "clave": "Pp", "fmt": "{:.1f}"},
     {"id": "tir", "nombre": "TIR", "unidad": "%", "clave": "tir_pct", "fmt": "{:.1f}"},
     {"id": "sc", "nombre": "Autoconsumo (SC)", "unidad": "%", "clave": "sc", "fmt": "{:.0f}"},

@@ -1059,6 +1059,17 @@ almacenamiento.vida_ciclos:
   url: https://www.idae.es/
   valor: 6000
   verificado: false
+ayudas.capex_envolvente_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Inversión típica en envolvente de una vivienda.
+  unidad: €
+  url: ''
+  valor:
+  - 3000
+  - 6000
+  - 12000
+  verificado: false
 ayudas.deduccion_irpf_ve:
   fecha_consulta: '2026-10-19'
   fuente: RDL 5/2023 (deducciones IRPF por compra de VE y puntos de recarga)
@@ -1075,6 +1086,22 @@ ayudas.deduccion_irpf_ve:
       porcentaje: 0.15
     vigencia: Hasta 31-12-2025 (RDL 5/2023 y prórroga). Prórroga a 2026 no confirmada.
   verificado: false
+ayudas.fraccion_bdc_vs_aerotermia:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Ayuda de la bomba de calor de ACS respecto de la de aerotermia.
+  unidad: ×
+  url: ''
+  valor: 0.5
+  verificado: false
+ayudas.ivtm_anios:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Duración típica de la bonificación del IVTM.
+  unidad: años
+  url: ''
+  valor: 5
+  verificado: false
 ayudas.ivtm_bonificacion_ve:
   fecha_consulta: '2026-10-19'
   fuente: TRLHL art. 95.6 (bonificación hasta 75 % por ordenanza)
@@ -1085,6 +1112,22 @@ ayudas.ivtm_bonificacion_ve:
   - 0.25
   - 0.5
   - 0.75
+  verificado: false
+ayudas.kwh_bateria_referencia:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Batería de referencia en el cálculo de ayudas.
+  unidad: kWh
+  url: ''
+  valor: 10
+  verificado: false
+ayudas.kwp_referencia:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Instalación FV de referencia en el cálculo de ayudas.
+  unidad: kWp
+  url: ''
+  valor: 4
   verificado: false
 ayudas.nextgen_aerotermia:
   fecha_consulta: '2026-10-19'
@@ -1122,6 +1165,39 @@ ayudas.nextgen_ve:
   - 2000
   - 4500
   - 7000
+  verificado: false
+ayudas.prob_certificado_irpf:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Probabilidad de obtener el certificado de mejora energética que da acceso a la deducción IRPF.
+  unidad: probabilidad
+  url: ''
+  valor:
+  - 0.3
+  - 0.5
+  - 0.8
+  verificado: false
+ayudas.prob_convocatoria_abierta:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Probabilidad de que haya una convocatoria de ayudas directas abierta.
+  unidad: probabilidad
+  url: ''
+  valor:
+    'no': 0.0
+    nose: 0.3
+    si: 1.0
+  verificado: false
+ayudas.prob_ordenanza:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Probabilidad de que el municipio bonifique IBI/ICIO/IVTM.
+  unidad: probabilidad
+  url: ''
+  valor:
+    'no': 0.0
+    nose: 0.4
+    si: 1.0
   verificado: false
 ayudas.rehabilitacion_envolvente:
   fecha_consulta: '2026-10-19'
@@ -1242,6 +1318,41 @@ calefaccion.demanda_vs_anio_construccion:
     2007+: 0.55
     pre-1980: 1.4
   verificado: false
+calefaccion.edad:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Respuesta de antigüedad -> clave de calefaccion.demanda_vs_anio_construccion.
+  unidad: '-'
+  url: ''
+  valor:
+    '1980': 1980-2006
+    '2007': 2007+
+    nose: 1980-2006
+    pre1980: pre-1980
+  verificado: false
+calefaccion.factor_scop_emisores:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Penalización del SCOP según temperatura de emisión (radiadores de alta temperatura, mixtos o suelo
+    radiante).
+  unidad: ×
+  url: ''
+  valor:
+    alta: 0.75
+    media: 0.9
+    suelo: 1.0
+  verificado: false
+calefaccion.fraccion_uso_calefaccion:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Parte de la demanda de referencia que se atiende realmente (uso intermitente o parcial).
+  unidad: fracción
+  url: ''
+  valor:
+  - 0.5
+  - 0.8
+  - 1.0
+  verificado: false
 calefaccion.mantenimiento_caldera_eur_ano:
   fecha_consulta: '2026-10-19'
   fuente: Estimación; RITE IT 3 exige revisión periódica
@@ -1252,6 +1363,61 @@ calefaccion.mantenimiento_caldera_eur_ano:
   - 80
   - 110
   - 160
+  verificado: false
+calefaccion.potencia_extra_aerotermia_kw:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Potencia contratada adicional necesaria al electrificar la calefacción desde gas.
+  unidad: kW
+  url: ''
+  valor:
+  - 0
+  - 1.15
+  - 3.45
+  verificado: false
+calefaccion.sg_demanda:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Incertidumbre de la demanda de calefacción inferida (muy dependiente del edificio).
+  unidad: desviación geométrica
+  url: ''
+  valor: 1.4
+  verificado: false
+calefaccion.uso:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Uso real de la calefacción respecto de la demanda de referencia de la zona.
+  unidad: × demanda de referencia
+  url: ''
+  valor:
+    ocasional:
+    - 0.2
+    - 0.4
+    - 0.6
+    tardes:
+    - 0.5
+    - 0.7
+    - 0.9
+    todo:
+    - 0.8
+    - 1.0
+    - 1.2
+  verificado: false
+cargador.confianza_horas:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Probabilidad mínima de completar la carga diaria dentro de la ventana de disponibilidad.
+  unidad: probabilidad
+  url: ''
+  valor: 0.95
+  verificado: false
+cargador.cuantil_potencia:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Cuantil de la potencia necesaria que se recomienda contratar (1 − probabilidad de corte).
+  unidad: probabilidad
+  url: ''
+  valor: 0.9
   verificado: false
 cargador.eficiencia:
   fecha_consulta: '2026-10-19'
@@ -1272,6 +1438,33 @@ cargador.factor_simultaneidad_ve:
   unidad: factor
   url: https://www.boe.es/buscar/act.php?id=BOE-A-2014-12623
   valor: 1.0
+  verificado: false
+cargador.monofasico_max_kw:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Potencia máxima de cargador en suministro monofásico.
+  unidad: kW
+  url: ''
+  valor: 7.4
+  verificado: false
+cargador.p_base_noche_kw:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Carga base nocturna de la vivienda durante la carga del VE.
+  unidad: kW
+  url: ''
+  valor:
+  - 0.2
+  - 0.4
+  - 0.8
+  verificado: false
+cargador.p_min_gestion_kw:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Potencia mínima de carga con gestión dinámica (6 A monofásico).
+  unidad: kW
+  url: ''
+  valor: 1.4
   verificado: false
 cargador.potencia_contratada_min_ve:
   fecha_consulta: '2026-10-19'
@@ -1341,6 +1534,26 @@ cocina.capex_induccion_eur:
   - 450
   - 900
   verificado: false
+cocina.frecuencia:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Frecuencia de cocinado.
+  unidad: × consumo medio
+  url: ''
+  valor:
+    mucho:
+    - 1.1
+    - 1.4
+    - 1.8
+    normal:
+    - 0.9
+    - 1.0
+    - 1.1
+    poco:
+    - 0.5
+    - 0.7
+    - 0.9
+  verificado: false
 cocina.gas_consumo_kwh_ano_persona:
   fecha_consulta: '2026-10-19'
   fuente: Estimación derivada de IDAE SPAHOUSEC
@@ -1375,6 +1588,28 @@ cocina.instalacion_induccion_adicional_eur:
   - 200
   - 800
   verificado: false
+cocina.menaje_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Coste de menaje compatible con inducción si el actual no lo es.
+  unidad: €
+  url: ''
+  valor:
+  - 0
+  - 100
+  - 300
+  verificado: false
+cocina.potencia_extra_kw:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Potencia contratada adicional por pasar a inducción.
+  unidad: kW
+  url: ''
+  valor:
+  - 0
+  - 0
+  - 2.3
+  verificado: false
 cocina.rendimiento_gas_cocina:
   fecha_consulta: '2026-10-19'
   fuente: Estudios de laboratorio de eficiencia de cocinado
@@ -1396,6 +1631,25 @@ cocina.rendimiento_induccion:
   - 0.8
   - 0.85
   - 0.9
+  verificado: false
+cocina.rendimiento_vitro:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Rendimiento de una vitrocerámica radiante.
+  unidad: fracción
+  url: ''
+  valor:
+  - 0.7
+  - 0.75
+  - 0.8
+  verificado: false
+cocina.vida_util:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Vida útil de la placa.
+  unidad: años
+  url: ''
+  valor: 15
   verificado: false
 combustibles.inflacion_anual:
   fecha_consulta: '2026-10-19'
@@ -2910,6 +3164,41 @@ gas.cuota_fija_evitable:
   - 0
   - 0
   verificado: false
+gas.factura_mes_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Tramos de respuesta para la factura media mensual de gas.
+  unidad: €/mes con impuestos
+  url: ''
+  valor:
+    20-40:
+    - 20
+    - 30
+    - 40
+    40-80:
+    - 40
+    - 60
+    - 80
+    <20:
+    - 10
+    - 15
+    - 20
+    '>80':
+    - 80
+    - 110
+    - 180
+  verificado: false
+gas.fijo_libre_ratio:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Término fijo de las ofertas libres respecto del de la TUR.
+  unidad: ×
+  url: ''
+  valor:
+  - 0.8
+  - 1.0
+  - 1.3
+  verificado: false
 gas.gas_natural_impuesto_hidrocarburos:
   fecha_consulta: '2026-10-19'
   fuente: Ley 38/1992 art. 50
@@ -2936,6 +3225,14 @@ gas.oferta_libre_tipica:
   - 0.045
   - 0.06
   - 0.075
+  verificado: false
+gas.sg_precio:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Incertidumbre del precio del gas por las revisiones trimestrales de la TUR.
+  unidad: desviación geométrica
+  url: ''
+  valor: 1.1
   verificado: false
 gas.tur_termino_fijo_tur1:
   fecha_consulta: '2026-10-19'
@@ -2968,6 +3265,14 @@ gas.tur_termino_variable_tur2:
   unidad: €/kWh sin impuestos
   url: https://www.papernest.es/estudios/tur-gas-octubre-2026/
   valor: 0.0504
+  verificado: false
+gas.umbral_tur1_kwh:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Límite de consumo anual de la TUR1 (por encima se aplica la TUR2).
+  unidad: kWh/año
+  url: ''
+  valor: 5000
   verificado: false
 huella.arboles_absorcion_kgco2_ano:
   fecha_consulta: '2026-10-19'
@@ -3021,6 +3326,30 @@ huella.factor_tren_cercanias:
   - 0.03
   - 0.05
   verificado: false
+huella.km_dia_coche:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Tramos de respuesta.
+  unidad: km/día
+  url: ''
+  valor:
+    20-50:
+    - 20
+    - 35
+    - 50
+    50-100:
+    - 50
+    - 70
+    - 100
+    <20:
+    - 8
+    - 15
+    - 20
+    '>100':
+    - 100
+    - 120
+    - 180
+  verificado: false
 huella.media_hogar_espana_tco2:
   fecha_consulta: '2026-10-19'
   fuente: Estimacion (INE cuentas de emisiones / Inventario MITECO); per capita total 6-8 t
@@ -3031,6 +3360,49 @@ huella.media_hogar_espana_tco2:
   - 2.0
   - 2.5
   - 3.5
+  verificado: false
+huella.palanca_fv_kwp:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Instalación FV de referencia para la palanca de reducción.
+  unidad: kWp
+  url: ''
+  valor: 3
+  verificado: false
+huella.tipo_vuelo_corto_fraccion:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Fracción de vuelos cortos/medios; el resto largos.
+  unidad: fracción
+  url: ''
+  valor:
+  - 0.4
+  - 0.6
+  - 0.8
+  verificado: false
+huella.vuelos_ano:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Tramos de respuesta.
+  unidad: vuelos de ida y vuelta/año
+  url: ''
+  valor:
+    1-2:
+    - 1
+    - 1.5
+    - 2
+    3-6:
+    - 3
+    - 4
+    - 6
+    '>6':
+    - 7
+    - 9
+    - 14
+    ninguno:
+    - 0
+    - 0
+    - 0
   verificado: false
 huella.vuelos_tipicos_km:
   fecha_consulta: '2026-10-19'
@@ -3125,6 +3497,28 @@ ice.seguro_anual_eur:
   - 300
   - 450
   - 650
+  verificado: false
+impuestos.ibi_cuota_media:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Cuota anual del IBI de una vivienda.
+  unidad: €/año
+  url: ''
+  valor:
+  - 150
+  - 350
+  - 700
+  verificado: false
+impuestos.icio_tipo:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Tipo del ICIO municipal.
+  unidad: fracción de la obra
+  url: ''
+  valor:
+  - 0.02
+  - 0.03
+  - 0.04
   verificado: false
 impuestos.ivtm_medio_eur:
   fecha_consulta: '2026-10-19'

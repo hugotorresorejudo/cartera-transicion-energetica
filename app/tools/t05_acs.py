@@ -66,7 +66,7 @@ def inferir(perfil: Perfil, respuestas: dict | None = None) -> Parametros:
     gas_var = r.get("gas.tur_termino_variable_tur1")
     lib = r.rango("gas.oferta_libre_tipica")
     p["p_gas"] = Param("p_gas", "Término variable del gas", "€/kWh sin impuestos", mc.tri(min(gas_var, lib[0]), gas_var, max(gas_var, lib[2])))
-    p["gas_fijo_evit"] = Param("gas_fijo_evit", "Cuota fija de gas evitada", "€/año", D(r.rango("gas.cuota_fija_evitable")))
+    p["gas_fijo_evit"] = Param("gas_fijo_evit", "Cuota fija de gas que se evita al dejar el gas (con IVA)", "€/año", D(r.rango("gas.cuota_fija_evitable")))
     p["p_butano_bombona"] = Param("p_butano_bombona", "Precio de la bombona de butano", "€", mc.tri(0.92 * r.get("gas.butano_precio_bombona"), r.get("gas.butano_precio_bombona"),
                                                                                                       1.08 * r.get("gas.butano_precio_bombona")))
     p["g_elec"] = Param("g_elec", "Inflación de la electricidad", "fracción/año", D(r.rango("fv.inflacion_electricidad")))
@@ -147,7 +147,7 @@ def modelo(S, ctx, rng):
     # --- gas natural y butano (rendimiento sobre PCS)
     F = util_anual / S["eta_gas"]
     iva = 1 + r.get("gas.iva") / 100.0
-    c_gas = (F * (S["p_gas"] + r.get("gas.gas_natural_impuesto_hidrocarburos")) * iva - S["gas_fijo_evit"]) + mgas
+    c_gas = F * (S["p_gas"] + r.get("gas.gas_natural_impuesto_hidrocarburos")) * iva + S["gas_fijo_evit"] + mgas
     p_but = S["p_butano_bombona"] / (r.get("gas.bombona_kg") * r.get("gas.butano_pcs"))
     c_but = F * p_but + mgas
     c_termo = c_termo_e + mtermo
@@ -186,7 +186,7 @@ KPIS = [
      "prob": ("Probabilidad de ahorrar", lambda v: v > 0)},
     {"id": "van", "nombre": "VAN del cambio a bomba de calor", "unidad": "€", "clave": "van", "tipo": "ahorro",
      "prob": ("Probabilidad de VAN > 0", lambda v: v > 0)},
-    {"id": "payback", "nombre": "Plazo de recuperación", "unidad": "años", "clave": "payback", "fmt": "{:.1f}"},
+    {"id": "payback", "nombre": "Plazo de recuperación", "unidad": "años", "clave": "payback", "fmt": "{:.1f}", "inf_ok": True},
     {"id": "util", "nombre": "Energía útil de ACS", "unidad": "kWh/año", "clave": "util"},
     {"id": "v60", "nombre": "Agua equivalente a 60 ºC", "unidad": "L/día", "clave": "v60", "fmt": "{:.0f}"},
     {"id": "tir", "nombre": "TIR", "unidad": "%", "clave": "tir", "fmt": "{:.1f}"},

@@ -109,7 +109,7 @@ def ejecutar(herr_id: str, parametros: Parametros, modelo: Callable, kpis: list,
         lista = []
         for d in kpis:
             x = np.asarray(out[d["clave"]], dtype=float)
-            a, b, c = mc.p10_50_90(x)
+            a, b, c = mc.p10_50_90(x, d.get("inf_ok", False))
             k = KPI(d["id"], d["nombre"], d["unidad"], a, b, c, d.get("tipo", "neutro"), d.get("fmt", "{:,.0f}"))
             if d.get("prob"):
                 k.prob_texto, cond = d["prob"]

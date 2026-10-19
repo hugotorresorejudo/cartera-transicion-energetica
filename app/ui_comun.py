@@ -14,6 +14,8 @@ def num(x, fmt: str = "{:,.0f}") -> str:
     """Formato numérico español: separador de miles '.' y decimal ','."""
     if x is None or (isinstance(x, float) and math.isnan(x)):
         return "—"
+    if isinstance(x, float) and math.isinf(x):
+        return "no se recupera"
     s = fmt.format(x)
     return s.replace(",", "\0").replace(".", ",").replace("\0", ".")
 

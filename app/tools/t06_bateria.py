@@ -107,7 +107,7 @@ KPIS = [
     {"id": "van", "nombre": "VAN de la batería a 25 años", "unidad": "€", "clave": "van", "tipo": "ahorro", "prob": ("Probabilidad de VAN > 0", lambda v: v > 0)},
     {"id": "ahorro1", "nombre": "Ahorro adicional del primer año", "unidad": "€/año", "clave": "ahorro1", "tipo": "ahorro"},
     {"id": "cap", "nombre": "Capacidad recomendada", "unidad": "kWh", "clave": "cap", "fmt": "{:.0f}"},
-    {"id": "payback", "nombre": "Plazo de recuperación", "unidad": "años", "clave": "payback", "fmt": "{:.1f}"},
+    {"id": "payback", "nombre": "Plazo de recuperación", "unidad": "años", "clave": "payback", "fmt": "{:.1f}", "inf_ok": True},
     {"id": "ss", "nombre": "Autosuficiencia con batería", "unidad": "%", "clave": "ss", "fmt": "{:.0f}"},
     {"id": "ss0", "nombre": "Autosuficiencia sin batería", "unidad": "%", "clave": "ss0", "fmt": "{:.0f}"},
     {"id": "sc", "nombre": "Autoconsumo con batería", "unidad": "%", "clave": "sc", "fmt": "{:.0f}"},

@@ -62,3 +62,49 @@ S += [
     ("almacenamiento.dim_fv_factor", 1.0, "-", "La FV de partida de T06 cubre este múltiplo del consumo anual (limitada por el área disponible)."),
     ("almacenamiento.n_muestras_dimensionado", 60, "muestras", "Muestras Monte Carlo para la curva VAN(capacidad)."),
 ]
+S += [
+    ("gas.umbral_tur1_kwh", 5000, "kWh/año", "Límite de consumo anual de la TUR1 (por encima se aplica la TUR2)."),
+    ("gas.sg_precio", 1.10, "desviación geométrica", "Incertidumbre del precio del gas por las revisiones trimestrales de la TUR."),
+    ("gas.factura_mes_eur", {"<20": R3(10, 15, 20), "20-40": R3(20, 30, 40), "40-80": R3(40, 60, 80), ">80": R3(80, 110, 180)}, "€/mes con impuestos",
+     "Tramos de respuesta para la factura media mensual de gas."),
+    ("gas.fijo_libre_ratio", R3(0.8, 1.0, 1.3), "×", "Término fijo de las ofertas libres respecto del de la TUR."),
+    ("calefaccion.factor_scop_emisores", {"alta": 0.75, "media": 0.9, "suelo": 1.0}, "×", "Penalización del SCOP según temperatura de emisión (radiadores de alta temperatura, mixtos o suelo radiante)."),
+    ("calefaccion.fraccion_uso_calefaccion", R3(0.5, 0.8, 1.0), "fracción", "Parte de la demanda de referencia que se atiende realmente (uso intermitente o parcial)."),
+]
+S += [
+    ("calefaccion.sg_demanda", 1.4, "desviación geométrica", "Incertidumbre de la demanda de calefacción inferida (muy dependiente del edificio)."),
+    ("calefaccion.potencia_extra_aerotermia_kw", R3(0, 1.15, 3.45), "kW", "Potencia contratada adicional necesaria al electrificar la calefacción desde gas."),
+    ("calefaccion.uso", {"todo": R3(0.8, 1.0, 1.2), "tardes": R3(0.5, 0.7, 0.9), "ocasional": R3(0.2, 0.4, 0.6)}, "× demanda de referencia",
+     "Uso real de la calefacción respecto de la demanda de referencia de la zona."),
+    ("calefaccion.edad", {"pre1980": "pre-1980", "1980": "1980-2006", "2007": "2007+", "nose": "1980-2006"}, "-", "Respuesta de antigüedad -> clave de calefaccion.demanda_vs_anio_construccion."),
+]
+S += [
+    ("cargador.p_min_gestion_kw", 1.4, "kW", "Potencia mínima de carga con gestión dinámica (6 A monofásico)."),
+    ("cargador.p_base_noche_kw", R3(0.2, 0.4, 0.8), "kW", "Carga base nocturna de la vivienda durante la carga del VE."),
+    ("cargador.confianza_horas", 0.95, "probabilidad", "Probabilidad mínima de completar la carga diaria dentro de la ventana de disponibilidad."),
+    ("cargador.cuantil_potencia", 0.90, "probabilidad", "Cuantil de la potencia necesaria que se recomienda contratar (1 − probabilidad de corte)."),
+    ("cargador.monofasico_max_kw", 7.4, "kW", "Potencia máxima de cargador en suministro monofásico."),
+]
+S += [
+    ("cocina.rendimiento_vitro", R3(0.7, 0.75, 0.8), "fracción", "Rendimiento de una vitrocerámica radiante."),
+    ("cocina.frecuencia", {"poco": R3(0.5, 0.7, 0.9), "normal": R3(0.9, 1.0, 1.1), "mucho": R3(1.1, 1.4, 1.8)}, "× consumo medio", "Frecuencia de cocinado."),
+    ("cocina.menaje_eur", R3(0, 100, 300), "€", "Coste de menaje compatible con inducción si el actual no lo es."),
+    ("cocina.vida_util", 15, "años", "Vida útil de la placa."),
+    ("cocina.potencia_extra_kw", R3(0, 0, 2.3), "kW", "Potencia contratada adicional por pasar a inducción."),
+    ("impuestos.ibi_cuota_media", R3(150, 350, 700), "€/año", "Cuota anual del IBI de una vivienda."),
+    ("impuestos.icio_tipo", R3(0.02, 0.03, 0.04), "fracción de la obra", "Tipo del ICIO municipal."),
+    ("ayudas.prob_convocatoria_abierta", {"si": 1.0, "no": 0.0, "nose": 0.3}, "probabilidad", "Probabilidad de que haya una convocatoria de ayudas directas abierta."),
+    ("ayudas.prob_ordenanza", {"si": 1.0, "no": 0.0, "nose": 0.4}, "probabilidad", "Probabilidad de que el municipio bonifique IBI/ICIO/IVTM."),
+    ("ayudas.prob_certificado_irpf", R3(0.3, 0.5, 0.8), "probabilidad", "Probabilidad de obtener el certificado de mejora energética que da acceso a la deducción IRPF."),
+    ("ayudas.capex_envolvente_eur", R3(3000, 6000, 12000), "€", "Inversión típica en envolvente de una vivienda."),
+    ("huella.vuelos_ano", {"ninguno": R3(0, 0, 0), "1-2": R3(1, 1.5, 2), "3-6": R3(3, 4, 6), ">6": R3(7, 9, 14)}, "vuelos de ida y vuelta/año", "Tramos de respuesta."),
+    ("huella.tipo_vuelo_corto_fraccion", R3(0.4, 0.6, 0.8), "fracción", "Fracción de vuelos cortos/medios; el resto largos."),
+    ("huella.km_dia_coche", {"<20": R3(8, 15, 20), "20-50": R3(20, 35, 50), "50-100": R3(50, 70, 100), ">100": R3(100, 120, 180)}, "km/día", "Tramos de respuesta."),
+    ("huella.palanca_fv_kwp", 3, "kWp", "Instalación FV de referencia para la palanca de reducción."),
+]
+S += [
+    ("ayudas.ivtm_anios", 5, "años", "Duración típica de la bonificación del IVTM."),
+    ("ayudas.fraccion_bdc_vs_aerotermia", 0.5, "×", "Ayuda de la bomba de calor de ACS respecto de la de aerotermia."),
+    ("ayudas.kwp_referencia", 4, "kWp", "Instalación FV de referencia en el cálculo de ayudas."),
+    ("ayudas.kwh_bateria_referencia", 10, "kWh", "Batería de referencia en el cálculo de ayudas."),
+]

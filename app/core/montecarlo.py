@@ -74,8 +74,16 @@ def cuantil(d, q, n=2001, semilla=SEMILLA):
     return float(np.quantile(muestrear(d, n, np.random.default_rng(semilla)), q))
 
 
-def p10_50_90(x):
+def p10_50_90(x, inf_ok: bool = False):
+    """Percentiles 10/50/90 ignorando NaN. Con `inf_ok` los NaN cuentan como +∞ (p. ej. plazo de recuperación que no
+    llega a producirse) y los percentiles se toman por el vecino más próximo para no interpolar con infinitos."""
     x = np.asarray(x, dtype=float)
+    if inf_ok:
+        x = np.where(np.isnan(x), np.inf, x)
+        if x.size == 0:
+            return (np.nan, np.nan, np.nan)
+        a, b, c = np.percentile(x, [10, 50, 90], method="nearest")
+        return float(a), float(b), float(c)
     x = x[np.isfinite(x)]
     if x.size == 0:
         return (np.nan, np.nan, np.nan)
