@@ -48,8 +48,7 @@ app_ui = ui.page_sidebar(
         ui.tags.script(src="app.js"),
         ui.tags.script(src="mathjax/tex-svg.js", async_=True, onload="tipografiar()"),
     ),
-    ui.output_ui("aviso_global"),
-    ui.div(ui.output_ui("principal"), class_="contenido"),
+    ui.div(ui.output_ui("aviso_global"), ui.output_ui("principal"), class_="contenido"),
     ui.output_ui("pie"),
     title=config.TITULO,
     fillable=False,
@@ -163,16 +162,16 @@ def server(input, output, session):
     def _pagina_inicio():
         bloques = []
         for cat, ids in CATEGORIAS:
-            bloques.append(ui.h4(cat, class_="mt-3"))
+            bloques.append(ui.div(cat, class_="categoria"))
             tarjetas = []
             for tid in ids:
                 nombre, desc = CATALOGO[tid]
-                tarjetas.append(ui.div(ui.div(f"{tid.upper()} · prioridad {PRIORIDAD[tid]}", class_="meta"), ui.h4(nombre), ui.p(desc),
+                tarjetas.append(ui.div(ui.div(f"{tid.upper()} · Prioridad {PRIORIDAD[tid]}", class_="meta"), ui.h4(nombre), ui.p(desc),
                                        ui.input_action_button(f"go_{tid}", "Abrir", class_="btn-sm btn-outline-primary"), class_="tarjeta"))
             bloques.append(ui.div(*tarjetas, class_="tarjetas-inicio"))
         return ui.div(ui.h2("Cartera de herramientas de transición energética"),
-                      ui.p("22 herramientas de decisión energética para hogares en España. Cada una funciona con unas pocas preguntas "
-                           "y muestra rangos (P10–P50–P90) en lugar de cifras únicas."), *bloques)
+                      ui.div("22 herramientas de decisión energética para hogares en España. Comparten el perfil «Mi hogar», se ejecutan en tu navegador y "
+                             "muestran los resultados como rangos (P10–P50–P90) con su método, fuentes y fecha de los datos.", class_="intro"), *bloques)
 
     # ---- página de herramienta
     def _pagina_herramienta(tid):

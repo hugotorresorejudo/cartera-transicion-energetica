@@ -6,9 +6,9 @@ from pathlib import Path
 CARGA = """
     <style>
       #carga-inicial{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;
-        background:#f6f8fa;color:#1d2630;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;text-align:center;padding:1rem}
-      #carga-inicial .spin{width:44px;height:44px;border:4px solid #d5dbe1;border-top-color:#0f5c7a;border-radius:50%;animation:giro 1s linear infinite}
-      #carga-inicial small{color:#5b6773}
+        background:#fff;color:#1b1f24;font-family:Arial,Helvetica,sans-serif;text-align:center;padding:1rem}
+      #carga-inicial .spin{width:44px;height:44px;border:4px solid #e9f0f7;border-top-color:#0047ab;border-radius:50%;animation:giro 1s linear infinite}
+      #carga-inicial small{color:#52606f}
       @keyframes giro{to{transform:rotate(360deg)}}
     </style>
     <script>

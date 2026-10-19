@@ -9,14 +9,21 @@ matplotlib.use("agg")
 import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np  # noqa: E402
 
-ACENTO, AHORRO, COSTE, TEXTO, SUAVE, BORDE = "#0f5c7a", "#1f8a5b", "#c2571a", "#1d2630", "#5b6773", "#d5dbe1"
-CICLO = [ACENTO, COSTE, AHORRO, "#7a5c99", "#8a8f94"]
+ACENTO, AHORRO, COSTE, TEXTO, SUAVE, BORDE = "#0047ab", "#0a2a52", "#7f9ccb", "#1b1f24", "#4b5563", "#d3dbe6"
+CICLO = [ACENTO, "#0a2a52", "#6f93cf", "#9aa9bd", "#003a8c"]
+
+from pathlib import Path  # noqa: E402
+
+from matplotlib import font_manager  # noqa: E402
+
+for _f in sorted((Path(__file__).resolve().parent / "www" / "fonts").glob("Roboto_*.ttf")):
+    font_manager.fontManager.addfont(str(_f))
 
 plt.rcParams.update({
-    "font.family": "sans-serif", "font.sans-serif": ["DejaVu Sans", "Arial", "Helvetica"], "font.size": 9,
+    "font.family": "sans-serif", "font.sans-serif": ["Roboto", "Arial", "Liberation Sans", "DejaVu Sans"], "font.size": 9,
     "axes.edgecolor": BORDE, "axes.labelcolor": SUAVE, "xtick.color": SUAVE, "ytick.color": SUAVE, "text.color": TEXTO,
-    "axes.spines.top": False, "axes.spines.right": False, "axes.grid": True, "grid.color": "#eceff2", "grid.linewidth": 0.8,
-    "axes.titlesize": 10, "axes.titleweight": "bold", "axes.titlelocation": "left", "figure.dpi": 110, "legend.frameon": False,
+    "axes.spines.top": False, "axes.spines.right": False, "axes.grid": True, "grid.color": "#e3e8ef", "grid.linewidth": 0.8,
+    "axes.titlesize": 10, "axes.titleweight": "bold", "axes.titlecolor": "#0a2a52", "axes.titlelocation": "left", "figure.dpi": 110, "legend.frameon": False,
     "axes.prop_cycle": plt.cycler(color=CICLO),
 })
 
@@ -46,8 +53,11 @@ def dibujar(g: dict):
         fig, ax = _fig(bottom=0.12 if muchas else 0.30)
         x = np.arange(len(g["categorias"]))
         p10, p50, p90 = (np.asarray(g[k], float) for k in ("p10", "p50", "p90"))
-        ax.bar(x, p50, color=ACENTO, width=0.55)
+        ax.bar(x, p50, color=ACENTO, width=0.55, zorder=2)
         ax.errorbar(x, p50, yerr=[np.maximum(p50 - p10, 0), np.maximum(p90 - p50, 0)], fmt="none", ecolor=TEXTO, capsize=4, lw=1.2)
+        if not muchas:
+            for xi, v in zip(x, p50):
+                ax.annotate(f"{v:,.0f}".replace(",", "."), (xi, 0), xytext=(0, 4), textcoords="offset points", ha="center", va="bottom", fontsize=8, color="white", fontweight="bold")
         if muchas:
             ax.set_xticks(x[::2], [str(c) for c in g["categorias"]][::2])
         else:
@@ -82,7 +92,7 @@ def dibujar(g: dict):
     if t == "heatmap":
         fig, ax = _fig(3.8, bottom=0.14)
         z = np.asarray(g["z"], float)
-        im = ax.imshow(z, aspect="auto", cmap="viridis", origin="upper")
+        im = ax.imshow(z, aspect="auto", cmap="Blues", origin="upper")
         ax.set_xlabel(g.get("xlabel", ""))
         ax.set_ylabel(g.get("ylabel", ""))
         _titulo(fig, ax, g["titulo"])

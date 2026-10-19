@@ -60,7 +60,7 @@ def tarjetas_kpi(res: Resultados):
 def aviso_datos():
     if datos.es_sintetico():
         return tags.div(tags.strong("Datos de demostración. "),
-                        "Las series de precios, producción solar y generación son sintéticas (el workflow de datos aún no las ha sustituido por las reales de OMIE, REData y PVGIS). Los resultados no son representativos.",
+                        "Precios, producción solar y generación son sintéticos hasta que el workflow de datos cargue los reales (OMIE, REData, PVGIS). Resultados no representativos.",
                         class_="aviso aviso-datos")
     return ""
 

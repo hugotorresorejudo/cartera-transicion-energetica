@@ -4,3 +4,4 @@ __pycache__/
 site/
 .venv/
 *.egg-info/
+*.zip
