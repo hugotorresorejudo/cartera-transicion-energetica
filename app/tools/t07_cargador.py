@@ -75,8 +75,8 @@ def modelo(S, ctx, rng):
         tabla.append({"Cargador (kW)": pch, "Gestión dinámica": "sí" if gest else "no", "Potencia a contratar (kW)": p_rec,
                       "Horas de carga (P50)": round(float(np.median(horas)), 1), "Completa la carga": f"{ok:.0%}", "Coste extra de potencia (€/año)": round(extra)})
         factible = ok >= r.get("cargador.confianza_horas") and (not gest or ctx["gestion"] != "no")
-        if factible and (extra + 0.01 * pch < mejor_coste):
-            mejor, mejor_coste = (pch, gest, p_rec, p_req, horas, extra), extra + 0.01 * pch
+        if factible and (extra + r.get("cargador.desempate_eur") * pch < mejor_coste):
+            mejor, mejor_coste = (pch, gest, p_rec, p_req, horas, extra), extra + r.get("cargador.desempate_eur") * pch
     if mejor is None:  # sin configuración factible: la de mayor potencia
         pch, gest = cands[-1]
         mejor = (pch, gest, P_act, np.full(n_pm, P_act), e_dia / pch, 0.0)

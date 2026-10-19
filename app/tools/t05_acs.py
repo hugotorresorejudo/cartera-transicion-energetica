@@ -4,7 +4,7 @@ from __future__ import annotations
 import numpy as np
 
 from core import clima, emisiones, finanzas as fin, fv, montecarlo as mc, precios, termico
-from core.herramienta import Param, Parametros, Pregunta, ejecutar
+from core.herramienta import Param, Parametros, Pregunta, ejecutar, tri_rel
 from core.perfil import Perfil
 from core.referencias import ref
 from core.termico import DIAS_MES
@@ -13,6 +13,7 @@ from tools import t01_tarifas as t01
 ID = "t05"
 NOMBRE = "ACS: bomba de calor vs termo o gas"
 DESCRIPCION = "Cuánto gastas en agua caliente y si compensa una bomba de calor."
+MESES = list(range(1, 12 + 1))
 SISTEMAS = {"termo": "Termo eléctrico", "gas": "Calentador de gas natural", "butano": "Butano", "bdc": "Bomba de calor"}
 
 
@@ -55,7 +56,7 @@ def inferir(perfil: Perfil, respuestas: dict | None = None) -> Parametros:
     p["otros_l"] = Param("otros_l", "Otros usos (lavabo, cocina)", "L/persona·día", D(r.rango("acs.otros_usos_l_persona_dia")))
     p["t_uso"] = Param("t_uso", "Temperatura de uso", "ºC", D(r.rango("acs.t_uso_ducha_c")))
     p["t_ac_termo"] = Param("t_ac_termo", "Temperatura de acumulación del termo", "ºC", mc.fijo(r.get("acs.t_acumulacion_c")[1]))
-    p["t_ac_bdc"] = Param("t_ac_bdc", "Temperatura de acumulación de la BdC", "ºC", mc.fijo(55))
+    p["t_ac_bdc"] = Param("t_ac_bdc", "Temperatura de acumulación de la BdC", "ºC", mc.fijo(r.get("acs.t_acumulacion_bdc_c")))
     p["perd_termo"] = Param("perd_termo", "Pérdidas en espera (termo 100 L)", "kWh/24 h", D(r.get("acs.perdidas_espera_termo_kwh_24h")["100"]))
     p["perd_bdc"] = Param("perd_bdc", "Pérdidas en espera (BdC 200 L)", "kWh/24 h", D(r.rango("acs.bdc_perdidas_espera_kwh_24h")))
     p["cop_nom"] = Param("cop_nom", "COP nominal (EN 16147, A7→55 ºC)", "-", D(r.rango("acs.bdc_cop_nominal_acs")))
@@ -67,8 +68,7 @@ def inferir(perfil: Perfil, respuestas: dict | None = None) -> Parametros:
     lib = r.rango("gas.oferta_libre_tipica")
     p["p_gas"] = Param("p_gas", "Término variable del gas", "€/kWh sin impuestos", mc.tri(min(gas_var, lib[0]), gas_var, max(gas_var, lib[2])))
     p["gas_fijo_evit"] = Param("gas_fijo_evit", "Cuota fija de gas que se evita al dejar el gas (con IVA)", "€/año", D(r.rango("gas.cuota_fija_evitable")))
-    p["p_butano_bombona"] = Param("p_butano_bombona", "Precio de la bombona de butano", "€", mc.tri(0.92 * r.get("gas.butano_precio_bombona"), r.get("gas.butano_precio_bombona"),
-                                                                                                      1.08 * r.get("gas.butano_precio_bombona")))
+    p["p_butano_bombona"] = Param("p_butano_bombona", "Precio de la bombona de butano", "€", tri_rel(r.get("gas.butano_precio_bombona"), r.get("gas.banda_bombona")))
     p["g_elec"] = Param("g_elec", "Inflación de la electricidad", "fracción/año", D(r.rango("fv.inflacion_electricidad")))
     p["g_fuel"] = Param("g_fuel", "Inflación del gas", "fracción/año", D(r.rango("combustibles.inflacion_anual")))
     p["r_desc"] = Param("r_desc", "Tasa de descuento", "fracción", D(r.rango("fv.tasa_descuento_hogar")))
@@ -115,7 +115,8 @@ def modelo(S, ctx, rng):
     perd_t = S["perd_termo"][:, None] * (np.maximum(S["t_ac_termo"][:, None] - t_air[None, :], 0) / dt_ref).astype(np.float32) / 24.0
     perd_b = S["perd_bdc"][:, None] * (np.maximum(S["t_ac_bdc"][:, None] - t_air[None, :], 0) / dt_ref).astype(np.float32) / 24.0
     e_termo_h = q_h + perd_t
-    eta_c = termico.eta_carnot_desde_cop_nominal(S["cop_nom"], 7.0, 55.0)  # η_C que reproduce el COP nominal
+    ens = r.get("acs.condiciones_ensayo")
+    eta_c = termico.eta_carnot_desde_cop_nominal(S["cop_nom"], ens["t_aire_c"], ens["t_agua_c"])  # η_C que reproduce el COP nominal
     cop = termico.cop_carnot(t_air[None, :], S["t_ac_bdc"][:, None], eta_c[:, None]).astype(np.float32)
     cop = np.where(t_air[None, :] < S["t_min_bdc"][:, None], 1.0, cop)  # por debajo del límite entra el apoyo eléctrico
     e_bdc_h = (q_h + perd_b) / cop
@@ -201,7 +202,7 @@ def graficos(out, ctx):
     return [{"tipo": "barras", "titulo": "Coste anual por sistema de ACS (P10–P90)", "ylabel": "€/año", "categorias": list(SISTEMAS.values()),
              "p10": [x[0] for x in b], "p50": [x[1] for x in b], "p90": [x[2] for x in b]},
             {"tipo": "abanico", "titulo": "Consumo eléctrico mensual de la bomba de calor", "xlabel": "Mes", "ylabel": "kWh",
-             "x": list(range(1, 13)), "p10": mes[0].tolist(), "p50": mes[1].tolist(), "p90": mes[2].tolist()}]
+             "x": MESES, "p10": mes[0].tolist(), "p50": mes[1].tolist(), "p90": mes[2].tolist()}]
 
 
 def tabla(out, ctx):

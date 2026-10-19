@@ -11,6 +11,12 @@ _MES = None
 _INI_MES = None
 
 
+def dist_azimut(orientacion: str) -> dict:
+    """Distribución del azimut (convención PVGIS) para la respuesta de orientación."""
+    from .referencias import ref
+    return dict(ref().sub("fv.azimut_orientacion", orientacion))
+
+
 def mes_hora() -> np.ndarray:
     global _MES
     if _MES is None:

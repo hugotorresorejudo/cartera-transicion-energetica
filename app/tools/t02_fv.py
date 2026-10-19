@@ -56,7 +56,7 @@ def inferir(perfil: Perfil, respuestas: dict | None = None) -> Parametros:
         scop = r.get("calefaccion.bdc_scop_aerotermia")[pc.letra_zona(perfil)][1]  # la resistencia (COP 1) pasa a bomba de calor
         m = p["E_calefaccion"].dist["mediana"] / scop
         p["E_calefaccion"] = Param("E_calefaccion", "Consumo anual: aerotermia prevista", "kWh/año", mc.logn(m, r.get("perfil.sg_componente")))
-    az = {"S": mc.fijo(0), "SE_SO": mc.disc([-45, 45]), "E_O": mc.disc([-90, 90]), "N": mc.fijo(180), "nose": mc.unif(-90, 90)}[a["orientacion"]]
+    az = fv.dist_azimut(a["orientacion"])
     if a["cubierta"] == "plano" or a["inclinacion"] == "plana":
         tilt = mc.desde_rango(r.rango("fv.inclinacion_estructura_plana"))
     elif a["inclinacion"] == "poca":
@@ -133,11 +133,12 @@ def modelo(S, ctx, rng):
     anios = np.arange(1, N + 1)
     r_ref, e_ref = ref(), ref().get("fv.potencia_capex_ref_kwp")
     expo = r_ref.get("fv.economia_escala_exponente")
+    pmin = r_ref.get("fv.potencia_min_capex_kwp")
 
     def van_de(Pp, idx=slice(None)):
         a1, Sb, G = _ahorro1(Gu[idx], Pp, E[idx], p_e if p_e.ndim == 1 else p_e[idx], p_exc[idx], S, pot,
                              P1[idx], P2[idx], bono[idx], base_total[idx])
-        capex = Pp * 1000 * S["capex_wp"][idx] * (np.maximum(Pp, 0.1) / e_ref) ** expo
+        capex = Pp * 1000 * S["capex_wp"][idx] * (np.maximum(Pp, pmin) / e_ref) ** expo
         ah = fin.serie_anual(a1, N, S["g_elec"][idx], S["degradacion"][idx])
         extras = np.zeros_like(ah)
         k = np.clip(np.round(S["anio_inversor"][idx]).astype(int), 1, N) - 1
@@ -159,7 +160,7 @@ def modelo(S, ctx, rng):
     sc, ss = fv.indicadores(Sb, G, E)
     return {"van": van, "tir": fin.tir(cf), "payback": fin.payback(cf), "ahorro1": a1, "sc": sc * 100, "ss": ss * 100,
             "co2": G.sum(axis=1) * S["ef_evitado"] / 1000.0, "Pp": Pp, "curva": curva, "grid": grid,
-            "generacion": G.sum(axis=1), "capex": Pp * 1000 * S["capex_wp"] * (np.maximum(Pp, 0.1) / e_ref) ** expo}
+            "generacion": G.sum(axis=1), "capex": Pp * 1000 * S["capex_wp"] * (np.maximum(Pp, pmin) / e_ref) ** expo}
 
 
 KPIS = [

@@ -67,13 +67,13 @@ def modelo(S, ctx, rng):
             por[ap] = S["kwh_television"] * S["n_tv"] * (S["horas_tv"] / ref_h / np.maximum(S["n_tv"], 1)) * S["f_edad"]
         else:
             por[ap] = S[f"kwh_{ap}"] * S["f_edad"]
-    standby = S["w_standby"] * S["f_standby"] * 8.76
+    standby = S["w_standby"] * S["f_standby"] * 8760 / 1000
     total = sum(por.values()) + standby
     perfil = Perfil.from_dict(ctx["perfil"])
     comp = pc.energias_inferidas(perfil)
     t01_total = sum(comp.values())
     out = {"total": total, "standby": standby, "standby_eur": standby * p_medio, "pct_standby": standby / total * 100,
-           "ahorro_standby": standby * 0.7 * p_medio, "cobertura": total / t01_total * 100, "_por": por, "p_medio": p_medio}
+           "ahorro_standby": standby * r.get("electrodomesticos.fraccion_evitable_standby") * p_medio, "cobertura": total / t01_total * 100, "_por": por, "p_medio": p_medio}
     return out
 
 

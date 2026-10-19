@@ -135,6 +135,11 @@ def ejecutar(herr_id: str, parametros: Parametros, modelo: Callable, kpis: list,
     return res
 
 
+def tri_rel(valor, banda):
+    """Triangular alrededor de `valor` con una banda relativa (min, moda, max) de referencias.yaml."""
+    return mc.tri(valor * banda[0], valor * banda[1], valor * banda[2])
+
+
 def banda(x, axis=0):
     """Percentiles 10/50/90 de un array (n, m) -> dict de listas."""
     a = np.asarray(x, dtype=float)

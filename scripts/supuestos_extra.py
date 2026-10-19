@@ -142,3 +142,72 @@ S += [
     ("electrodomesticos.factor_standby", {"si": R3(0.4, 0.5, 0.7), "aveces": R3(0.8, 1.0, 1.2), "no": R3(1.2, 1.5, 2.0)}, "× stand-by medio", "¿Apagas del todo los aparatos?"),
     ("electrodomesticos.n_tv", {"1": 1, "2": 2, "3+": 3}, "unidades", "Número de televisores."),
 ]
+S += [
+    ("lcoe.tecnologias", {"solar_fv_utility": "FV a gran escala", "solar_fv_residencial": "FV residencial", "eolica_terrestre": "Eólica terrestre",
+                          "eolica_marina": "Eólica marina", "ciclo_combinado": "Ciclo combinado", "nuclear_existente_ampliacion": "Nuclear (nueva o ampliación)",
+                          "hidraulica_bombeo": "Bombeo"}, "-", "Nombres de las tecnologías del explorador de LCOE."),
+    ("lcoe.escenario_gas", {"bajo": 0, "medio": 1, "alto": 2}, "índice del rango", "Escenario de precio del gas y del CO₂ (mínimo, moda, máximo del rango de referencia)."),
+    ("lcoe.factor_wacc", {"bajo": 0.8, "medio": 1.0, "alto": 1.25}, "×", "Escenario de coste de capital sobre el WACC de referencia."),
+    ("lcoe.mwh_por_kw_mwh", 8.76, "MWh/kW·año a FC=1", "Horas anuales / 1000."),
+    ("lcoe.perfil_captura", {"solar_fv_utility": "solar", "solar_fv_residencial": "solar", "eolica_terrestre": "lica", "eolica_marina": "lica"}, "-", "Columna de REData para el precio capturado de cada tecnología."),
+]
+S += [
+    ("curvas.horas", {"madrugada": 4, "mediodia": 14, "noche": 21}, "hora del día", "Franjas representativas de las curvas almacenadas."),
+    ("curvas.meses", {"invierno": [12, 1, 2], "primavera": [3, 4, 5], "verano": [6, 7, 8], "otono": [9, 10, 11]}, "meses", "Estaciones."),
+    ("curvas.choque_gas", {"ninguno": 1.0, "mas50": 1.5, "mas100": 2.0, "menos30": 0.7}, "× precio del gas", "Choque de precio del gas."),
+    ("curvas.choque_renovable", {"ninguno": 1.0, "menos25": 0.75, "menos50": 0.5, "mas25": 1.25}, "× disponibilidad solar y eólica", "Choque de disponibilidad renovable."),
+    ("curvas.sg_renovable", 1.2, "desviación geométrica", "Variabilidad de la disponibilidad renovable entre días."),
+    ("curvas.sd_demanda", 0.03, "fracción", "Variabilidad de la demanda entre días."),
+    ("curvas.tecnologias_gas", ["Ciclo combinado", "Cogeneración", "Carbón y otras"], "-", "Tecnologías cuyo precio de oferta sigue al del gas y el CO₂."),
+    ("curvas.tecnologias_renovables", ["Solar FV", "Eólica"], "-", "Tecnologías afectadas por el choque de disponibilidad renovable."),
+    ("curvas.precio_techo", 400, "€/MWh", "Precio de la última unidad si la oferta no cubre la demanda (reserva)."),
+]
+S += [
+    ("solar_termica.pr_fv_proxy", 0.80, "-", "Rendimiento global del sistema FV de PVGIS usado para recuperar la irradiancia sobre el plano inclinado a partir de la producción por kWp."),
+    ("solar_termica.eta_sistema", R3(0.7, 0.8, 0.9), "-", "Rendimiento de tuberías, intercambio y acumulación del sistema solar."),
+    ("solar_termica.t_colector_c", R3(40, 50, 65), "ºC", "Temperatura media del fluido en el captador."),
+    ("solar_termica.sg_demanda", 1.25, "desviación geométrica", "Incertidumbre de la demanda de ACS."),
+    ("solar_termica.n_captadores", {"1": 1, "2": 2, "3+": 3}, "captadores", "Número de captadores."),
+    ("solar_termica.umbral_g_kw_m2", 0.05, "kW/m²", "Irradiancia mínima para que el captador aporte energía."),
+]
+S += [
+    ("envolvente.factor_ahorro_edad", {"pre1980": 1.15, "1980": 1.0, "2007": 0.5}, "×", "Potencial de ahorro de las medidas según la antigüedad del edificio."),
+    ("envolvente.pisos_unifamiliar", 1.5, "plantas", "Plantas medias de una unifamiliar (superficie de cubierta = superficie útil / plantas)."),
+    ("envolvente.cop_electrica", 1.0, "-", "Rendimiento de los radiadores eléctricos."),
+    ("envolvente.tipos_edificio", {"intermedio": "piso_intermedio", "ultima": "piso_ultima_o_esquina", "adosada": "unifamiliar_adosada", "aislada": "unifamiliar_aislada"}, "-",
+     "Respuesta de tipo de edificio -> clave de envolvente.superficie_fachada_ratio."),
+    ("envolvente.tiene_cubierta", {"intermedio": 0, "ultima": 1, "adosada": 1, "aislada": 1}, "0/1", "El edificio tiene cubierta propia aislable."),
+    ("envolvente.umbrales_ahorro", {"ahorro_60": 0.6, "ahorro_45": 0.45, "ahorro_30": 0.3}, "fracción", "Umbrales de reducción de la demanda que dan acceso a cada nivel de ayuda de rehabilitación."),
+    ("envolvente.horizonte_max", 40, "años", "Horizonte máximo de evaluación."),
+]
+S += [
+    ("comunidad.mezcla_ocupacion", {"fuera": [0.6, 0.3, 0.1], "mixto": [0.35, 0.35, 0.3], "casa": [0.1, 0.3, 0.6]}, "probabilidades [fuera, parcial, casa]", "Mezcla de patrones de ocupación de los vecinos."),
+    ("comunidad.vecinos", {"<=10": 8, "11-30": 20, ">30": 50}, "vecinos", "Número de participantes representativo de cada tramo."),
+    ("comunidad.kwp_por_vecino", {"pequena": R3(0.4, 0.5, 0.6), "media": R3(0.8, 1.0, 1.2), "grande": R3(1.4, 1.8, 2.2)}, "kWp/vecino", "Tamaño de la instalación por participante."),
+    ("comunidad.n_simulados", 8, "participantes", "Número de participantes distintos simulados (representan a toda la comunidad)."),
+    ("comunidad.n_max_mc", 120, "muestras", "Máximo de muestras Monte Carlo de esta herramienta (coste de cálculo)."),
+    ("comunidad.sg_consumo_vecino", 1.35, "desviación geométrica", "Dispersión del consumo anual entre vecinos."),
+    ("comunidad.horizonte_anios", 25, "años", "Horizonte de evaluación."),
+    ("comunidad.reparto", {"igual": "Coeficiente estático igual", "consumo": "Coeficiente estático por consumo", "dinamico": "Coeficiente dinámico horario"}, "-", "Tipos de coeficiente de reparto."),
+]
+S += [
+    ("gas.banda_bombona", R3(0.92, 1.0, 1.08), "× precio de referencia", "Rango del precio de la bombona de butano alrededor del último precio publicado (revisión bimestral limitada por regulación)."),
+    ("gas.banda_variable", R3(0.9, 1.0, 1.2), "× precio de referencia", "Rango del término variable del gas entre la TUR y las ofertas libres."),
+    ("fv.azimut_orientacion", {"S": {"t": "fijo", "v": 0}, "SE_SO": {"t": "disc", "vals": [-45, 45], "p": [0.5, 0.5]}, "E_O": {"t": "disc", "vals": [-90, 90], "p": [0.5, 0.5]},
+                               "N": {"t": "fijo", "v": 180}, "nose": {"t": "unif", "min": -90, "max": 90}}, "º (0 = sur, −90 = este, 90 = oeste)", "Respuesta de orientación -> distribución del azimut (convención PVGIS)."),
+    ("fv.potencia_min_capex_kwp", 0.1, "kWp", "Potencia mínima para el cálculo de la economía de escala del CAPEX."),
+    ("omie.az_mi_fv", R3(-30, 0, 30), "º", "Azimut de «mi FV» en el explorador si no se ha hecho T02."),
+    ("omie.incl_mi_fv", R3(15, 30, 45), "º", "Inclinación de «mi FV» en el explorador."),
+    ("acs.condiciones_ensayo", {"t_aire_c": 7, "t_agua_c": 55}, "ºC", "Condiciones de ensayo EN 16147 (A7, agua a 55 ºC) a las que se refiere el COP nominal."),
+    ("acs.t_acumulacion_bdc_c", 55, "ºC", "Temperatura de acumulación habitual de una bomba de calor de ACS."),
+    ("acs.sg_demanda", 1.2, "desviación geométrica", "Incertidumbre de la demanda de ACS según el CTE."),
+    ("refrigeracion.sg_superficie", 1.2, "desviación geométrica", "Incertidumbre de la superficie climatizada."),
+    ("gas.bombonas_ano_defecto", 6, "bombonas/año", "Una bombona cada dos meses."),
+    ("gas.sg_butano", 1.3, "desviación geométrica", "Incertidumbre del consumo de butano."),
+    ("huella.palanca_fv_inclinacion", 30, "º", "Inclinación de la FV de referencia de la palanca de reducción (orientación sur)."),
+    ("envolvente.reduccion_max", 0.9, "fracción", "Tope de la reducción de la demanda atribuible a una medida."),
+    ("emisiones.n_muestras_correlacion", 200, "muestras", "Escenarios usados para la correlación precio–emisiones."),
+    ("electrodomesticos.fraccion_evitable_standby", 0.7, "fracción", "Parte del stand-by evitable apagando completamente con regletas."),
+    ("curvas.demanda_min_max", [0.8, 1.2], "× demanda base", "Límites del factor de demanda."),
+    ("cargador.desempate_eur", 1e-6, "€/kW", "Desempate entre configuraciones de igual coste a favor de la de menor potencia."),
+]

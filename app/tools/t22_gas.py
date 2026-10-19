@@ -4,7 +4,7 @@ from __future__ import annotations
 import numpy as np
 
 from core import emisiones, montecarlo as mc, perfiles_carga as pc, termico
-from core.herramienta import Param, Parametros, Pregunta, ejecutar
+from core.herramienta import Param, Parametros, Pregunta, ejecutar, tri_rel
 from core.perfil import Perfil
 from core.referencias import ref
 
@@ -47,7 +47,7 @@ def inferir(perfil: Perfil, respuestas: dict | None = None) -> Parametros:
         d = pc.demanda_calefaccion_util(perfil)
         uso = r.get("calefaccion.fraccion_uso_calefaccion")
         eta_c = r.get("calefaccion.caldera_gas_rendimiento_estacional_pcs")[1]
-        p["E_calefaccion"] = Param("E_calefaccion", "Gas para calefacción", "kWh/año", mc.logn(d[1] * uso[1] / eta_c, 1.4))
+        p["E_calefaccion"] = Param("E_calefaccion", "Gas para calefacción", "kWh/año", mc.logn(d[1] * uso[1] / eta_c, r.get("calefaccion.sg_demanda")))
     if not any(k.startswith("E_") for k in p):
         p["E_cocina"] = Param("E_cocina", "Gas para cocinar", "kWh/año", mc.logn(r.get("cocina.gas_consumo_kwh_ano_persona")[1] * npers, sg))
     p["f_gas"] = Param("f_gas", "Nivel de precios del gas (factor)", "-", mc.logn(1, r.get("gas.sg_precio")))
@@ -57,7 +57,7 @@ def inferir(perfil: Perfil, respuestas: dict | None = None) -> Parametros:
     p["var_libre"] = Param("var_libre", "Término variable de la oferta libre", "€/kWh", D(r.rango("gas.oferta_libre_tipica")))
     p["fijo_libre_ratio"] = Param("fijo_libre_ratio", "Término fijo libre / TUR", "×", D(r.get("gas.fijo_libre_ratio")))
     pb = r.get("gas.butano_precio_bombona")
-    p["bombona"] = Param("bombona", "Precio de la bombona de butano (12,5 kg)", "€", mc.tri(0.92 * pb, pb, 1.08 * pb))
+    p["bombona"] = Param("bombona", "Precio de la bombona de butano (12,5 kg)", "€", tri_rel(pb, r.get("gas.banda_bombona")))
     p["alquiler"] = Param("alquiler", "Alquiler del contador", "€/mes", mc.fijo(r.get("gas.alquiler_contador")))
     p["ih"] = Param("ih", "Impuesto de hidrocarburos", "€/kWh", mc.fijo(r.get("gas.gas_natural_impuesto_hidrocarburos")))
     return Parametros(p, {"perfil": perfil.to_dict(), "actual": "tur" if a["actual"] == "nose" else a["actual"], "factura": a["factura"]})

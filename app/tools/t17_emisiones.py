@@ -63,7 +63,7 @@ def modelo(S, ctx, rng):
     ef_media = EF.mean(axis=(1, 2))
     omie = precios.escenarios_omie(n, rng) * S["f_omie"][:, None].astype(np.float32)
     precio = omie.reshape(n, 365, 24)
-    corr = np.array([np.corrcoef(precio[i].ravel(), EF[i].ravel())[0, 1] for i in range(min(n, 200))])
+    corr = np.array([np.corrcoef(precio[i].ravel(), EF[i].ravel())[0, 1] for i in range(min(n, int(r.get("emisiones.n_muestras_correlacion"))))])
     corr = np.resize(corr, n)
     return {"ef_media": ef_media * 1000, "ef_mi": ef_mi * 1000, "ef_best": ef_best * 1000, "ef_hab": ef_hab * 1000, "reduccion": reduccion,
             "reduccion_pct": (1 - ef_best / np.maximum(ef_hab, 1e-9)) * 100, "corr": corr, "_ef_hora": EF[:, sel].mean(axis=1), "_ef_mes": None,

@@ -4,11 +4,10 @@ from __future__ import annotations
 import numpy as np
 
 from . import datos
-from .calendario import calendario
+from .calendario import ANIO_TIPO, calendario
 from .referencias import ref
 
 SEMANA = 168
-ANIO_REF_CALENDARIO = 2023  # año no bisiesto con 8760 h para asignar periodos
 
 
 def anio_precios() -> int:
@@ -21,7 +20,7 @@ def anio_precios() -> int:
 
 def periodos() -> np.ndarray:
     """Periodo 2.0TD (0=P1, 1=P2, 2=P3) de cada hora del año tipo."""
-    return calendario(ANIO_REF_CALENDARIO)["periodo"]
+    return calendario(ANIO_TIPO)["periodo"]
 
 
 def peajes_cargos_energia() -> np.ndarray:

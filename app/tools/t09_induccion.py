@@ -4,7 +4,7 @@ from __future__ import annotations
 import numpy as np
 
 from core import emisiones, finanzas as fin, montecarlo as mc, perfiles_carga as pc, precios
-from core.herramienta import Param, Parametros, Pregunta, ejecutar
+from core.herramienta import Param, Parametros, Pregunta, ejecutar, tri_rel
 from core.perfil import Perfil
 from core.referencias import ref
 from tools import t01_tarifas as t01
@@ -41,9 +41,9 @@ def inferir(perfil: Perfil, respuestas: dict | None = None) -> Parametros:
     p["eta_ind"] = Param("eta_ind", "Rendimiento de la inducción", "-", D(r.rango("cocina.rendimiento_induccion")))
     p["eta_vitro"] = Param("eta_vitro", "Rendimiento de la vitrocerámica", "-", D(r.rango("cocina.rendimiento_vitro")))
     gv = r.get("gas.tur_termino_variable_tur1")
-    p["p_gas"] = Param("p_gas", "Término variable del gas", "€/kWh sin impuestos", D((0.9 * gv, gv, 1.2 * gv)))
+    p["p_gas"] = Param("p_gas", "Término variable del gas", "€/kWh sin impuestos", tri_rel(gv, r.get("gas.banda_variable")))
     pb = r.get("gas.butano_precio_bombona")
-    p["bombona"] = Param("bombona", "Bombona de butano", "€", mc.tri(0.92 * pb, pb, 1.08 * pb))
+    p["bombona"] = Param("bombona", "Bombona de butano", "€", tri_rel(pb, r.get("gas.banda_bombona")))
     fijo = (r.get("gas.tur_termino_fijo_tur1") + r.get("gas.alquiler_contador")) * 12 * (1 + r.get("gas.iva") / 100.0)
     p["gas_fijo_evit"] = Param("gas_fijo_evit", "Cuota fija de gas evitada", "€/año", mc.fijo(0 if a["otros_gas"] == "si" else fijo))
     p["capex_ind"] = Param("capex_ind", "Placa de inducción", "€", D(r.rango("cocina.capex_induccion_eur")))

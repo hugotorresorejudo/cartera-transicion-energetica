@@ -29,6 +29,16 @@ acs.bdc_potencia_electrica_kw:
   - 0.5
   - 0.7
   verificado: false
+acs.condiciones_ensayo:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Condiciones de ensayo EN 16147 (A7, agua a 55 ºC) a las que se refiere el COP nominal.
+  unidad: ºC
+  url: ''
+  valor:
+    t_agua_c: 55
+    t_aire_c: 7
+  verificado: false
 acs.dt_ref_perdidas_k:
   fecha_consulta: '2026-10-19'
   fuente: Supuesto del autor (hipótesis de modelado)
@@ -64,6 +74,22 @@ acs.horas_deposito_tipo:
   unidad: h
   url: ''
   valor: 24
+  verificado: false
+acs.sg_demanda:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Incertidumbre de la demanda de ACS según el CTE.
+  unidad: desviación geométrica
+  url: ''
+  valor: 1.2
+  verificado: false
+acs.t_acumulacion_bdc_c:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Temperatura de acumulación habitual de una bomba de calor de ACS.
+  unidad: ºC
+  url: ''
+  valor: 55
   verificado: false
 acs.t_interior_c:
   fecha_consulta: '2026-10-19'
@@ -291,6 +317,14 @@ cargador.cuantil_potencia:
   url: ''
   valor: 0.9
   verificado: false
+cargador.desempate_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Desempate entre configuraciones de igual coste a favor de la de menor potencia.
+  unidad: €/kW
+  url: ''
+  valor: 1.0e-06
+  verificado: false
 cargador.monofasico_max_kw:
   fecha_consulta: '2026-10-19'
   fuente: Supuesto del autor (hipótesis de modelado)
@@ -378,6 +412,214 @@ cocina.vida_util:
   unidad: años
   url: ''
   valor: 15
+  verificado: false
+comunidad.horizonte_anios:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Horizonte de evaluación.
+  unidad: años
+  url: ''
+  valor: 25
+  verificado: false
+comunidad.kwp_por_vecino:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Tamaño de la instalación por participante.
+  unidad: kWp/vecino
+  url: ''
+  valor:
+    grande:
+    - 1.4
+    - 1.8
+    - 2.2
+    media:
+    - 0.8
+    - 1.0
+    - 1.2
+    pequena:
+    - 0.4
+    - 0.5
+    - 0.6
+  verificado: false
+comunidad.mezcla_ocupacion:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Mezcla de patrones de ocupación de los vecinos.
+  unidad: probabilidades [fuera, parcial, casa]
+  url: ''
+  valor:
+    casa:
+    - 0.1
+    - 0.3
+    - 0.6
+    fuera:
+    - 0.6
+    - 0.3
+    - 0.1
+    mixto:
+    - 0.35
+    - 0.35
+    - 0.3
+  verificado: false
+comunidad.n_max_mc:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Máximo de muestras Monte Carlo de esta herramienta (coste de cálculo).
+  unidad: muestras
+  url: ''
+  valor: 120
+  verificado: false
+comunidad.n_simulados:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Número de participantes distintos simulados (representan a toda la comunidad).
+  unidad: participantes
+  url: ''
+  valor: 8
+  verificado: false
+comunidad.reparto:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Tipos de coeficiente de reparto.
+  unidad: '-'
+  url: ''
+  valor:
+    consumo: Coeficiente estático por consumo
+    dinamico: Coeficiente dinámico horario
+    igual: Coeficiente estático igual
+  verificado: false
+comunidad.sg_consumo_vecino:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Dispersión del consumo anual entre vecinos.
+  unidad: desviación geométrica
+  url: ''
+  valor: 1.35
+  verificado: false
+comunidad.vecinos:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Número de participantes representativo de cada tramo.
+  unidad: vecinos
+  url: ''
+  valor:
+    11-30: 20
+    <=10: 8
+    '>30': 50
+  verificado: false
+curvas.choque_gas:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Choque de precio del gas.
+  unidad: × precio del gas
+  url: ''
+  valor:
+    mas100: 2.0
+    mas50: 1.5
+    menos30: 0.7
+    ninguno: 1.0
+  verificado: false
+curvas.choque_renovable:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Choque de disponibilidad renovable.
+  unidad: × disponibilidad solar y eólica
+  url: ''
+  valor:
+    mas25: 1.25
+    menos25: 0.75
+    menos50: 0.5
+    ninguno: 1.0
+  verificado: false
+curvas.demanda_min_max:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Límites del factor de demanda.
+  unidad: × demanda base
+  url: ''
+  valor:
+  - 0.8
+  - 1.2
+  verificado: false
+curvas.horas:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Franjas representativas de las curvas almacenadas.
+  unidad: hora del día
+  url: ''
+  valor:
+    madrugada: 4
+    mediodia: 14
+    noche: 21
+  verificado: false
+curvas.meses:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Estaciones.
+  unidad: meses
+  url: ''
+  valor:
+    invierno:
+    - 12
+    - 1
+    - 2
+    otono:
+    - 9
+    - 10
+    - 11
+    primavera:
+    - 3
+    - 4
+    - 5
+    verano:
+    - 6
+    - 7
+    - 8
+  verificado: false
+curvas.precio_techo:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Precio de la última unidad si la oferta no cubre la demanda (reserva).
+  unidad: €/MWh
+  url: ''
+  valor: 400
+  verificado: false
+curvas.sd_demanda:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Variabilidad de la demanda entre días.
+  unidad: fracción
+  url: ''
+  valor: 0.03
+  verificado: false
+curvas.sg_renovable:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Variabilidad de la disponibilidad renovable entre días.
+  unidad: desviación geométrica
+  url: ''
+  valor: 1.2
+  verificado: false
+curvas.tecnologias_gas:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Tecnologías cuyo precio de oferta sigue al del gas y el CO₂.
+  unidad: '-'
+  url: ''
+  valor:
+  - Ciclo combinado
+  - Cogeneración
+  - Carbón y otras
+  verificado: false
+curvas.tecnologias_renovables:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Tecnologías afectadas por el choque de disponibilidad renovable.
+  unidad: '-'
+  url: ''
+  valor:
+  - Solar FV
+  - Eólica
   verificado: false
 desplazamiento.ciclo_aparato:
   fecha_consulta: '2026-10-19'
@@ -528,6 +770,14 @@ electrodomesticos.factor_standby:
     - 0.5
     - 0.7
   verificado: false
+electrodomesticos.fraccion_evitable_standby:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Parte del stand-by evitable apagando completamente con regletas.
+  unidad: fracción
+  url: ''
+  valor: 0.7
+  verificado: false
 electrodomesticos.horas_tv:
   fecha_consulta: '2026-10-19'
   fuente: Supuesto del autor (hipótesis de modelado)
@@ -609,6 +859,92 @@ emisiones.estaciones:
     - 6
     - 7
     - 8
+  verificado: false
+emisiones.n_muestras_correlacion:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Escenarios usados para la correlación precio–emisiones.
+  unidad: muestras
+  url: ''
+  valor: 200
+  verificado: false
+envolvente.cop_electrica:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Rendimiento de los radiadores eléctricos.
+  unidad: '-'
+  url: ''
+  valor: 1.0
+  verificado: false
+envolvente.factor_ahorro_edad:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Potencial de ahorro de las medidas según la antigüedad del edificio.
+  unidad: ×
+  url: ''
+  valor:
+    '1980': 1.0
+    '2007': 0.5
+    pre1980: 1.15
+  verificado: false
+envolvente.horizonte_max:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Horizonte máximo de evaluación.
+  unidad: años
+  url: ''
+  valor: 40
+  verificado: false
+envolvente.pisos_unifamiliar:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Plantas medias de una unifamiliar (superficie de cubierta = superficie útil / plantas).
+  unidad: plantas
+  url: ''
+  valor: 1.5
+  verificado: false
+envolvente.reduccion_max:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Tope de la reducción de la demanda atribuible a una medida.
+  unidad: fracción
+  url: ''
+  valor: 0.9
+  verificado: false
+envolvente.tiene_cubierta:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: El edificio tiene cubierta propia aislable.
+  unidad: 0/1
+  url: ''
+  valor:
+    adosada: 1
+    aislada: 1
+    intermedio: 0
+    ultima: 1
+  verificado: false
+envolvente.tipos_edificio:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Respuesta de tipo de edificio -> clave de envolvente.superficie_fachada_ratio.
+  unidad: '-'
+  url: ''
+  valor:
+    adosada: unifamiliar_adosada
+    aislada: unifamiliar_aislada
+    intermedio: piso_intermedio
+    ultima: piso_ultima_o_esquina
+  verificado: false
+envolvente.umbrales_ahorro:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Umbrales de reducción de la demanda que dan acceso a cada nivel de ayuda de rehabilitación.
+  unidad: fracción
+  url: ''
+  valor:
+    ahorro_30: 0.3
+    ahorro_45: 0.45
+    ahorro_60: 0.6
   verificado: false
 forma.acs:
   fecha_consulta: '2026-10-19'
@@ -962,6 +1298,40 @@ forma.ve_casa:
   - 1.6
   - 1.4
   verificado: false
+fv.azimut_orientacion:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Respuesta de orientación -> distribución del azimut (convención PVGIS).
+  unidad: º (0 = sur, −90 = este, 90 = oeste)
+  url: ''
+  valor:
+    E_O:
+      p:
+      - 0.5
+      - 0.5
+      t: disc
+      vals:
+      - -90
+      - 90
+    N:
+      t: fijo
+      v: 180
+    S:
+      t: fijo
+      v: 0
+    SE_SO:
+      p:
+      - 0.5
+      - 0.5
+      t: disc
+      vals:
+      - -45
+      - 45
+    nose:
+      max: 90
+      min: -90
+      t: unif
+  verificado: false
 fv.economia_escala_exponente:
   fecha_consulta: '2026-10-19'
   fuente: Supuesto del autor (hipótesis de modelado)
@@ -1053,6 +1423,14 @@ fv.potencia_capex_ref_kwp:
   url: ''
   valor: 4
   verificado: false
+fv.potencia_min_capex_kwp:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Potencia mínima para el cálculo de la economía de escala del CAPEX.
+  unidad: kWp
+  url: ''
+  valor: 0.1
+  verificado: false
 fv.ratio_scop_aerotermia_prevision:
   fecha_consulta: '2026-10-19'
   fuente: Supuesto del autor (hipótesis de modelado)
@@ -1061,6 +1439,28 @@ fv.ratio_scop_aerotermia_prevision:
   url: ''
   valor: 1.0
   verificado: false
+gas.banda_bombona:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Rango del precio de la bombona de butano alrededor del último precio publicado (revisión bimestral limitada por regulación).
+  unidad: × precio de referencia
+  url: ''
+  valor:
+  - 0.92
+  - 1.0
+  - 1.08
+  verificado: false
+gas.banda_variable:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Rango del término variable del gas entre la TUR y las ofertas libres.
+  unidad: × precio de referencia
+  url: ''
+  valor:
+  - 0.9
+  - 1.0
+  - 1.2
+  verificado: false
 gas.bombona_kg:
   fecha_consulta: '2026-10-19'
   fuente: Supuesto del autor (hipótesis de modelado)
@@ -1068,6 +1468,14 @@ gas.bombona_kg:
   unidad: kg
   url: ''
   valor: 12.5
+  verificado: false
+gas.bombonas_ano_defecto:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Una bombona cada dos meses.
+  unidad: bombonas/año
+  url: ''
+  valor: 6
   verificado: false
 gas.cuota_fija_evitable:
   fecha_consulta: '2026-10-19'
@@ -1115,6 +1523,14 @@ gas.fijo_libre_ratio:
   - 1.0
   - 1.3
   verificado: false
+gas.sg_butano:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Incertidumbre del consumo de butano.
+  unidad: desviación geométrica
+  url: ''
+  valor: 1.3
+  verificado: false
 gas.sg_precio:
   fecha_consulta: '2026-10-19'
   fuente: Supuesto del autor (hipótesis de modelado)
@@ -1154,6 +1570,14 @@ huella.km_dia_coche:
     - 100
     - 120
     - 180
+  verificado: false
+huella.palanca_fv_inclinacion:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Inclinación de la FV de referencia de la palanca de reducción (orientación sur).
+  unidad: º
+  url: ''
+  valor: 30
   verificado: false
 huella.palanca_fv_kwp:
   fecha_consulta: '2026-10-19'
@@ -1220,6 +1644,74 @@ impuestos.icio_tipo:
   - 0.03
   - 0.04
   verificado: false
+lcoe.escenario_gas:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Escenario de precio del gas y del CO₂ (mínimo, moda, máximo del rango de referencia).
+  unidad: índice del rango
+  url: ''
+  valor:
+    alto: 2
+    bajo: 0
+    medio: 1
+  verificado: false
+lcoe.factor_wacc:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Escenario de coste de capital sobre el WACC de referencia.
+  unidad: ×
+  url: ''
+  valor:
+    alto: 1.25
+    bajo: 0.8
+    medio: 1.0
+  verificado: false
+lcoe.mwh_por_kw_mwh:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Horas anuales / 1000.
+  unidad: MWh/kW·año a FC=1
+  url: ''
+  valor: 8.76
+  verificado: false
+lcoe.perfil_captura:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Columna de REData para el precio capturado de cada tecnología.
+  unidad: '-'
+  url: ''
+  valor:
+    eolica_marina: lica
+    eolica_terrestre: lica
+    solar_fv_residencial: solar
+    solar_fv_utility: solar
+  verificado: false
+lcoe.tecnologias:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Nombres de las tecnologías del explorador de LCOE.
+  unidad: '-'
+  url: ''
+  valor:
+    ciclo_combinado: Ciclo combinado
+    eolica_marina: Eólica marina
+    eolica_terrestre: Eólica terrestre
+    hidraulica_bombeo: Bombeo
+    nuclear_existente_ampliacion: Nuclear (nueva o ampliación)
+    solar_fv_residencial: FV residencial
+    solar_fv_utility: FV a gran escala
+  verificado: false
+omie.az_mi_fv:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Azimut de «mi FV» en el explorador si no se ha hecho T02.
+  unidad: º
+  url: ''
+  valor:
+  - -30
+  - 0
+  - 30
+  verificado: false
 omie.dias_semana:
   fecha_consulta: '2026-10-19'
   fuente: Supuesto del autor (hipótesis de modelado)
@@ -1227,6 +1719,17 @@ omie.dias_semana:
   unidad: días
   url: ''
   valor: 7
+  verificado: false
+omie.incl_mi_fv:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Inclinación de «mi FV» en el explorador.
+  unidad: º
+  url: ''
+  valor:
+  - 15
+  - 30
+  - 45
   verificado: false
 omie.n_spread_horas:
   fecha_consulta: '2026-10-19'
@@ -1609,6 +2112,14 @@ refrigeracion.seer_antiguo:
   - 3.2
   - 4.0
   verificado: false
+refrigeracion.sg_superficie:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Incertidumbre de la superficie climatizada.
+  unidad: desviación geométrica
+  url: ''
+  valor: 1.2
+  verificado: false
 refrigeracion.uso:
   fecha_consulta: '2026-10-19'
   fuente: Supuesto del autor (hipótesis de modelado)
@@ -1754,6 +2265,64 @@ simultaneidad.prob_pico_diario:
     secadora: 0.015
     termo_electrico: 0.12
     ve: 0.4
+  verificado: false
+solar_termica.eta_sistema:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Rendimiento de tuberías, intercambio y acumulación del sistema solar.
+  unidad: '-'
+  url: ''
+  valor:
+  - 0.7
+  - 0.8
+  - 0.9
+  verificado: false
+solar_termica.n_captadores:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Número de captadores.
+  unidad: captadores
+  url: ''
+  valor:
+    '1': 1
+    '2': 2
+    3+: 3
+  verificado: false
+solar_termica.pr_fv_proxy:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Rendimiento global del sistema FV de PVGIS usado para recuperar la irradiancia sobre el plano inclinado a partir de
+    la producción por kWp.
+  unidad: '-'
+  url: ''
+  valor: 0.8
+  verificado: false
+solar_termica.sg_demanda:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Incertidumbre de la demanda de ACS.
+  unidad: desviación geométrica
+  url: ''
+  valor: 1.25
+  verificado: false
+solar_termica.t_colector_c:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Temperatura media del fluido en el captador.
+  unidad: ºC
+  url: ''
+  valor:
+  - 40
+  - 50
+  - 65
+  verificado: false
+solar_termica.umbral_g_kw_m2:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Irradiancia mínima para que el captador aporte energía.
+  unidad: kW/m²
+  url: ''
+  valor: 0.05
   verificado: false
 tarifa.alpha_corte:
   fecha_consulta: '2026-10-19'

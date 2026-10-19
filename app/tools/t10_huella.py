@@ -43,9 +43,9 @@ def inferir(perfil: Perfil, respuestas: dict | None = None) -> Parametros:
     if "calefaccion" in usos:
         d = pc.demanda_calefaccion_util(perfil)
         p["G_calefaccion"] = Param("G_calefaccion", "Gas para calefacción", "kWh/año",
-                                   mc.logn(d[1] * r.get("calefaccion.fraccion_uso_calefaccion")[1] / r.get("calefaccion.caldera_gas_rendimiento_estacional_pcs")[1], 1.4))
+                                   mc.logn(d[1] * r.get("calefaccion.fraccion_uso_calefaccion")[1] / r.get("calefaccion.caldera_gas_rendimiento_estacional_pcs")[1], r.get("calefaccion.sg_demanda")))
     if a["butano"] == "si":
-        p["G_butano"] = Param("G_butano", "Butano", "kWh/año", mc.logn(6 * r.get("gas.bombona_kg") * r.get("gas.butano_pcs"), 1.3))
+        p["G_butano"] = Param("G_butano", "Butano", "kWh/año", mc.logn(r.get("gas.bombonas_ano_defecto") * r.get("gas.bombona_kg") * r.get("gas.butano_pcs"), r.get("gas.sg_butano")))
     km = D(r.sub("huella.km_dia_coche", a["km_dia"]))
     p["km_dia"] = Param("km_dia", "Km en día laborable", "km/día", km)
     p["km_fds"] = Param("km_fds", "Km de fines de semana", "km/año", D(r.rango("ve.km_fin_de_semana_ano")))
@@ -96,7 +96,7 @@ def modelo(S, ctx, rng):
     vuelos = vuelos * max(1.0, min(npers, 2.0))
     total = elec + gas_kg + but_kg + coche + vuelos
     # palancas (kg/año evitados): FV de referencia, cambio de coche a VE, ACS de gas a bomba de calor, un vuelo menos
-    yield_kwp = float(clima.pv_normalizado(perfil.cp, 0, 30).sum())
+    yield_kwp = float(clima.pv_normalizado(perfil.cp, 0, r.get("huella.palanca_fv_inclinacion")).sum())
     palanca_fv = r.get("huella.palanca_fv_kwp") * yield_kwp * 0.5 * np.maximum(ef_med, 0)  # la mitad se autoconsume
     ev_kg = K * r.get("ve.consumo_wltp_kwh_100km")["compacto"][1] * r.rango("ve.factor_consumo_real_vs_wltp")[1] / 100.0 / r.rango("ve.eficiencia_carga_domestica")[1] * ef_med
     palanca_ve = np.maximum(coche - ev_kg, 0) if c in ("gasolina", "diesel", "hibrido") else np.zeros(n)

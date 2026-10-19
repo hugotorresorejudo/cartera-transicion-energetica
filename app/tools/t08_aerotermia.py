@@ -4,7 +4,7 @@ from __future__ import annotations
 import numpy as np
 
 from core import emisiones, finanzas as fin, fv, montecarlo as mc, perfiles_carga as pc, precios, termico
-from core.herramienta import Param, Parametros, Pregunta, ejecutar
+from core.herramienta import Param, Parametros, Pregunta, ejecutar, tri_rel
 from core.perfil import Perfil
 from core.referencias import ref
 from tools import t01_tarifas as t01
@@ -42,7 +42,7 @@ def inferir(perfil: Perfil, respuestas: dict | None = None) -> Parametros:
     base = t01.inferir(perfil, {})
     p = {k: base.params[k] for k in ("f_omie", "c_aj", "perdidas")}
     p["Q_cal"] = Param("Q_cal", "Demanda útil de calefacción", "kWh/año", mc.logn(d[1] * uso[1], r.get("calefaccion.sg_demanda")))
-    p["Q_acs"] = Param("Q_acs", "Demanda útil de ACS (CTE)", "kWh/año", mc.logn(pc.acs_util_cte_kwh(perfil), 1.2))
+    p["Q_acs"] = Param("Q_acs", "Demanda útil de ACS (CTE)", "kWh/año", mc.logn(pc.acs_util_cte_kwh(perfil), r.get("acs.sg_demanda")))
     p["eta_caldera"] = Param("eta_caldera", "Rendimiento estacional de la caldera (PCS)", "-", D(r.rango("calefaccion.caldera_gas_rendimiento_estacional_pcs")))
     f_em = r.get("calefaccion.factor_scop_emisores")["media" if a["emisores"] == "nose" else a["emisores"]]
     p["scop"] = Param("scop", "SCOP de la aerotermia (clima de la zona)", "-", D(r.get("calefaccion.bdc_scop_aerotermia")[zl]))
@@ -51,8 +51,7 @@ def inferir(perfil: Perfil, respuestas: dict | None = None) -> Parametros:
     gv = r.get("gas.tur_termino_variable_tur1")
     lib = r.rango("gas.oferta_libre_tipica")
     p["p_gas"] = Param("p_gas", "Término variable del gas", "€/kWh sin impuestos", mc.tri(min(gv, lib[0]), gv, max(gv, lib[2])))
-    p["p_butano_bombona"] = Param("p_butano_bombona", "Bombona de butano", "€", mc.tri(0.92 * r.get("gas.butano_precio_bombona"), r.get("gas.butano_precio_bombona"),
-                                                                                 1.08 * r.get("gas.butano_precio_bombona")))
+    p["p_butano_bombona"] = Param("p_butano_bombona", "Bombona de butano", "€", tri_rel(r.get("gas.butano_precio_bombona"), r.get("gas.banda_bombona")))
     fijo = (r.get("gas.tur_termino_fijo_tur1") + r.get("gas.alquiler_contador")) * (1 + r.get("gas.iva") / 100.0)
     p["gas_fijo_evit"] = Param("gas_fijo_evit", "Cuota fija de gas (se evita si abandonas el gas)", "€/año", mc.fijo(0 if a["cocina_gas"] == "si" else 12 * fijo))
     p["dP"] = Param("dP", "Potencia eléctrica adicional a contratar", "kW", mc.fijo(0) if a["actual"] == "electrica" else D(r.get("calefaccion.potencia_extra_aerotermia_kw")))

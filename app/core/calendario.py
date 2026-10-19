@@ -8,6 +8,9 @@ import numpy as np
 from .referencias import ref
 
 
+ANIO_TIPO = 2023  # año no bisiesto (8760 h) para perfiles y periodos
+
+
 def pascua(anio: int) -> date:
     """Domingo de Pascua (algoritmo anónimo gregoriano)."""
     a, b, c = anio % 19, anio // 100, anio % 100
@@ -54,6 +57,21 @@ def calendario(anio: int, sin_bisiesto: bool = True) -> dict[str, np.ndarray]:
             "laborable": laborable, "periodo": periodo}
 
 
+def anio_de(fechas) -> np.ndarray:
+    """Año de cada fecha (datetime64[D])."""
+    return np.asarray(fechas, dtype="datetime64[D]").astype("datetime64[Y]").astype(int) + 1970
+
+
+def indices_hora_tipo(fechas) -> np.ndarray:
+    """(nd, 24) índice de hora del año tipo (0..8759) de cada hora de las fechas dadas; el 29-feb se asimila al 28-feb."""
+    d = np.asarray(fechas, dtype="datetime64[D]")
+    doy = (d - d.astype("datetime64[Y]")).astype(int)
+    bis = (anio_de(d) % 4 == 0)
+    doy = np.where(bis & (doy >= 59), doy - 1, doy)
+    doy = np.clip(doy, 0, 364)
+    return doy[:, None] * 24 + np.arange(24)[None, :]
+
+
 def calendario_tipico() -> dict[str, np.ndarray]:
     """Año no bisiesto de referencia para perfiles sintéticos (2023 no tiene 29-feb)."""
-    return calendario(2023)
+    return calendario(ANIO_TIPO)
