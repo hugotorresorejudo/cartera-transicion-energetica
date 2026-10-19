@@ -27,6 +27,13 @@ def logn(mediana, sg):
     return {"t": "logn", "mediana": float(mediana), "sg": float(sg)}
 
 
+def disc(vals, p=None):
+    """Distribución discreta (p uniforme si no se indica)."""
+    vals = [float(v) for v in vals]
+    p = [1.0 / len(vals)] * len(vals) if p is None else [float(x) for x in p]
+    return {"t": "disc", "vals": vals, "p": p}
+
+
 def desde_rango(r):
     """Rango (min, moda, max) -> triangular, o fijo si es degenerado."""
     mn, mo, mx = r
@@ -50,6 +57,8 @@ def muestrear(d, n, rng):
         return x
     if t == "logn":
         return d["mediana"] * rng.lognormal(0.0, np.log(d["sg"]), n)
+    if t == "disc":
+        return rng.choice(d["vals"], size=n, p=d["p"])
     raise ValueError(f"distribución desconocida: {t}")
 
 
@@ -57,7 +66,8 @@ def central(d):
     """Valor central (moda/mediana) de una distribución."""
     t = d["t"]
     return {"fijo": lambda: d["v"], "tri": lambda: d["moda"], "unif": lambda: 0.5 * (d["min"] + d["max"]),
-            "norm": lambda: d["mu"], "logn": lambda: d["mediana"]}[t]()
+            "norm": lambda: d["mu"], "logn": lambda: d["mediana"],
+            "disc": lambda: d["vals"][int(np.argmax(d["p"]))]}[t]()
 
 
 def cuantil(d, q, n=2001, semilla=SEMILLA):

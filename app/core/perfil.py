@@ -49,3 +49,13 @@ class Perfil:
         p = cls(**{k: v for k, v in d.items() if k in nombres})
         p.version = VERSION
         return p
+
+
+def aplicar(perfil: Perfil, campo: str, valor) -> None:
+    """Asigna una respuesta de formulario al campo del perfil (la potencia 'nose' -> None)."""
+    if campo == "potencia":
+        perfil.potencia = None if valor in (None, "", "nose") else float(valor)
+    elif campo == "equipos":
+        perfil.equipos = list(valor)
+    else:
+        setattr(perfil, campo, valor)

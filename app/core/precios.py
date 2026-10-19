@@ -65,16 +65,18 @@ def precio_indexado(omie, per=None, margen=None, c_aj=None, perdidas=None) -> np
 
 
 def precio_fijo(precio=None, por_periodos=False, per=None) -> np.ndarray:
-    """Precio fijo de 8760 valores (€/kWh); con `por_periodos` aplica la relación entre periodos de ofertas con discriminación."""
+    """Precio fijo (€/kWh) de 8760 valores, con `precio` escalar o (n,) -> (8760,) o (n, 8760).
+
+    Con `por_periodos` aplica la relación entre periodos de las ofertas con discriminación, normalizada para
+    que el precio medio ponderado por horas coincida con el precio único."""
     per = periodos() if per is None else per
-    p = _mod("tarifa.oferta_fija_energia_tipica", precio)
+    p = np.asarray(_mod("tarifa.oferta_fija_energia_tipica", precio), dtype=np.float32)
     if not por_periodos:
-        return np.full(per.shape, p, dtype=np.float32)
+        return (p[..., None] * np.ones(per.shape, np.float32)).astype(np.float32)
     r = ref().get("tarifa.ratio_periodos_fija")
-    razon = np.array([r["P1"], r["P2"], r["P3"]])[per]
-    consumo_rel = np.bincount(per, minlength=3) / per.size
-    norm = float(np.sum(consumo_rel * np.array([r["P1"], r["P2"], r["P3"]])))
-    return (p * razon / norm).astype(np.float32)
+    rel = np.array([r["P1"], r["P2"], r["P3"]])
+    norm = float(np.sum(np.bincount(per, minlength=3) / per.size * rel))
+    return (p[..., None] * (rel[per] / norm)).astype(np.float32)
 
 
 def potencia_precios(modalidad: str, precio_dia: float | None = None):
@@ -88,7 +90,7 @@ def potencia_precios(modalidad: str, precio_dia: float | None = None):
     return reg
 
 
-def factura(E, p_e, P1, P2, pot_precios, bono: float = 0.0) -> dict:
+def factura(E, p_e, P1, P2, pot_precios, bono: float = 0.0, credito=0.0) -> dict:
     """Factura anual 2.0TD. E: (n,8760) kWh; p_e: (n,8760) o (8760,) €/kWh; P1, P2: kW (escalar o (n,)).
 
     Devuelve CE, CP, IEE, contador, total (con IVA) y energía total, cada uno de forma (n,)."""
@@ -98,8 +100,9 @@ def factura(E, p_e, P1, P2, pot_precios, bono: float = 0.0) -> dict:
     cp = np.asarray(P1) * pot_precios[0] + np.asarray(P2) * pot_precios[1]
     cp = np.broadcast_to(cp, ce.shape).astype(np.float64)
     e_tot = E.sum(axis=-1, dtype=np.float64)
-    if bono:
-        ce, cp = ce * (1 - bono), cp * (1 - bono)
+    ce = np.maximum(ce - credito, 0.0)  # compensación de excedentes (nunca por encima del término de energía)
+    bono = np.asarray(bono, dtype=np.float64)
+    ce, cp = ce * (1 - bono), cp * (1 - bono)
     iee = np.maximum(r.get("tarifa.iee_tipo") / 100.0 * (ce + cp), r.get("tarifa.iee_minimo_domestico") * e_tot)
     cont = r.get("tarifa.alquiler_contador") * 12
     total = (ce + cp + iee + cont) * (1.0 + r.get("tarifa.iva_electricidad") / 100.0)

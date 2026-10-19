@@ -102,3 +102,35 @@ def pvgis(cod: str):
 
 def leer_csv_texto(txt: str, **kw) -> pd.DataFrame:
     return pd.read_csv(io.StringIO(txt), **kw)
+
+
+def _dia24(v: np.ndarray) -> np.ndarray:
+    if v.size == 25:
+        return np.concatenate([v[:2], [0.5 * (v[2] + v[3])], v[4:]])
+    if v.size == 23:
+        return np.concatenate([v[:3], v[2:]])
+    return v if v.size == 24 else np.resize(v, 24)
+
+
+@lru_cache(maxsize=None)
+def omie_dias(zona: str = "es"):
+    """(fechas datetime64[D] (nd,), precios (nd, 24) en €/MWh) de toda la serie, con 29-feb."""
+    df = _omie_df().sort_values(["fecha", "h"])
+    fechas, filas = [], []
+    for f, g in df.groupby("fecha", sort=True):
+        fechas.append(f)
+        filas.append(_dia24(g[zona].to_numpy(dtype=float)))
+    return np.array(fechas, dtype="datetime64[D]"), np.stack(filas)
+
+
+@lru_cache(maxsize=None)
+def redata_perfil_mes_hora(contiene: str):
+    """Media por (mes, hora) de la primera columna de REData cuyo nombre contiene `contiene` -> (12, 24) o None."""
+    df = redata()
+    cols = [c for c in df.columns if contiene.lower() in c.lower()]
+    if not cols:
+        return None
+    s = df[cols[0]].astype(float)
+    t = pd.to_datetime(df["ts"])
+    tabla = s.groupby([t.dt.month - 1, t.dt.hour]).mean().unstack()
+    return tabla.reindex(index=range(12), columns=range(24)).ffill().fillna(0.0).to_numpy()

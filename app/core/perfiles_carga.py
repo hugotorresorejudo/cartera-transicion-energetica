@@ -101,6 +101,16 @@ def acs_electrico_kwh(perfil: Perfil, npers: float) -> float:
     return util / r.get("acs.rendimiento_termo_electrico")["rendimiento_fraccion"][1] + perd
 
 
+_CACHE_FORMAS: dict = {}
+
+
+def formas_cached(perfil: Perfil) -> dict:
+    clave = (perfil.cp, perfil.vivienda, perfil.ocupacion, tuple(perfil.equipos))
+    if clave not in _CACHE_FORMAS:
+        _CACHE_FORMAS[clave] = formas(perfil)
+    return _CACHE_FORMAS[clave]
+
+
 def inferir_componentes(perfil: Perfil) -> dict:
     """Parametros Param 'E_<componente>' (lognormal) con la energía anual de cada uso."""
     sg = ref().get("perfil.sg_componente")
@@ -108,20 +118,22 @@ def inferir_componentes(perfil: Perfil) -> dict:
             for c, med in energias_inferidas(perfil).items()}
 
 
-def matriz_consumo(S: dict, F: dict, escala=None) -> np.ndarray:
+def matriz_consumo(S: dict, F: dict, escala=None, sin_escala=()) -> np.ndarray:
     """E_t (n, 8760) float32 = Σ_c E_c · forma_c(t), con `escala` (n,) opcional (calibración con factura)."""
     cs = [c for c in COMPONENTES if f"E_{c}" in S]
     A = np.stack([np.asarray(S[f"E_{c}"], dtype=np.float32) for c in cs], axis=1)  # (n, C)
     if escala is not None:
-        A = A * np.asarray(escala, dtype=np.float32)[:, None]
+        k = np.asarray([0.0 if c in sin_escala else 1.0 for c in cs], dtype=np.float32)
+        A = A * (1.0 + (np.asarray(escala, dtype=np.float32)[:, None] - 1.0) * k)
     B = np.stack([F[c] for c in cs]).astype(np.float32)  # (C, 8760)
     return A @ B
 
 
-def escala_factura(perfil: Perfil, S: dict, rng, P_kw=None) -> np.ndarray | None:
-    """Factor (n,) que lleva el consumo anual a su posterior combinando el prior por componentes con la inversión de la factura."""
+def escala_factura(perfil: Perfil, S: dict, rng, P_kw=None):
+    """(factor (n,), importe mensual muestreado (n,)) que lleva el consumo anual a su posterior combinando el prior por
+    componentes con la inversión de la factura; (None, None) si no hay dato de factura."""
     if perfil.factura == "nose":
-        return None
+        return None, None
     r = ref()
     n = len(next(iter(S.values())))
     prior = sum(np.asarray(S[k], float) for k in S if k.startswith("E_"))
@@ -135,7 +147,7 @@ def escala_factura(perfil: Perfil, S: dict, rng, P_kw=None) -> np.ndarray | None
     sg_p, sg_o = r.get("perfil.sg_prior_consumo"), r.get("perfil.sg_factura")
     wp, wo = 1 / np.log(sg_p) ** 2, 1 / np.log(sg_o) ** 2
     post = np.exp((wp * np.log(prior) + wo * np.log(e_obs)) / (wp + wo))
-    return post / prior
+    return post / prior, importe
 
 
 def simular_pmax(perfil_equipos, n: int, rng, dias: int = 365, limitador: str | None = None, P_actual: float | None = None):
@@ -144,14 +156,11 @@ def simular_pmax(perfil_equipos, n: int, rng, dias: int = 365, limitador: str | 
     Cada día cada aparato está en el pico con probabilidad p·(días activos/365). Si se conoce la respuesta sobre el limitador y la
     potencia actual, se ponderan las muestras por la coherencia entre los días con exceso simulados y la respuesta."""
     r = ref()
-    pot = r.get("electrodomesticos.potencia_nominal_kw")
+    pot = r.get("simultaneidad.potencia_efectiva_kw")
     prob = r.get("simultaneidad.prob_pico_diario")
     activos = r.get("simultaneidad.dias_activos")
-    mapa = {"induccion": "induccion_3_fuegos", "horno": "horno", "termo_electrico": "termo_electrico",
-            "aire_acondicionado": "split_aire_acondicionado", "calefaccion_electrica": "calefaccion_radiadores",
-            "ve": "cargador_ve", "piscina": "bomba_piscina"}
-    siempre = {"lavadora": "lavadora", "lavavajillas": "lavavajillas", "secadora": "secadora", "plancha": "plancha",
-               "microondas": "microondas"}
+    mapa = {k: k for k in ("induccion", "horno", "termo_electrico", "aire_acondicionado", "calefaccion_electrica", "ve", "piscina")}
+    siempre = {k: k for k in ("lavadora", "lavavajillas", "secadora", "plancha", "microondas")}
     nombres = [k for k in mapa if k in perfil_equipos] + list(siempre)
     base = mc.muestrear(mc.tri(*r.get("simultaneidad.base_kw")), n, rng)
     total = np.broadcast_to(base[:, None], (n, dias)).copy()

@@ -1,4 +1,24 @@
 # Generado por scripts/merge_refs.py a partir de docs/refs/*.yaml. No editar a mano: editar la fuente y volver a fusionar.
+acs.banera_freq_dia:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Tramos de respuesta.
+  unidad: baños/día
+  url: ''
+  valor:
+    diario:
+    - 0.7
+    - 1.0
+    - 1.0
+    nunca:
+    - 0
+    - 0
+    - 0
+    semanal:
+    - 0.1
+    - 0.143
+    - 0.2
+  verificado: false
 acs.bdc_cop_nominal_acs:
   fecha_consulta: '2026-10-19'
   fuente: Fichas de fabricantes de BdC ACS monobloc; UE 812/2013
@@ -31,6 +51,17 @@ acs.bdc_perdidas_espera_kwh_24h:
   - 0.6
   - 0.9
   - 1.4
+  verificado: false
+acs.bdc_potencia_electrica_kw:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Potencia eléctrica del compresor de una bomba de calor de ACS.
+  unidad: kW
+  url: ''
+  valor:
+  - 0.4
+  - 0.5
+  - 0.7
   verificado: false
 acs.bdc_tmin_aire_c:
   fecha_consulta: '2026-10-19'
@@ -107,6 +138,34 @@ acs.demanda_referencia_l_persona_dia_60c:
   url: https://normatia.com/es/normativa/cte-db-he/2022/anejo-f-demanda-de-referencia-de-acs/
   valor: 28
   verificado: false
+acs.dt_ref_perdidas_k:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Salto de temperatura al que se refieren las pérdidas en espera tabuladas.
+  unidad: K
+  url: ''
+  valor: 45
+  verificado: false
+acs.duchas_persona_dia:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Tramos de respuesta.
+  unidad: duchas/persona·día
+  url: ''
+  valor:
+    '1':
+    - 0.9
+    - 1.0
+    - 1.1
+    <1:
+    - 0.4
+    - 0.6
+    - 0.9
+    '>1':
+    - 1.2
+    - 1.5
+    - 2.0
+  verificado: false
 acs.duracion_ducha_min:
   fecha_consulta: '2026-10-19'
   fuente: Tramos de respuesta del usuario; supuesto de la herramienta
@@ -126,6 +185,14 @@ acs.duracion_ducha_min:
     - 3
     - 4
     - 5
+  verificado: false
+acs.horas_deposito_tipo:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Horizonte diario de la programación.
+  unidad: h
+  url: ''
+  valor: 24
   verificado: false
 acs.mantenimiento_anual_eur:
   fecha_consulta: '2026-10-19'
@@ -250,6 +317,17 @@ acs.t_acumulacion_c:
   - 60
   - 60
   - 70
+  verificado: false
+acs.t_interior_c:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Temperatura de un cuarto interior de la vivienda.
+  unidad: ºC
+  url: ''
+  valor:
+  - 18
+  - 20
+  - 23
   verificado: false
 acs.t_red_mensual_capitales:
   fecha_consulta: '2026-10-19'
@@ -845,6 +923,20 @@ acs.volumen_banera_l:
   - 120
   - 150
   - 200
+  verificado: false
+acs.volumenes_comerciales_l:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Volúmenes comerciales de depósito.
+  unidad: L
+  url: ''
+  valor:
+  - 50
+  - 80
+  - 100
+  - 150
+  - 200
+  - 300
   verificado: false
 almacenamiento.capacidades_comerciales_kwh:
   fecha_consulta: '2026-10-19'
@@ -2485,6 +2577,14 @@ fv.degradacion_anual:
   - 0.005
   - 0.007
   verificado: false
+fv.economia_escala_exponente:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: 'CAPEX unitario ∝ (P/P_ref)^exponente: instalaciones pequeñas son más caras por Wp.'
+  unidad: '-'
+  url: ''
+  valor: -0.12
+  verificado: false
 fv.factor_orientacion_norte:
   fecha_consulta: '2026-10-19'
   fuente: PVGIS (JRC, ec.europa.eu) - estimación
@@ -2507,6 +2607,14 @@ fv.horas_equivalentes_espana:
   - 1550
   - 1800
   verificado: false
+fv.horizonte_anios:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Horizonte de evaluación prudente (inferior a la vida útil del módulo).
+  unidad: años
+  url: ''
+  valor: 25
+  verificado: false
 fv.inclinacion_estructura_plana:
   fecha_consulta: '2026-10-19'
   fuente: Criterio de diseño FV (óptimo ≈30º en la península)
@@ -2518,6 +2626,17 @@ fv.inclinacion_estructura_plana:
   - 15
   - 25
   - 35
+  verificado: false
+fv.inclinacion_muy_inclinada:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Cubierta muy inclinada (>25º).
+  unidad: grados
+  url: ''
+  valor:
+  - 30
+  - 35
+  - 45
   verificado: false
 fv.inclinacion_tejado_teja:
   fecha_consulta: '2026-10-19'
@@ -2541,6 +2660,22 @@ fv.inflacion_electricidad:
   - 0.02
   - 0.04
   verificado: false
+fv.n_candidatos:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Potencias candidatas en el dimensionado.
+  unidad: '-'
+  url: ''
+  valor: 8
+  verificado: false
+fv.n_muestras_dimensionado:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Muestras Monte Carlo usadas en la curva VAN(P_p).
+  unidad: muestras
+  url: ''
+  valor: 100
+  verificado: false
 fv.opex_anual_fraccion_capex:
   fecha_consulta: '2026-10-19'
   fuente: Estimación propia (limpieza, seguro, revisiones)
@@ -2551,6 +2686,22 @@ fv.opex_anual_fraccion_capex:
   - 0.005
   - 0.01
   - 0.015
+  verificado: false
+fv.paso_cuantizacion_az:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Cuantización de azimut para reutilizar curvas PVGIS.
+  unidad: grados
+  url: ''
+  valor: 15
+  verificado: false
+fv.paso_cuantizacion_incl:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Cuantización de inclinación.
+  unidad: grados
+  url: ''
+  valor: 5
   verificado: false
 fv.perdidas_sombreado:
   fecha_consulta: '2026-10-19'
@@ -2572,6 +2723,38 @@ fv.perdidas_sombreado:
     - 0.05
     - 0.1
     - 0.2
+  verificado: false
+fv.plazas_tamano:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Tamaño útil del tejado expresado en plazas de garaje.
+  unidad: plazas de garaje
+  url: ''
+  valor:
+    '1':
+    - 1
+    - 1
+    - 1
+    '2':
+    - 2
+    - 2
+    - 2
+    3+:
+    - 3
+    - 3.5
+    - 5
+    nose:
+    - 1
+    - 2
+    - 3
+  verificado: false
+fv.potencia_capex_ref_kwp:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Potencia de referencia del rango de CAPEX €/Wp.
+  unidad: kWp
+  url: ''
+  valor: 4
   verificado: false
 fv.potencia_modulo_w_m2:
   fecha_consulta: '2026-10-19'
@@ -2595,6 +2778,14 @@ fv.precio_excedentes_medio:
   - 0.04
   - 0.07
   - 0.1
+  verificado: false
+fv.ratio_scop_aerotermia_prevision:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Reservado.
+  unidad: '-'
+  url: ''
+  valor: 1.0
   verificado: false
 fv.sustitucion_inversor_anio:
   fecha_consulta: '2026-10-19'
@@ -2648,6 +2839,14 @@ gas.alquiler_contador:
   url: https://www.boe.es
   valor: 1.6
   verificado: false
+gas.bombona_kg:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Contenido de la bombona de butano doméstica.
+  unidad: kg
+  url: ''
+  valor: 12.5
+  verificado: false
 gas.butano_pcs:
   fecha_consulta: '2026-10-19'
   fuente: Conocimiento técnico
@@ -2663,6 +2862,17 @@ gas.butano_precio_bombona:
   unidad: €/bombona 12,5 kg
   url: https://www.endesa.com/es/blog/blog-de-endesa/luz/precio-bombona-butano
   valor: 16.35
+  verificado: false
+gas.cuota_fija_evitable:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Cuota fija de gas que se evita al abandonar el gas (0 si quedan otros usos de gas).
+  unidad: €/año
+  url: ''
+  valor:
+  - 0
+  - 0
+  - 0
   verificado: false
 gas.gas_natural_impuesto_hidrocarburos:
   fecha_consulta: '2026-10-19'
@@ -3265,6 +3475,49 @@ mercado.tecnologias_marginales_orden_merito:
   - carbon
   - hidraulica_de_bombeo
   verificado: false
+omie.dias_semana:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Longitud del bloque del bootstrap por ventana.
+  unidad: días
+  url: ''
+  valor: 7
+  verificado: false
+omie.n_spread_horas:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Ventana por defecto del spread diario.
+  unidad: horas
+  url: ''
+  valor: 4
+  verificado: false
+omie.tilt_mi_fv:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Inclinación de 'mi FV' en el explorador si no se ha hecho T02.
+  unidad: º
+  url: ''
+  valor: 30
+  verificado: false
+omie.umbral_precio_bajo:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Umbral por defecto para contar horas con precio no positivo.
+  unidad: €/MWh
+  url: ''
+  valor: 0
+  verificado: false
+omie.ventana_dias:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Ventanas de la vista simple.
+  unidad: días
+  url: ''
+  valor:
+    anio: 365
+    mes: 30
+    semana: 7
+  verificado: false
 perfil.acs_ducha_min:
   fecha_consulta: '2026-10-19'
   fuente: Supuesto del autor (hipótesis de modelado)
@@ -3585,9 +3838,9 @@ simultaneidad.base_kw:
   unidad: kW
   url: ''
   valor:
-  - 0.3
-  - 0.7
-  - 1.4
+  - 0.25
+  - 0.5
+  - 1.0
   verificado: false
 simultaneidad.dias_activos:
   fecha_consulta: '2026-10-19'
@@ -3620,6 +3873,63 @@ simultaneidad.dias_exceso_limitador:
     - 0
     - 0
   verificado: false
+simultaneidad.potencia_efectiva_kw:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Potencia media efectiva en 15 min de cada aparato (inferior a la nominal por ciclado y uso parcial
+    de zonas).
+  unidad: kW
+  url: ''
+  valor:
+    aire_acondicionado:
+    - 0.5
+    - 1.0
+    - 2.0
+    calefaccion_electrica:
+    - 1.0
+    - 2.0
+    - 4.0
+    horno:
+    - 1.2
+    - 1.8
+    - 2.4
+    induccion:
+    - 1.0
+    - 2.2
+    - 4.0
+    lavadora:
+    - 0.4
+    - 0.9
+    - 2.0
+    lavavajillas:
+    - 0.5
+    - 1.0
+    - 2.0
+    microondas:
+    - 0.6
+    - 1.0
+    - 1.4
+    piscina:
+    - 0.4
+    - 0.75
+    - 1.0
+    plancha:
+    - 0.8
+    - 1.5
+    - 2.2
+    secadora:
+    - 0.8
+    - 1.5
+    - 2.5
+    termo_electrico:
+    - 1.2
+    - 1.5
+    - 2.0
+    ve:
+    - 3.7
+    - 3.7
+    - 7.4
+  verificado: false
 simultaneidad.prob_pico_diario:
   fecha_consulta: '2026-10-19'
   fuente: Supuesto del autor (hipótesis de modelado)
@@ -3628,18 +3938,18 @@ simultaneidad.prob_pico_diario:
   unidad: prob./día
   url: ''
   valor:
-    aire_acondicionado: 0.45
-    calefaccion_electrica: 0.5
-    horno: 0.12
-    induccion: 0.35
-    lavadora: 0.12
-    lavavajillas: 0.1
-    microondas: 0.15
-    piscina: 0.25
-    plancha: 0.06
-    secadora: 0.06
-    termo_electrico: 0.3
-    ve: 0.6
+    aire_acondicionado: 0.3
+    calefaccion_electrica: 0.35
+    horno: 0.05
+    induccion: 0.1
+    lavadora: 0.03
+    lavavajillas: 0.03
+    microondas: 0.05
+    piscina: 0.2
+    plancha: 0.02
+    secadora: 0.015
+    termo_electrico: 0.12
+    ve: 0.4
   verificado: false
 solar_termica.area_captador_m2:
   fecha_consulta: '2026-10-19'
@@ -4105,6 +4415,25 @@ tarifa.peaje_potencia_p2:
   url: https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-26348
   valor: 0.44377
   verificado: true
+tarifa.pmax_muestras:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Muestras de simultaneidad para la demanda máxima.
+  unidad: muestras
+  url: ''
+  valor: 500
+  verificado: false
+tarifa.potencia_sin_dato:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Rango de potencia contratada probable si el usuario responde 'no sé' (mínimo, moda, máximo).
+  unidad: índices de tarifa.potencias_normalizadas
+  url: ''
+  valor:
+  - 3
+  - 4
+  - 5
+  verificado: false
 tarifa.potencias_normalizadas:
   fecha_consulta: '2026-10-19'
   fuente: RD 1164/2001 / REBT
@@ -4156,6 +4485,22 @@ tarifa.ratio_periodos_fija:
     P2: 1.0
     P3: 0.75
   verificado: false
+tarifa.sg_f_consumo:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Incertidumbre residual del consumo anual (factor global).
+  unidad: desviación geométrica
+  url: ''
+  valor: 1.05
+  verificado: false
+tarifa.sg_f_omie:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Incertidumbre del nivel medio del precio OMIE respecto del histórico.
+  unidad: desviación geométrica
+  url: ''
+  valor: 1.15
+  verificado: false
 tarifa.sg_precio_nivel:
   fecha_consulta: '2026-10-19'
   fuente: Supuesto del autor (hipótesis de modelado)
@@ -4163,6 +4508,17 @@ tarifa.sg_precio_nivel:
   unidad: '-'
   url: ''
   valor: 1.0
+  verificado: false
+ve.anios_tenencia:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Años de tenencia por tramo (valor central).
+  unidad: años
+  url: ''
+  valor:
+    10+: 11
+    3-5: 4
+    6-9: 8
   verificado: false
 ve.ayudas_compra:
   fecha_consulta: '2026-10-19'
@@ -4238,6 +4594,17 @@ ve.eficiencia_carga_domestica:
   - 0.9
   - 0.93
   verificado: false
+ve.f_ayuda:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Fracción de la deducción IRPF por compra de VE efectivamente aprovechada.
+  unidad: fracción
+  url: ''
+  valor:
+  - 0
+  - 0.5
+  - 1
+  verificado: false
 ve.factor_consumo_real_vs_wltp:
   fecha_consulta: '2026-10-19'
   fuente: Estudios ADAC / Geotab / EEA (consumo real vs homologado)
@@ -4310,6 +4677,27 @@ ve.fraccion_carga_publica_por_aparcamiento:
     - 0.05
     - 0.15
   verificado: false
+ve.horarios:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: 'Franjas de respuesta: a) llego ~17 h y salgo ~8 h; b) ~19 h/~8 h; c) ~21 h/~7 h; d) ~19 h/~10
+    h.'
+  unidad: '[hora de llegada, hora de salida]'
+  url: ''
+  valor:
+    a:
+    - 17
+    - 8
+    b:
+    - 19
+    - 8
+    c:
+    - 21
+    - 7
+    d:
+    - 19
+    - 10
+  verificado: false
 ve.km_fin_de_semana_ano:
   fecha_consulta: '2026-10-19'
   fuente: MITMA EMOVE / INE; supuesto
@@ -4320,6 +4708,30 @@ ve.km_fin_de_semana_ano:
   - 2500
   - 4000
   - 6000
+  verificado: false
+ve.km_laborable:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Tramos de respuesta de km en un día laborable.
+  unidad: km/día
+  url: ''
+  valor:
+    20-50:
+    - 20
+    - 35
+    - 50
+    50-100:
+    - 50
+    - 70
+    - 100
+    <20:
+    - 8
+    - 15
+    - 20
+    '>100':
+    - 100
+    - 120
+    - 180
   verificado: false
 ve.km_viaje_largo:
   fecha_consulta: '2026-10-19'
@@ -4332,6 +4744,14 @@ ve.km_viaje_largo:
   - 400
   - 700
   verificado: false
+ve.laborables_semana:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Días laborables por semana para anualizar los km.
+  unidad: días/semana
+  url: ''
+  valor: 5
+  verificado: false
 ve.penalizacion_carga_comunitaria:
   fecha_consulta: '2026-10-19'
   fuente: Ley 49/1960 de Propiedad Horizontal art. 17.5; RD 1053/2014 ITC-BT-52
@@ -4340,6 +4760,17 @@ ve.penalizacion_carga_comunitaria:
   url: https://www.boe.es/buscar/act.php?id=BOE-A-1960-10906
   valor: 'Sin penalización legal: el derecho a instalar el punto de recarga no puede denegarse y no requiere
     acuerdo de la junta, solo comunicación previa a la comunidad. Coste a cargo del solicitante.'
+  verificado: false
+ve.potencia_cargador_kw:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Potencia de cargador doméstico supuesta por tipo de aparcamiento.
+  unidad: kW
+  url: ''
+  valor:
+    calle: 3.7
+    garaje_comunitario: 3.7
+    garaje_propio: 7.4
   verificado: false
 ve.precio_compra_diesel_eur:
   fecha_consulta: '2026-10-19'
@@ -4453,6 +4884,14 @@ ve.seguro_anual_eur:
   - 500
   - 750
   verificado: false
+ve.sg_precio_energia:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Reservado.
+  unidad: '-'
+  url: ''
+  valor: 1.0
+  verificado: false
 ve.valor_residual_fraccion:
   fecha_consulta: '2026-10-19'
   fuente: 'OCU/BEUC (3 años, 45000 km: VE pierde 50%, PHEV 39%, diésel 36%, gasolina 33%); Ganvam-DAT
@@ -4504,6 +4943,30 @@ ve.valor_residual_fraccion:
       - 0.12
       - 0.17
       - 0.24
+  verificado: false
+ve.viajes_largos:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Tramos de respuesta de viajes largos.
+  unidad: viajes/año
+  url: ''
+  valor:
+    1-5:
+    - 1
+    - 3
+    - 5
+    6-15:
+    - 6
+    - 10
+    - 15
+    '>15':
+    - 15
+    - 22
+    - 35
+    ninguno:
+    - 0
+    - 0
+    - 0
   verificado: false
 ve.vida_bateria_garantia:
   fecha_consulta: '2026-10-19'
