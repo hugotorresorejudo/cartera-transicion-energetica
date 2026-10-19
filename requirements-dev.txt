@@ -1,0 +1,11 @@
+# Dependencias para desarrollo, pruebas y exportación (no se usan en el navegador: allí rige app/requirements.txt)
+shiny==1.8.0
+shinylive==0.8.12
+numpy
+pandas
+scipy
+matplotlib
+pyyaml
+requests
+pytest
+playwright

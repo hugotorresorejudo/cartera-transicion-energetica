@@ -131,7 +131,13 @@ def escenarios_omie(n: int, rng, zona: str = "es") -> np.ndarray:
 
 
 def pvpc_observado():
-    """Serie PVPC horaria real del último año (€/kWh) si existe en REData, o None."""
+    """Serie PVPC horaria real del último año (€/kWh): ESIOS si existe el fichero opcional, si no REData; None si no hay."""
+    esios = datos.DIR / "esios_horario.csv.gz"
+    if esios.exists():
+        import pandas as pd
+        df = pd.read_csv(esios, parse_dates=["ts"])
+        if "pvpc" in df:
+            return df[["ts", "pvpc"]]
     try:
         df = datos.redata()
     except FileNotFoundError:

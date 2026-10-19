@@ -43,6 +43,7 @@ app_ui = ui.page_sidebar(
     _barra_lateral(),
     ui.tags.head(
         ui.tags.meta(name="viewport", content="width=device-width, initial-scale=1"),
+        ui.tags.link(rel="icon", href="data:,"),
         ui.tags.link(rel="stylesheet", href="app.css"),
         ui.tags.script(src="app.js"),
         ui.tags.script(src="mathjax/tex-svg.js", async_=True, onload="tipografiar()"),

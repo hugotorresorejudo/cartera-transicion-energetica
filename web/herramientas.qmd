@@ -1,0 +1,34 @@
+---
+title: "Cartera de herramientas de transición energética"
+subtitle: "22 herramientas de decisión energética para hogares en España, ejecutadas íntegramente en el navegador"
+lang: es
+format:
+  html:
+    page-layout: full
+    toc: false
+---
+
+<!--
+  Página Quarto para la web personal. Sustituye USUARIO y el nombre del repositorio por los reales.
+  La app es estática (Shiny for Python + Pyodide): no hay servidor, solo un iframe.
+-->
+
+```{=html}
+<style>
+  .app-marco { width: 100%; height: 88vh; min-height: 640px; border: 1px solid #d5dbe1; border-radius: 10px; background: #f6f8fa; }
+  @media (max-width: 576px) { .app-marco { height: 92vh; border-radius: 0; } }
+</style>
+
+<iframe class="app-marco" title="Cartera de herramientas de transición energética"
+        src="https://USUARIO.github.io/cartera-transicion-energetica/" loading="lazy" allow="fullscreen"></iframe>
+
+<p><small>La primera carga descarga el motor de cálculo (Python en el navegador) y puede tardar; las siguientes son rápidas.
+<a href="https://USUARIO.github.io/cartera-transicion-energetica/" target="_blank" rel="noopener">Abrir en pantalla completa</a> ·
+Herramienta orientativa, no constituye asesoramiento financiero.</small></p>
+```
+
+## Qué es
+
+Una única aplicación con 22 herramientas que comparten un perfil «Mi hogar»: tarifas y potencia, autoconsumo fotovoltaico,
+precios del mercado diario, vehículo eléctrico, agua caliente, baterías, aerotermia y más. Cada resultado se muestra como
+rango (P10–P50–P90) mediante simulación Monte Carlo, con el método, las fuentes y su fecha a la vista.

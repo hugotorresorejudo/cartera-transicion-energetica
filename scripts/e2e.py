@@ -23,6 +23,8 @@ async def main(a):
         pg = await ctx.new_page()
         pg.on("console", lambda m: errores.append(m.text) if m.type == "error" else None)
         pg.on("pageerror", lambda e: errores.append("pageerror: " + str(e)))
+        fallidas = []
+        pg.on("response", lambda r: fallidas.append(f"{r.status} {r.url}") if r.status >= 400 else None)
         pg.on("request", lambda r: externas.add(r.url) if urlparse(r.url).netloc not in (host, "") and not r.url.startswith(("data:", "blob:")) else None)
         await pg.goto(a.url, wait_until="load")
         fr = None
@@ -61,12 +63,15 @@ async def main(a):
                 fallos += 1
                 print(f"{tid}: FALLO {type(e).__name__}: {str(e)[:200]}")
                 await pg.screenshot(path=f"{a.capturas}/fallo_{tid}_{a.ancho}.png")
+        # El aviso de Matplotlib al construir su caché de fuentes llega a la consola como "error" pero es informativo.
+        errores = [e for e in errores if "building the font cache" not in e]
         print("errores de consola:", len(errores))
         for e in errores[:15]:
             print("  ", e[:300])
+        print("respuestas HTTP >= 400:", fallidas[:10])
         print("peticiones externas:", sorted(externas)[:10])
         await b.close()
-        return 1 if (fallos or externas) else 0
+        return 1 if (fallos or externas or errores) else 0
 
 
 if __name__ == "__main__":

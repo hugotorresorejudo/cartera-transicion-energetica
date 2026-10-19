@@ -1,6 +1,8 @@
 """Gráficos matplotlib (estilo sobrio: un acento, neutros y colores semánticos para ahorro y coste)."""
 from __future__ import annotations
 
+import textwrap
+
 import matplotlib
 
 matplotlib.use("agg")
@@ -19,23 +21,39 @@ plt.rcParams.update({
 })
 
 
-def _fig(h=3.4):
+def _fig(h=3.4, bottom=0.17):
+    """Figura con márgenes fijos (el layout automático de matplotlib no es compatible con Shiny y falla en pantallas estrechas)."""
     fig, ax = plt.subplots(figsize=(6.4, h))
-    fig.set_tight_layout(True)
+    fig.subplots_adjust(left=0.13, right=0.97, top=0.88, bottom=bottom)
     return fig, ax
+
+
+def _titulo(fig, ax, texto):
+    lineas = textwrap.wrap(texto, 52)
+    ax.set_title("\n".join(lineas), fontsize=9)
+    if len(lineas) > 1:
+        fig.subplots_adjust(top=0.82)
+
+
+def _envolver(etiquetas, ancho=13):
+    return ["\n".join(textwrap.wrap(str(e), ancho)) or str(e) for e in etiquetas]
 
 
 def dibujar(g: dict):
     t = g["tipo"]
     if t == "barras":
-        fig, ax = _fig()
+        muchas = len(g["categorias"]) > 8
+        fig, ax = _fig(bottom=0.12 if muchas else 0.30)
         x = np.arange(len(g["categorias"]))
         p10, p50, p90 = (np.asarray(g[k], float) for k in ("p10", "p50", "p90"))
         ax.bar(x, p50, color=ACENTO, width=0.55)
         ax.errorbar(x, p50, yerr=[np.maximum(p50 - p10, 0), np.maximum(p90 - p50, 0)], fmt="none", ecolor=TEXTO, capsize=4, lw=1.2)
-        ax.set_xticks(x, g["categorias"], rotation=15 if len(x) > 3 else 0, ha="right" if len(x) > 3 else "center")
+        if muchas:
+            ax.set_xticks(x[::2], [str(c) for c in g["categorias"]][::2])
+        else:
+            ax.set_xticks(x, _envolver(g["categorias"]), fontsize=8)
         ax.set_ylabel(g.get("ylabel", ""))
-        ax.set_title(g["titulo"])
+        _titulo(fig, ax, g["titulo"])
         ax.grid(axis="x", visible=False)
         return fig
     if t in ("abanico", "abanico_multi"):
@@ -47,7 +65,7 @@ def dibujar(g: dict):
             ax.plot(s["x"], s["p50"], color=c, lw=2, label=s["nombre"] or None)
         ax.set_xlabel(g.get("xlabel", ""))
         ax.set_ylabel(g.get("ylabel", ""))
-        ax.set_title(g["titulo"])
+        _titulo(fig, ax, g["titulo"])
         if t == "abanico_multi" and len(series) > 1:
             ax.legend()
         return fig
@@ -57,31 +75,31 @@ def dibujar(g: dict):
             ax.plot(s["x"], s["y"], color=CICLO[i % len(CICLO)], lw=1.8, label=s["nombre"])
         ax.set_xlabel(g.get("xlabel", ""))
         ax.set_ylabel(g.get("ylabel", ""))
-        ax.set_title(g["titulo"])
+        _titulo(fig, ax, g["titulo"])
         if len(g["series"]) > 1:
             ax.legend()
         return fig
     if t == "heatmap":
-        fig, ax = _fig(3.8)
+        fig, ax = _fig(3.8, bottom=0.14)
         z = np.asarray(g["z"], float)
         im = ax.imshow(z, aspect="auto", cmap="viridis", origin="upper")
         ax.set_xlabel(g.get("xlabel", ""))
         ax.set_ylabel(g.get("ylabel", ""))
-        ax.set_title(g["titulo"])
+        _titulo(fig, ax, g["titulo"])
         ax.grid(False)
         fig.colorbar(im, ax=ax, label=g.get("unidad", ""))
         return fig
     if t == "barras_apiladas":
-        fig, ax = _fig()
+        fig, ax = _fig(bottom=0.14)
         x = np.arange(len(g["categorias"]))
         base = np.zeros(len(x))
         for i, s in enumerate(g["series"]):
             ax.bar(x, s["y"], bottom=base, label=s["nombre"], color=CICLO[i % len(CICLO)], width=0.55)
             base = base + np.asarray(s["y"], float)
-        ax.set_xticks(x, g["categorias"], rotation=15 if len(x) > 4 else 0, ha="right" if len(x) > 4 else "center")
+        ax.set_xticks(x[::2] if len(x) > 8 else x, [str(c) for c in (g["categorias"][::2] if len(x) > 8 else g["categorias"])])
         ax.set_ylabel(g.get("ylabel", ""))
-        ax.set_title(g["titulo"])
-        ax.legend(fontsize=8)
+        _titulo(fig, ax, g["titulo"])
+        ax.legend(fontsize=7, ncol=2)
         ax.grid(axis="x", visible=False)
         return fig
     raise ValueError(f"tipo de gráfico desconocido: {t}")
@@ -90,15 +108,15 @@ def dibujar(g: dict):
 def tornado(filas: list, titulo: str = "Sensibilidad (parámetro en P10 / P90)", unidad: str = ""):
     filas = filas[:8][::-1]
     fig, ax = plt.subplots(figsize=(6.4, 0.45 * len(filas) + 1.2))
-    fig.set_tight_layout(True)
+    fig.subplots_adjust(left=0.5, right=0.96, top=0.8 if len(filas) > 4 else 0.62, bottom=0.2)
     base = filas[0]["base"] if filas else 0
     for i, f in enumerate(filas):
         lo, hi = f["bajo"], f["alto"]
         ax.barh(i, lo - base, left=base, color=ACENTO, height=0.55)
         ax.barh(i, hi - base, left=base, color=COSTE, height=0.55)
     ax.axvline(base, color=TEXTO, lw=1)
-    ax.set_yticks(range(len(filas)), [f.get("etiqueta", f["parametro"])[:42] for f in filas])
+    ax.set_yticks(range(len(filas)), _envolver([f.get("etiqueta", f["parametro"])[:48] for f in filas], 20), fontsize=7)
     ax.set_xlabel(unidad)
-    ax.set_title(titulo)
+    ax.set_title("\n".join(textwrap.wrap(titulo, 44)), fontsize=8.5, loc="left")
     ax.grid(axis="y", visible=False)
     return fig

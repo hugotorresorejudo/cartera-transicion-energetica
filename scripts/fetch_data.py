@@ -253,6 +253,37 @@ def fetch_pvgis(forzar=False):
     return ok == len(provs)
 
 
+# --------------------------------------------------------------------------- ESIOS (opcional)
+def fetch_esios(meses=12):
+    """PVPC 2.0TD horario (indicador 1001) y precio spot (600) de ESIOS, solo si existe el secreto ESIOS_TOKEN."""
+    import os
+    token = os.environ.get("ESIOS_TOKEN")
+    if not token:
+        print("ESIOS: sin ESIOS_TOKEN, se omite (la app funciona igual)")
+        return False
+    hoy = dt.date.today()
+    ini = hoy - dt.timedelta(days=30 * meses)
+    cols = {}
+    for nombre, ind in (("pvpc", 1001), ("spot", 600)):
+        try:
+            r = requests.get(f"https://api.esios.ree.es/indicators/{ind}", headers={**UA, "Accept": "application/json; application/vnd.esios-api-v1+json",
+                                                                                 "x-api-key": token},
+                             params={"start_date": f"{ini}T00:00:00", "end_date": f"{hoy}T23:59:59", "time_trunc": "hour"}, timeout=90)
+            r.raise_for_status()
+            vals = r.json()["indicator"]["values"]
+            cols[nombre] = pd.Series({pd.Timestamp(v["datetime"]).tz_convert("Europe/Madrid").tz_localize(None): v["value"] / 1000.0
+                                      for v in vals if v.get("geo_name", "Península") in ("Península", "España")})
+        except Exception as e:  # noqa: BLE001
+            pendiente(f"ESIOS indicador {ind}: {type(e).__name__}")
+    if not cols:
+        return False
+    df = pd.DataFrame(cols)
+    df.index.name = "ts"
+    df.round(5).reset_index().to_csv(DATA / "esios_horario.csv.gz", index=False, compression="gzip")
+    actualizar_meta(fuentes={"esios": "https://api.esios.ree.es (opcional)"})
+    return True
+
+
 # --------------------------------------------------------------------------- main
 def main():
     ap = argparse.ArgumentParser()
@@ -265,9 +296,14 @@ def main():
     todo = not (a.omie or a.redata or a.pvgis)
     DATA.mkdir(parents=True, exist_ok=True)
     if a.omie or todo:
-        fetch_omie(a.anios)
+        if get("https://www.omie.es", reintentos=1, timeout=15) is None and not (DATA / "omie_es_horario.csv.gz").exists():
+            pendiente("OMIE no responde y no hay caché")
+        else:
+            fetch_omie(a.anios)
     if a.redata or todo:
         fetch_redata()
+    if todo:
+        fetch_esios()
     if a.pvgis:
         fetch_pvgis(a.forzar)
 

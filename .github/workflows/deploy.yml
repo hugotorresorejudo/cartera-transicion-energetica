@@ -1,0 +1,57 @@
+name: Desplegar en GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths: ["app/**", "scripts/**", "requirements-dev.txt", ".github/workflows/deploy.yml"]
+  workflow_run:
+    workflows: ["Actualizar datos"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  construir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+
+      - name: Instalar dependencias
+        run: pip install -r requirements-dev.txt
+
+      - name: Pruebas
+        run: python -m pytest tests -q
+
+      - name: Exportar con shinylive
+        run: |
+          shinylive export app site
+          python scripts/postprocesar_site.py site
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  desplegar:
+    needs: construir
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+    steps:
+      - id: despliegue
+        uses: actions/deploy-pages@v4
