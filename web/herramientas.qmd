@@ -9,7 +9,7 @@ format:
 ---
 
 <!--
-  Página Quarto para la web personal. Sustituye USUARIO y el nombre del repositorio por los reales.
+  Página Quarto para la web personal. Sustituye hugotorresorejudo y el nombre del repositorio por los reales.
   La app es estática (Shiny for Python + Pyodide): no hay servidor, solo un iframe.
 -->
 
@@ -20,10 +20,10 @@ format:
 </style>
 
 <iframe class="app-marco" title="Cartera de herramientas de transición energética"
-        src="https://USUARIO.github.io/cartera-transicion-energetica/" loading="lazy" allow="fullscreen"></iframe>
+        src="https://hugotorresorejudo.github.io/cartera-transicion-energetica/" loading="lazy" allow="fullscreen"></iframe>
 
 <p><small>La primera carga descarga el motor de cálculo (Python en el navegador) y puede tardar; las siguientes son rápidas.
-<a href="https://USUARIO.github.io/cartera-transicion-energetica/" target="_blank" rel="noopener">Abrir en pantalla completa</a> ·
+<a href="https://hugotorresorejudo.github.io/cartera-transicion-energetica/" target="_blank" rel="noopener">Abrir en pantalla completa</a> ·
 Herramienta orientativa, no constituye asesoramiento financiero.</small></p>
 ```
 

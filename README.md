@@ -83,7 +83,7 @@ La app funciona completa sin token de ESIOS. Esquema de los ficheros: [`app/data
 1. Crear el repositorio en GitHub y subir el código (`git remote add origin … && git push -u origin main`).
 2. *Settings → Pages → Source: GitHub Actions*.
 3. Ejecutar *Actualizar datos* (con *pvgis* la primera vez) para sustituir los datos sintéticos por los reales.
-4. El workflow [`deploy.yml`](.github/workflows/deploy.yml) pasa las pruebas, exporta con `shinylive` y publica en `https://USUARIO.github.io/REPO/`.
+4. El workflow [`deploy.yml`](.github/workflows/deploy.yml) pasa las pruebas, exporta con `shinylive` y publica en `https://hugotorresorejudo.github.io/REPO/`.
 5. Sustituir `REPO_URL` en [`app/config.py`](app/config.py) y la URL de [`web/herramientas.qmd`](web/herramientas.qmd) (iframe para la web personal con Quarto).
 
 ## Referencias pendientes de verificar
