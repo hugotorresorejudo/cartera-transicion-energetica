@@ -29,3 +29,12 @@ def test_rastreo_y_pendientes():
 def test_clave_inexistente():
     with pytest.raises(r.ReferenciaError):
         r.ref().get("no.existe")
+
+
+def test_json_coincide_con_yaml():
+    import json
+    import yaml
+    from core import referencias as r
+    y = r._claves_str(yaml.safe_load(r.RUTA.read_text(encoding="utf-8")))
+    j = json.loads(r.RUTA.with_suffix(".json").read_text(encoding="utf-8"))
+    assert y == j, "ejecuta scripts/actualizar_refs.sh: referencias.json está desactualizado"

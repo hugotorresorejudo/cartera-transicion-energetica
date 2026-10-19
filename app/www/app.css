@@ -47,3 +47,5 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .barra-acciones{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:.5rem 0}
 .notas li{font-size:.88rem;color:var(--suave)}
 @media (max-width:576px){.kpi-valor{font-size:1.6rem}.contenido{padding:0}}
+.bslib-page-title{font-size:1.25rem}
+@media (max-width:576px){.bslib-page-title{font-size:.95rem;white-space:normal;line-height:1.2}}

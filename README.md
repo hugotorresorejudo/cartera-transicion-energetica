@@ -16,6 +16,14 @@ sin ninguna llamada a terceros en tiempo de ejecución. Pensada para decisiones 
   `verificado`. Las no verificadas muestran «pendiente de verificar» en la interfaz. Un test impide literales de referencia en `app/tools/` y `app/core/precios.py`.
 - **Optimización** con `scipy.optimize.linprog` (HiGHS) donde hace falta (carga óptima del VE).
 
+## Decisiones técnicas
+
+- **Gráficos con matplotlib:** se verificó con un smoke test de `shinylive export` (gráfico mínimo renderizado en Chromium) antes de construir nada; matplotlib,
+  numpy, pandas, scipy y PyYAML vienen incluidos en la distribución de Pyodide, por lo que el export los copia al sitio y no hay descargas externas.
+- **MathJax local:** las ecuaciones usan `tex-svg.js` empaquetado en `app/www/mathjax/` (sin CDN).
+- **Datos estáticos embebidos:** la app lee `app/data/` incluido en el propio export; el JSON de referencias evita el coste del parser YAML en el navegador.
+- **Monte Carlo:** numpy vectorizado, semilla fija; el precio se remuestrea por bloques semanales de los años completos de OMIE.
+
 ## Herramientas
 
 | Prioridad | Herramientas |

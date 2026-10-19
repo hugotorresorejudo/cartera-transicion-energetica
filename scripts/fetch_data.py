@@ -214,10 +214,11 @@ def fetch_pvgis_provincia(row, forzar=False):
                 pendiente(f"PVGIS seriescalc falló prov {cod} tilt {tilt} az {az}")
                 return False
             h = pd.DataFrame(r.json()["outputs"]["hourly"])
-            h["ts"] = pd.to_datetime(h["time"], format="%Y%m%d:%H%M")
-            h["ts"] = (h["ts"] + pd.Timedelta(hours=1)).dt.floor("h")  # UTC -> hora local aprox. (CET)
-            h = h[~((h.ts.dt.month == 2) & (h.ts.dt.day == 29))]
-            h["anio"], h["doy_h"] = h.ts.dt.year, (h.ts.dt.dayofyear - 1) * 24 + h.ts.dt.hour
+            h["ts"] = pd.to_datetime(h["time"], format="%Y%m%d:%H%M")  # UTC
+            h = h[~((h.ts.dt.month == 2) & (h.ts.dt.day == 29))].copy()
+            doy0 = h.ts.dt.dayofyear - 1 - ((h.ts.dt.is_leap_year) & (h.ts.dt.month > 2)).astype(int)
+            h["anio"] = h.ts.dt.year
+            h["doy_h"] = (doy0 * 24 + h.ts.dt.hour + 1) % 8760  # hora local aproximada (CET = UTC+1), con vuelta de año
             piv = h.pivot_table(index="anio", columns="doy_h", values="P", aggfunc="mean") / 1000.0  # kW por kWp
             piv = piv.reindex(columns=range(8760)).ffill(axis=1).fillna(0.0)
             tip = piv.mean(axis=0).to_numpy()
