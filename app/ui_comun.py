@@ -30,6 +30,8 @@ def entrada(q: Pregunta, valor, prefijo: str):
         return ui.input_select(id_, q.texto, ops, selected=str(valor))
     if q.tipo == "multi":
         return ui.input_checkbox_group(id_, q.texto, {str(v): e for v, e in q.opciones}, selected=[str(x) for x in (valor or [])])
+    if q.tipo == "archivo":
+        return ui.input_file(id_, q.texto, accept=[".csv", ".txt"], button_label="Elegir archivo")
     if q.tipo == "numero":
         return ui.input_numeric(id_, q.texto, valor)
     return ui.input_text(id_, q.texto, valor or "")

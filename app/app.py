@@ -198,6 +198,10 @@ def server(input, output, session):
                 v = input[f"{tid}_q_{q.id}"]()
             except Exception:
                 v = out.get(q.id, q.defecto)
+            if q.tipo == "archivo":
+                if v:  # fichero subido -> texto
+                    out[q.id] = Path(v[0]["datapath"]).read_text(encoding="utf-8", errors="replace")
+                continue
             out[q.id] = list(v) if isinstance(v, (list, tuple)) else v
         pf = perfil.get()
         for q in mod.preguntas():
@@ -230,6 +234,8 @@ def server(input, output, session):
                     if q.perfil == "potencia":
                         val = "nose" if pf.potencia is None else str(pf.potencia)
                     cs.append(U.entrada(q, val, "p"))
+                elif q.tipo == "archivo":
+                    cs.append(U.entrada(q, None, f"{tid}_q"))
                 else:
                     cs.append(U.entrada(q, guardado.get(q.id, q.defecto), f"{tid}_q"))
             return ui.div(ui.p("Máximo 8 preguntas. El resto de datos sale de tu perfil «Mi hogar» y de datos reales; "

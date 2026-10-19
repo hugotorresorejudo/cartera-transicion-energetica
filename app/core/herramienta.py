@@ -14,7 +14,7 @@ from .referencias import ref
 class Pregunta:
     id: str
     texto: str
-    tipo: str  # select | multi | numero | texto
+    tipo: str  # select | multi | numero | texto | archivo
     opciones: list = field(default_factory=list)  # [(valor, etiqueta)]
     defecto: Any = None
     perfil: str | None = None  # campo del perfil del que hereda su valor por defecto

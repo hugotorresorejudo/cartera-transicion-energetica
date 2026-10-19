@@ -108,3 +108,37 @@ S += [
     ("ayudas.kwp_referencia", 4, "kWp", "Instalación FV de referencia en el cálculo de ayudas."),
     ("ayudas.kwh_bateria_referencia", 10, "kWh", "Batería de referencia en el cálculo de ayudas."),
 ]
+S += [
+    ("desplazamiento.horas_habituales", {"manana": [8, 9, 10, 11], "tarde": [15, 16, 17, 18], "noche": [20, 21, 22], "cuando": [9, 13, 19, 21]}, "horas del día",
+     "Horas habituales en que se pone el aparato."),
+    ("desplazamiento.ventanas", {"noche": [23, 0, 1, 2, 3, 4, 5, 6, 7], "solar": [10, 11, 12, 13, 14, 15, 16, 17], "cualquiera": list(range(24))}, "horas del día",
+     "Horas en que se acepta poner el aparato."),
+    ("desplazamiento.ciclo_aparato", {"lavadora": "lavadora_eco_40_60", "lavavajillas": "lavavajillas_eco", "secadora": "secadora_bomba_calor"}, "-",
+     "Ciclo de referencia de cada aparato en electrodomesticos.ciclo_energia_kwh."),
+    ("desplazamiento.usos_semana_termo", 7, "usos/semana", "El termo calienta cada día; su desplazamiento programa el calentamiento."),
+    ("desplazamiento.kwh_dia_termo_defecto", R3(2.5, 3.5, 5), "kWh/día", "Energía diaria del termo eléctrico si no se conoce."),
+]
+S += [
+    ("emisiones.carga_desplazable_kwh_dia", R3(1, 3, 8), "kWh/día", "Energía diaria desplazable para evaluar la reducción de emisiones (lavado + termo + carga)."),
+    ("emisiones.estaciones", {"todo": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "invierno": [10, 11, 0, 1, 2], "verano": [5, 6, 7, 8]}, "meses (0=enero)", "Meses de cada estación."),
+]
+S += [
+    ("refrigeracion.fraccion_estancias", {"1": R3(0.1, 0.15, 0.2), "2": R3(0.2, 0.3, 0.4), "3-4": R3(0.4, 0.6, 0.8), "toda": R3(0.9, 1.0, 1.0)}, "fracción de la superficie",
+     "Parte de la vivienda climatizada según estancias."),
+    ("refrigeracion.uso", {"poco": R3(0.4, 0.6, 0.8), "medio": R3(0.8, 1.0, 1.2), "mucho": R3(1.2, 1.5, 2.0)}, "× demanda de referencia", "Uso del aire acondicionado."),
+    ("refrigeracion.factor_soleada", {"si": R3(1.1, 1.3, 1.6), "no": R3(0.8, 1.0, 1.1)}, "×", "Vivienda muy soleada (orientación y falta de protección solar)."),
+    ("refrigeracion.seer_antiguo", R3(2.5, 3.2, 4.0), "SEER", "Equipo antiguo sin inverter."),
+    ("refrigeracion.factor_seer_real", R3(0.7, 0.8, 0.9), "×", "SEER de campo respecto del de etiqueta."),
+    ("refrigeracion.factor_reversible", R3(0.9, 0.95, 1.0), "×", "SEER de un multisplit reversible respecto del split individual."),
+    ("refrigeracion.capex_reversible_factor", R3(1.1, 1.25, 1.5), "× por estancia", "Sobrecoste de un equipo reversible frente a un split solo frío."),
+    ("refrigeracion.vida_util", 15, "años", "Vida útil de un split."),
+    ("refrigeracion.estancias_equipos", {"1": 1, "2": 2, "3-4": 3, "toda": 4}, "equipos", "Número de splits o unidades interiores."),
+    ("refrigeracion.potencia_electrica_eer", R3(2.8, 3.3, 4.0), "EER", "Relación potencia frigorífica/eléctrica a plena carga para el pico."),
+]
+S += [
+    ("electrodomesticos.factor_edad", {"nuevos": R3(0.7, 0.8, 0.9), "medios": R3(0.9, 1.0, 1.1), "antiguos": R3(1.1, 1.3, 1.6)}, "× consumo medio", "Antigüedad de los electrodomésticos."),
+    ("electrodomesticos.horas_tv", {"<2": R3(1, 1.5, 2), "2-4": R3(2, 3, 4), ">4": R3(4, 5.5, 8)}, "h/día", "Tramos de respuesta de horas de TV."),
+    ("electrodomesticos.horas_tv_referencia", 3, "h/día", "Horas de TV a las que se refiere el consumo anual tabulado."),
+    ("electrodomesticos.factor_standby", {"si": R3(0.4, 0.5, 0.7), "aveces": R3(0.8, 1.0, 1.2), "no": R3(1.2, 1.5, 2.0)}, "× stand-by medio", "¿Apagas del todo los aparatos?"),
+    ("electrodomesticos.n_tv", {"1": 1, "2": 2, "3+": 3}, "unidades", "Número de televisores."),
+]
