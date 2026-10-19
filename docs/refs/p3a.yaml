@@ -1,0 +1,338 @@
+# p3a.yaml - bloques ENVOLVENTE, SOLAR TERMICA, COMUNIDAD, DATADIS, HUELLA. Fecha consulta 2026-10-19.
+# Los fragmentos de busqueda no procedian de dominios primarios con el valor explicito, salvo indicacion.
+envolvente.transmitancia_u_limite_por_zona:
+  valor:
+    muros_suelos_aire: {alfa: 0.80, A: 0.70, B: 0.56, C: 0.49, D: 0.41, E: 0.37}
+    cubiertas_aire: {alfa: 0.55, A: 0.50, B: 0.44, C: 0.40, D: 0.35, E: 0.33}
+    huecos_Uh: {alfa: 2.7, A: 2.7, B: 2.0, C: 1.8, D: 1.7, E: 1.5}
+  unidad: "W/m2K"
+  fuente: "CTE DB-HE 2019 (RD 732/2019) tabla 3.1.1.a-HE1; muros y cubiertas segun fragmentos de Normatia/Fenercom"
+  url: "https://normatia.com/es/blog/transmitancia-maxima-envolvente-termica-zona-climatica-cte-db-he/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Muros y cubiertas reproducidos en fuentes secundarias (no dominio primario). Fila de huecos cortada en los resultados: valores de memoria; Fenercom da 2.7/2.7/2.0/2.0/1.6/1.5 como valores orientativos (no limite). Verificar en codigotecnico.org/BOE."
+envolvente.u_tipica_sin_aislar:
+  valor: {muro_ladrillo_hueco_pre1980: [1.2, 1.6, 2.0], cubierta: [1.4, 2.0, 2.6], ventana_simple: [5.0, 5.7, 6.0], ventana_doble_aluminio: [2.8, 3.3, 4.0]}
+  unidad: "W/m2K"
+  fuente: "Estimacion (IDAE guia rehabilitacion / Catalogo Elementos Constructivos CTE)"
+  url: "https://www.codigotecnico.org/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "No hubo fragmento primario. Rangos tipicos de la bibliografia (catalogo CTE, ficha IDAE de rehabilitacion); depende de espesor y epoca."
+envolvente.coste_aislamiento_sate_eur_m2:
+  valor: [65, 95, 140]
+  unidad: "EUR/m2 con IVA (sin andamio 12-25 EUR/m2 ni honorarios 5-10%)"
+  fuente: "Diario de Avisos guia 2026 (EPS 75-115, lana mineral 90-140); Cronoshare 50-95; Habitissimo ~65-72"
+  url: "https://diariodeavisos.elespanol.com/canariasenred/rehabilitacion-de-fachada-precios-ite-y-ayudas-en-2026/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Fuentes privadas, sin referencia IDAE/COAC. Rango plausible 50-140."
+envolvente.coste_aislamiento_cubierta_eur_m2:
+  valor: [25, 45, 90]
+  unidad: "EUR/m2 con IVA"
+  fuente: "Estimacion (Generador de precios / COAC)"
+  url: "https://generadordeprecios.info/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "No buscado con exito; estimacion. Cubierta plana invertida o trasdosado de falso techo 25-90 EUR/m2 segun solucion."
+envolvente.coste_ventana_eur_m2:
+  valor: [250, 400, 700]
+  unidad: "EUR/m2 de hueco con IVA, instalada, PVC/aluminio RPT doble vidrio bajo emisivo"
+  fuente: "Estimacion (Generador de precios / mercado)"
+  url: "https://generadordeprecios.info/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Sin fragmento. Rango plausible 250-700."
+envolvente.superficie_fachada_ratio:
+  valor: {piso_intermedio: [0.5, 0.7, 0.9], piso_ultima_o_esquina: [0.8, 1.0, 1.3], unifamiliar_adosada: [0.7, 0.9, 1.1], unifamiliar_aislada: [1.1, 1.4, 1.8]}
+  unidad: "m2 fachada opaca / m2 util"
+  fuente: "Supuesto de modelizacion"
+  url: "https://www.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Supuesto geometrico propio; sin fuente."
+envolvente.superficie_huecos_ratio:
+  valor: [0.12, 0.17, 0.25]
+  unidad: "m2 hueco / m2 util"
+  fuente: "Supuesto de modelizacion"
+  url: "https://www.codigotecnico.org/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Supuesto: 12-25% de superficie util."
+envolvente.grados_dia_calefaccion_por_zona:
+  valor: {alfa: 400, A: 800, B: 1200, C: 1600, D: 2200, E: 2800}
+  unidad: "grados-dia anuales base ~15-20 C (orden de magnitud por zona CTE)"
+  fuente: "Estimacion a partir de CTE DB-HE / IDAE (documento de zonas climaticas)"
+  url: "https://www.codigotecnico.org/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "No hallado fragmento. Valores centrales aproximados; Madrid (D3) ~2000-2200 GD base 15/15; Barcelona (C2) ~1300-1500. Rango +-25%."
+envolvente.reduccion_infiltracion_ventana:
+  valor: [0.3, 0.5, 0.7]
+  unidad: "fraccion de infiltracion eliminada al cambiar ventana (clase 3-4)"
+  fuente: "Estimacion"
+  url: "https://www.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Supuesto; sin fuente primaria."
+envolvente.vida_util_aislamiento:
+  valor: [30, 40, 50]
+  unidad: "anos"
+  fuente: "Estimacion (fabricantes SATE: 30-50 anos)"
+  url: "https://www.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Sin fragmento primario."
+envolvente.ahorro_tipico_fraccion:
+  valor: {sate_fachada: [0.25, 0.30, 0.40], ventanas: [0.10, 0.15, 0.20], cubierta: [0.10, 0.15, 0.25]}
+  unidad: "fraccion de la demanda de calefaccion"
+  fuente: "Diario de Avisos 2026 (SATE 25-35%) + rango IDAE de la peticion"
+  url: "https://diariodeavisos.elespanol.com/canariasenred/rehabilitacion-de-fachada-precios-ite-y-ayudas-en-2026/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "SATE 25-35% en fuente secundaria; resto estimacion."
+
+solar_termica.contribucion_minima_hs4_por_zona:
+  valor:
+    tabla_2_1_original_pct_zonas_I_a_V:
+      "50-5000 l/d": [30, 30, 50, 60, 70]
+      "5000-6000": [30, 30, 55, 65, 70]
+      "6000-7000": [30, 35, 61, 70, 70]
+      "7000-8000": [30, 45, 63, 70, 70]
+      "8000-9000": [30, 52, 65, 70, 70]
+      "9000-10000": [30, 55, 70, 70, 70]
+      "10000-12500": [30, 65, 70, 70, 70]
+      "12500-15000": [30, 70, 70, 70, 70]
+      "15000-17500": [35, 70, 70, 70, 70]
+      "17500-20000": [45, 70, 70, 70, 70]
+      ">20000": [52, 70, 70, 70, 70]
+  unidad: "% de la demanda ACS a 60 C"
+  fuente: "CTE DB-HE 4 tabla 2.1 (version original; extraccion de documento UPM)"
+  url: "https://moodle.upm.es/en-abierto/pluginfile.php/172/mod_label/intro/CTEHEzonasclimaticasradiacion.pdf"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Texto PDF desordenado, fuente no primaria. Aviso: segun Ferroli, la version vigente (HE 2019) elimina la distincion por zona y exige 60% (<5000 l/d) o 70% (>=5000 l/d), segun contribucion renovable total; confirmar en BOE. Para vivienda unifamiliar (<5000 l/d) la regla antigua da 30-70% segun zona."
+solar_termica.rendimiento_captador:
+  valor: {eta0: [0.70, 0.78, 0.83], a1: [3.0, 3.8, 4.5], a2: [0.005, 0.012, 0.020]}
+  unidad: "eta0 adim.; a1 W/m2K; a2 W/m2K2"
+  fuente: "Estimacion captador plano selectivo (EN 12975 / ISO 9806 / Solar Keymark)"
+  url: "https://www.solarkeymark.eu/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Busqueda no confirmo valores. Comillas: rendimiento plano ~50% a (tm-ta)/G~1 (unidades del estudio)."
+solar_termica.capex_eur_m2:
+  valor: [600, 800, 1000]
+  unidad: "EUR/m2 captador, instalacion completa, captador plano (tubos de vacio 900-1400)"
+  fuente: "Habitissimo (estimacion de mercado)"
+  url: "https://www.habitissimo.es/presupuestos/instalar-energia-solar-termica-calefaccion-o-acs"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Fuente privada; no IDAE."
+solar_termica.capex_vivienda_2_captadores_eur:
+  valor: [3500, 4800, 6500]
+  unidad: "EUR con IVA (2 captadores ~4 m2 + acumulador 150-200 l)"
+  fuente: "Habitissimo: ~6000 EUR ACS vivienda 150 m2; derivado de 600-1000 EUR/m2"
+  url: "https://www.habitissimo.es/presupuestos/instalar-energia-solar-termica-calefaccion-o-acs"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Estimacion central; rango plausible 3500-7000."
+solar_termica.area_captador_m2:
+  valor: [1.8, 2.0, 2.5]
+  unidad: "m2 por captador"
+  fuente: "Estimacion (catalogos)"
+  url: "https://www.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Tipico 2 m2 de apertura."
+solar_termica.vida_util:
+  valor: [20, 25, 30]
+  unidad: "anos"
+  fuente: "Estimacion (IDAE)"
+  url: "https://www.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Sin fragmento."
+solar_termica.mantenimiento_anual_fraccion:
+  valor: [0.01, 0.015, 0.02]
+  unidad: "fraccion del CAPEX por ano"
+  fuente: "Estimacion"
+  url: "https://www.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Supuesto 1-2%."
+solar_termica.fraccion_solar_tipica:
+  valor: {I: 0.45, II: 0.55, III: 0.60, IV: 0.65, V: 0.70}
+  unidad: "fraccion solar anual ACS (diseno vivienda)"
+  fuente: "Estimacion (IDAE; consistente con minimos HE4 30-70%)"
+  url: "https://www.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Rango tipico 40-75%; sin fragmento."
+solar_termica.volumen_acumulador_l_m2:
+  valor: [50, 75, 180]
+  unidad: "l de acumulacion por m2 de captador"
+  fuente: "CTE DB-HE 4: 50 < V/A < 180 (dato del encargo)"
+  url: "https://www.codigotecnico.org/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Relacion no confirmada en fragmentos; tipico 60-100 en vivienda."
+solar_termica.zonas_climaticas_solares_he4:
+  valor:
+    zona_I: {irradiacion_kwh_m2_dia: "< 3.8", ejemplo: "Galicia norte, Cantabria, Pais Vasco"}
+    zona_II: {irradiacion_kwh_m2_dia: "3.8-4.2", ejemplo: "Asturias, Navarra, Barcelona"}
+    zona_III: {irradiacion_kwh_m2_dia: "4.2-4.6", ejemplo: "Zaragoza, Valencia norte, Madrid periferia"}
+    zona_IV: {irradiacion_kwh_m2_dia: "4.6-5.0", ejemplo: "Madrid, Valencia, Castilla-La Mancha"}
+    zona_V: {irradiacion_kwh_m2_dia: ">= 5.0", ejemplo: "Andalucia, Extremadura, Murcia, Canarias"}
+  unidad: "kWh/m2 dia sobre superficie horizontal (media anual)"
+  fuente: "CTE DB-HE 4 tabla 2.2 (limites de zonas); aproximacion"
+  url: "https://moodle.upm.es/en-abierto/pluginfile.php/172/mod_label/intro/CTEHEzonasclimaticasradiacion.pdf"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Solo relacion aproximada; limites 3.8/4.2/4.6/5.0 de memoria (mapa de zonas por provincia no obtenido)."
+
+comunidad.distancia_max_autoconsumo_colectivo_m:
+  valor: {general: 500, fv_cubierta_o_suelo_industrial_o_estructuras: 2000, referencia_catastral: "mismos 14 primeros digitos = proximidad", baja_tension: "RDL 29/2021 amplia a red BT del mismo transformador ... y elimina conexion exclusiva a BT"}
+  unidad: "m"
+  fuente: "RD 244/2019; RDL 29/2021; RD 477/2021 (via Osborne Clarke, presentaciones)"
+  url: "https://www.osborneclarke.com/es/insights/publicado-el-real-decreto-ley-292021-de-21-de-diciembre-por-el-que-se-adoptan-medidas"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Los resultados citan 500 m y 2000 m para FV en cubierta/suelo industrial (RD 244/2019 original), y que RDL 29/2021 quita el requisito de BT; no hay fragmento primario BOE. Confirmar texto consolidado de art. 3 RD 244/2019."
+comunidad.coeficientes_reparto_tipos:
+  valor:
+    estaticos: "Fijos todo el ano; segun potencia contratada, aportacion economica u otro criterio acordado por todos los participantes; suman 1."
+    variables: "Orden TED/1247/2021: un coeficiente por hora (8760), modificables cada 4 meses; deben sumar 1 en cada hora."
+  unidad: "descriptivo"
+  fuente: "Orden TED/1247/2021 (modifica Anexo I RD 244/2019)"
+  url: "https://eseficiencia.es/2021/11/18/nuevo-mecanismo-reparto-produccion-energia-autoconsumo-compartido"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Fuentes secundarias coherentes; no dominio primario."
+comunidad.potencia_max_compensacion_kw:
+  valor: 100
+  unidad: "kW"
+  fuente: "RD 244/2019 art. 4 (compensacion simplificada, potencia <= 100 kW)"
+  url: "https://www.boe.es/buscar/act.php?id=BOE-A-2019-5089"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Dato del encargo y conocimiento general; sin fragmento."
+comunidad.numero_tipico_vecinos:
+  valor: [8, 20, 70]
+  unidad: "participantes"
+  fuente: "Supuesto; caso Zaragoza 50 kWp con 70 viviendas"
+  url: "https://www.zaragoza.es/contenidos/urbanismo/energia/talleres_transformacion_comunitaria/Taller_Casetas_CIRCE.pdf"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Rango supuesto."
+comunidad.capex_fv_comunitaria_eur_wp:
+  valor: [1.0, 1.25, 1.6]
+  unidad: "EUR/Wp con IVA, 20-100 kWp"
+  fuente: "Estimacion (UNEF/IDAE)"
+  url: "https://www.unef.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Busqueda sin cifra EUR/Wp; estimacion de mercado."
+comunidad.coste_gestion_anual_eur_participante:
+  valor: [15, 30, 60]
+  unidad: "EUR/ano por participante"
+  fuente: "Estimacion"
+  url: "https://www.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Gestor/reparto/administracion; supuesto."
+comunidad.bonificaciones_ibi_comunidad:
+  valor: "Los ayuntamientos pueden bonificar hasta el 50% de la cuota del IBI (art. 74.5 TRLRHL) para inmuebles con aprovechamiento solar; ICIO hasta 95%. Depende de ordenanza municipal."
+  unidad: "nota"
+  fuente: "TRLRHL art. 74.5 (conocimiento general)"
+  url: "https://sede.agenciatributaria.gob.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "No buscado con fragmento; comprobar ordenanza local."
+comunidad.ayudas_comunidad_energetica:
+  valor: {programa_CE_Implementa: "cerrado tras 6 convocatorias; 262 comunidades; unos 108,4 M EUR PRTR asignados", inversion_max_proyecto_conv5: "1 M EUR", OTC: "segunda convocatoria prevista, 10 M EUR", IVACE_C_Valenciana: "hasta 45%, max 200000 EUR (2024)"}
+  unidad: "nota"
+  fuente: "MITECO nota de prensa mayo 2026; La Moncloa oct 2025"
+  url: "https://www.miteco.gob.es/es/prensa/ultimas-noticias/2026/mayo/el-miteco-ha-impulsado-la-creacion-de-262-comunidades-energetica.html"
+  fecha_consulta: "2026-10-19"
+  verificado: true
+  nota: "Verificado solo el cierre del programa, 262 comunidades y 108,4 M EUR (fragmento miteco.gob.es). No hay nueva convocatoria CE Implementa en 2026; el resto proviene de fuentes secundarias."
+
+datadis.formato_csv_curva_carga:
+  valor:
+    columnas: "CUPS;Fecha;Hora;Consumo_kWh;Metodo_obtencion"
+    fecha: "DD/MM/YYYY"
+    hora: "1-24 (1-25 en dia de cambio horario de octubre, 1-23 en marzo)"
+    separador: ";"
+    decimal: ","
+    resolucion: "horaria; la contadora digital registra cuartohorario y Datadis puede ofrecer 15 min desde 2025/2026 (no confirmado)"
+  unidad: "descriptivo"
+  fuente: "Datadis (conocimiento general); Endesa explica que la curva horaria agrega lecturas cuartohorarias"
+  url: "https://www.endesa.com/es/la-cara-e/sector-energetico/que-es-la-curva-horaria"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "La busqueda no devolvio ninguna pagina de Datadis; formato de memoria. El parser debe tolerar variantes (columnas extra, fecha YYYY/MM/DD, Metodo_obtencion = R real / E estimado)."
+datadis.url_portal:
+  valor: "https://datadis.es"
+  unidad: "url"
+  fuente: "Datadis"
+  url: "https://datadis.es"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "No aparecio en resultados; URL del organismo conocido."
+
+huella.factor_avion_kgco2_pkm:
+  valor: [0.13, 0.18, 0.25]
+  unidad: "kgCO2e/pkm"
+  fuente: "Estimacion (DEFRA/MITECO); SNCF 0.125; blog 0.19-0.285"
+  url: "https://www.miteco.gob.es/es/cambio-climatico/temas/mitigacion-politicas-y-medidas/factores-emision.html"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "No se hallo tabla MITECO. Corto <1500 km ~0.15-0.25, largo ~0.15 sin forzamiento radiativo."
+huella.factor_autobus:
+  valor: [0.03, 0.05, 0.07]
+  unidad: "kgCO2e/pkm"
+  fuente: "Estimacion; SNCF 0.038, blog 0.065-0.070"
+  url: "https://www.miteco.gob.es/es/cambio-climatico/temas/mitigacion-politicas-y-medidas/factores-emision.html"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Depende de ocupacion."
+huella.factor_tren_cercanias:
+  valor: [0.02, 0.03, 0.05]
+  unidad: "kgCO2e/pkm"
+  fuente: "Estimacion (MITECO/AEMA); SNCF TGV 0.0035"
+  url: "https://www.miteco.gob.es/es/cambio-climatico/temas/mitigacion-politicas-y-medidas/factores-emision.html"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Cercanias electrico ~0.025-0.04 segun mix; sin fragmento."
+huella.factor_gasoleo_calefaccion_kgco2_kwh:
+  valor: 0.27
+  unidad: "kgCO2/kWh (PCI)"
+  fuente: "MITECO factor gasoleo ~2.868 kgCO2e/l (fragmento secundario de 2019) / ~10.0-10.7 kWh/l"
+  url: "https://www.miteco.gob.es/es/cambio-climatico/temas/mitigacion-politicas-y-medidas/factores-emision.html"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "2.868 kg/l / 10.6 kWh/l = 0.27; rango 0.26-0.28; dato de 2019 de terceros, no del dominio MITECO."
+huella.vuelos_tipicos_km:
+  valor: {corto: 1000, medio: 2500, largo: 8000}
+  unidad: "km"
+  fuente: "Supuesto (dato del encargo)"
+  url: "https://www.miteco.gob.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Supuesto de modelizacion."
+huella.media_hogar_espana_tco2:
+  valor: [2.0, 2.5, 3.5]
+  unidad: "tCO2e/ano por hogar (energia domestica y calefaccion, sin transporte)"
+  fuente: "Estimacion (INE cuentas de emisiones / Inventario MITECO); per capita total 6-8 t"
+  url: "https://www.ine.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Sin cifra oficial hallada; per capita total citado 5.95-8 t (fuentes secundarias)."
+huella.arboles_absorcion_kgco2_ano:
+  valor: [10, 20, 30]
+  unidad: "kgCO2/ano por arbol adulto"
+  fuente: "Fundacion Aquae (10-30 kg/ano) via resultados; calculadora MITECO no consultada"
+  url: "https://www.miteco.gob.es/es/cambio-climatico/temas/mitigacion-politicas-y-medidas/calculadoras.html"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Depende de especie y edad; fuente no oficial."

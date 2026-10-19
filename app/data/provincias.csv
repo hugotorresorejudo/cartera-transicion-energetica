@@ -1,0 +1,53 @@
+codigo,nombre,lat,lon,altitud_m,zona_cte,territorio
+01,Vitoria-Gasteiz,42.85,-2.67,525,D1,peninsular
+02,Albacete,38.99,-1.86,686,D3,peninsular
+03,Alicante,38.35,-0.48,3,B4,peninsular
+04,Almería,36.84,-2.46,16,A4,peninsular
+05,Ávila,40.66,-4.70,1132,E1,peninsular
+06,Badajoz,38.88,-6.97,186,C4,peninsular
+07,Palma,39.57,2.65,10,B3,balear
+08,Barcelona,41.39,2.17,12,C2,peninsular
+09,Burgos,42.34,-3.70,861,E1,peninsular
+10,Cáceres,39.47,-6.37,439,C4,peninsular
+11,Cádiz,36.53,-6.29,11,A3,peninsular
+12,Castellón de la Plana,39.99,-0.04,28,B3,peninsular
+13,Ciudad Real,38.99,-3.93,630,D3,peninsular
+14,Córdoba,37.89,-4.78,106,B4,peninsular
+15,A Coruña,43.37,-8.40,3,C1,peninsular
+16,Cuenca,40.07,-2.14,946,D2,peninsular
+17,Girona,41.98,2.82,75,D2,peninsular
+18,Granada,37.18,-3.60,689,C3,peninsular
+19,Guadalajara,40.63,-3.17,708,D3,peninsular
+20,Donostia-San Sebastián,43.32,-1.98,8,C1,peninsular
+21,Huelva,37.26,-6.95,56,B4,peninsular
+22,Huesca,42.14,-0.41,466,D2,peninsular
+23,Jaén,37.77,-3.79,574,C4,peninsular
+24,León,42.60,-5.57,838,E1,peninsular
+25,Lleida,41.62,0.62,155,D3,peninsular
+26,Logroño,42.47,-2.45,384,D2,peninsular
+27,Lugo,43.01,-7.56,465,D1,peninsular
+28,Madrid,40.42,-3.70,667,D3,peninsular
+29,Málaga,36.72,-4.42,11,A3,peninsular
+30,Murcia,37.98,-1.13,43,B3,peninsular
+31,Pamplona,42.82,-1.64,450,D1,peninsular
+32,Ourense,42.34,-7.86,143,C2,peninsular
+33,Oviedo,43.36,-5.85,232,C1,peninsular
+34,Palencia,42.01,-4.53,722,D1,peninsular
+35,Las Palmas de Gran Canaria,28.12,-15.43,8,alfa3,canario
+36,Pontevedra,42.43,-8.64,19,C1,peninsular
+37,Salamanca,40.97,-5.66,802,D2,peninsular
+38,Santa Cruz de Tenerife,28.47,-16.25,12,alfa3,canario
+39,Santander,43.46,-3.81,15,C1,peninsular
+40,Segovia,40.95,-4.12,1000,D2,peninsular
+41,Sevilla,37.39,-5.98,9,B4,peninsular
+42,Soria,41.76,-2.46,1063,E1,peninsular
+43,Tarragona,41.12,1.25,32,B3,peninsular
+44,Teruel,40.34,-1.11,915,D2,peninsular
+45,Toledo,39.86,-4.03,529,C4,peninsular
+46,Valencia,39.47,-0.38,15,B3,peninsular
+47,Valladolid,41.65,-4.72,698,D2,peninsular
+48,Bilbao,43.26,-2.93,19,C1,peninsular
+49,Zamora,41.50,-5.75,650,D2,peninsular
+50,Zaragoza,41.65,-0.89,208,D3,peninsular
+51,Ceuta,35.89,-5.32,10,B3,ceuta_melilla
+52,Melilla,35.29,-2.94,20,A3,ceuta_melilla

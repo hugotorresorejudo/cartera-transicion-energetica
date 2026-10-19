@@ -1,0 +1,321 @@
+fv.capex_residencial_eur_wp:
+  valor: [1.2, 1.6, 2.2]
+  unidad: "€/Wp con IVA, tejado residencial 2-6 kWp, sin batería"
+  fuente: "IDAE / UNEF (Anuario FV) - estimación propia a partir de rangos de mercado 2025-26"
+  url: "https://www.unef.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "La búsqueda no devolvió ningún precio en €/Wp de UNEF (solo potencia y nº de viviendas). Rango plausible 1,2-2,2 €/Wp llave en mano; 2-3 kWp en la parte alta, 5-6 kWp en la baja. IVA 21% salvo reducciones puntuales."
+fv.opex_anual_fraccion_capex:
+  valor: [0.005, 0.01, 0.015]
+  unidad: "fracción del CAPEX por año"
+  fuente: "Estimación propia (limpieza, seguro, revisiones)"
+  url: "https://www.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Supuesto. Rango plausible 0,5-1,5 %/año."
+fv.sustitucion_inversor_anio:
+  valor: [10, 13, 17]
+  unidad: "año desde la puesta en marcha"
+  fuente: "Garantías de fabricantes de inversores string"
+  url: "https://www.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Vida típica 10-15 años; microinversores y optimizadores duran más. Estimación."
+fv.sustitucion_inversor_coste_eur_kw:
+  valor: [120, 200, 300]
+  unidad: "€/kW (con instalación e IVA)"
+  fuente: "Estimación propia a partir de precios de mercado de inversores residenciales"
+  url: "https://www.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Rango plausible 120-300 €/kW; se espera que baje con el tiempo."
+fv.degradacion_anual:
+  valor: [0.003, 0.005, 0.007]
+  unidad: "fracción/año"
+  fuente: "Garantías lineales de fabricantes tier 1 (≈0,4-0,55 %/año) y NREL (mediana ≈0,5 %/año)"
+  url: "https://www.nrel.gov/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Sin fragmento verificado. Garantías típicas: 30 años con 87-90 % de potencia residual."
+fv.vida_util:
+  valor: [25, 30, 35]
+  unidad: "años"
+  fuente: "Garantías de producto y de rendimiento de fabricantes tier 1 (25-30 años)"
+  url: "https://www.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Estimación. Usar 25 años como horizonte financiero prudente."
+fv.potencia_modulo_w_m2:
+  valor: [190, 210, 225]
+  unidad: "W/m² de superficie de módulo"
+  fuente: "Fichas técnicas de módulos mono 400-450 Wp (≈1,72×1,13 m)"
+  url: "https://www.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "430 Wp / ≈1,95 m² ≈ 220 W/m²; 210 W/m² como central."
+fv.area_por_plaza_garaje_m2:
+  valor: [15, 15, 15]
+  unidad: "m² por plaza (CTE DB-SUA, 2,2×4,5 ≈ 10 m² útiles; 15 m² con maniobra)"
+  fuente: "CTE DB-SUA (codigotecnico.org)"
+  url: "https://www.codigotecnico.org/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Dato de memoria, sin fragmento del CTE."
+fv.area_tejado_por_kwp_m2:
+  valor: [5.0, 6.0, 8.0]
+  unidad: "m² de tejado útil por kWp"
+  fuente: "Derivado de potencia_modulo_w_m2 más separaciones y estructura"
+  url: "https://www.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "1000 W / 210 W/m² ≈ 4,8 m² de módulo por kWp; con pasillos, obstáculos y estructura en cubierta plana 6-8 m²/kWp."
+fv.perdidas_sombreado:
+  valor:
+    ninguna: [0.0, 0.02, 0.05]
+    parcial: [0.05, 0.10, 0.20]
+    mucha: [0.20, 0.30, 0.45]
+  unidad: "fracción de producción anual perdida"
+  fuente: "IDAE, Pliego de Condiciones Técnicas de instalaciones FV conectadas a red"
+  url: "https://www.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Criterio técnico, no citado literalmente. El pliego IDAE exige en general pérdidas por sombras inferiores al 10 % (de memoria)."
+fv.factor_orientacion_norte:
+  valor: [0.55, 0.65, 0.75]
+  unidad: "fracción de la producción de orientación sur, inclinación 30º"
+  fuente: "PVGIS (JRC, ec.europa.eu) - estimación"
+  url: "https://re.jrc.ec.europa.eu/pvg_tools/es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "No se ejecutó PVGIS. Orientación norte con 30º produce típicamente 55-70 % del sur en la península."
+fv.inclinacion_tejado_teja:
+  valor: [18, 22, 25]
+  unidad: "grados"
+  fuente: "Pendiente típica del 30-45 % (arctan 0,30 = 16,7º; 0,40 = 21,8º; 0,45 = 24,2º)"
+  url: "https://www.codigotecnico.org/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Conversión matemática desde la pendiente."
+fv.inclinacion_estructura_plana:
+  valor: [15, 25, 35]
+  unidad: "grados"
+  fuente: "Criterio de diseño FV (óptimo ≈30º en la península)"
+  url: "https://re.jrc.ec.europa.eu/pvg_tools/es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "En cubierta plana se usan 10-15º (viento, sombras entre filas) o 30º (máxima producción); 25º como compromiso."
+fv.precio_excedentes_medio:
+  valor: [0.04, 0.07, 0.10]
+  unidad: "€/kWh"
+  fuente: "Ofertas de comercializadoras y PVPC excedentes (referencia OMIE), CNMC"
+  url: "https://www.cnmc.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "La búsqueda no aportó precios de excedentes. Estimación: comercializadoras suelen pagar 0,04-0,10 €/kWh; el PVPC excedentes sigue el mercado horario, bajo en horas solares."
+fv.compensacion_simplificada_potencia_max_kw:
+  valor: 100
+  unidad: "kW"
+  fuente: "RD 244/2019, art. 4 (compensación simplificada, instalaciones renovables hasta 100 kW). Confirmado por resúmenes secundarios (Osborne Clarke, Pérez-Llorca)"
+  url: "https://www.boe.es/buscar/act.php?id=BOE-A-2019-5089"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Los fragmentos recuperados son de fuentes secundarias, no del BOE; por la regla del brief no se marca true."
+fv.compensacion_tope:
+  valor: "El valor económico de los excedentes compensados no puede superar el de la energía horaria consumida de la red en el periodo de facturación (máx. 1 mes), es decir, el término de energía de la factura; el saldo no se arrastra al mes siguiente."
+  unidad: "texto"
+  fuente: "RD 244/2019, art. 14. Resumen secundario (Osborne Clarke; SurgePV sobre no arrastre)"
+  url: "https://www.boe.es/buscar/act.php?id=BOE-A-2019-5089"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Fuente secundaria, sin fragmento del BOE. La no acumulación mensual procede de un blog comercial, menos fiable."
+fv.tasa_descuento_hogar:
+  valor: [0.02, 0.035, 0.05]
+  unidad: "fracción/año (real)"
+  fuente: "Supuesto de modelización"
+  url: "https://www.bde.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Supuesto del modelo, no un dato observable."
+fv.inflacion_electricidad:
+  valor: [0.0, 0.02, 0.04]
+  unidad: "fracción/año"
+  fuente: "Supuesto de modelización"
+  url: "https://www.ine.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Supuesto. 2 % alineado con el objetivo del BCE."
+fv.horas_equivalentes_espana:
+  valor: [1300, 1550, 1800]
+  unidad: "kWh/kWp·año, península, óptimo"
+  fuente: "PVGIS (JRC) / UNEF - estimación"
+  url: "https://re.jrc.ec.europa.eu/pvg_tools/es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Norte ≈1.250-1.400; centro ≈1.550-1.650; sur y Levante ≈1.650-1.800."
+deducciones.irpf_autoconsumo:
+  valor:
+    mejora_demanda_calefaccion_refrigeracion:
+      porcentaje: 0.20
+      limite_eur: 5000
+      vigencia: "Obras hasta 31-12-2026; certificado antes de 1-1-2027"
+    mejora_consumo_energia_primaria_no_renovable:
+      porcentaje: 0.40
+      limite_eur: 7500
+      vigencia: "Obras hasta 31-12-2026"
+    rehabilitacion_edificio_residencial:
+      porcentaje: 0.60
+      limite_eur: 15000
+      limite_anual_eur: 5000
+      vigencia: "Obras hasta 31-12-2027; certificado hasta 1-1-2028. Exceso sobre 5.000 €/año se traslada a los 4 ejercicios siguientes"
+    incompatible_con_ayudas_publicas: true
+  unidad: "% sobre inversión y límite en € de base"
+  fuente: "RDL 18/2022 (disp. adic. 50.ª LIRPF), prorrogado en 2026 por norma convalidada; la AEAT la cita como RDL 7/2026 de 20 de marzo"
+  url: "https://sede.agenciatributaria.gob.es/Sede/irpf/novedades-impuesto/novedades-normativa-2026/principales-novedades-tributarias-introducidas-real-marzo.html"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Los porcentajes y plazos proceden de prensa (construible.es, infobae) y no de un fragmento visible de la AEAT. Las fuentes discrepan en el número de la norma (RDL 16/2025, no convalidado según UNEF, frente a RDL 7/2026). Hay que confirmarlo en el BOE. El 40 % exige reducir un 30 % el consumo de energía primaria no renovable o alcanzar clase A/B."
+deducciones.ibi_fv_bonificacion:
+  valor:
+    porcentaje: [0.0, 0.30, 0.50]
+    duracion_anios: [3, 3, 5]
+  unidad: "% de la cuota del IBI, años"
+  fuente: "TRLHL art. 74.5 (hasta el 50 % para inmuebles con sistemas solares térmicos o eléctricos, por ordenanza). Fuentes: AEAT Madrid, Xataka Home"
+  url: "https://www.boe.es/buscar/act.php?id=BOE-A-2004-4214"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Confirmado en fuentes municipales y prensa, no en el BOE. Ejemplos: Madrid 50 % durante 5 periodos, Barcelona 3 años. Porcentaje y duración los fija cada ordenanza. La AEAT de Madrid indica que no ampara aerotermia ni geotermia."
+deducciones.icio_fv_bonificacion:
+  valor: [0.0, 0.50, 0.95]
+  unidad: "% de la cuota del ICIO"
+  fuente: "TRLHL art. 103.2.b (hasta el 95 % para construcciones con sistemas solares térmicos o eléctricos). Fuente: memoria ICIO del Ayuntamiento de Madrid"
+  url: "https://www.boe.es/buscar/act.php?id=BOE-A-2004-4214"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Confirmado en fuentes municipales, no en el BOE. Potestativa y dependiente de la ordenanza; algunos municipios la excluyen si la instalación es obligatoria por normativa."
+ayudas.nextgen_autoconsumo:
+  valor: [150, 300, 600]
+  unidad: "€/kWp (si hay convocatoria autonómica vigente)"
+  fuente: "IDAE, ayudas PRTR de autoconsumo y almacenamiento (RD 477/2021 y modificaciones)"
+  url: "https://www.idae.es/ayudas-y-financiacion"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "No contrastado en esta pasada. El PRTR cierra en 2026 y la disponibilidad varía por comunidad. Tratar como opcional."
+ayudas.nextgen_aerotermia:
+  valor: [500, 1500, 3000]
+  unidad: "€ por vivienda (ayudas renovables térmicas PRTR/FEDER)"
+  fuente: "IDAE, programas de renovables térmicas; convocatorias autonómicas"
+  url: "https://www.idae.es/ayudas-y-financiacion"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "No contrastado. Estimación plausible; depende de la comunidad y de la potencia."
+ayudas.nextgen_ve:
+  valor: [2000, 4500, 7000]
+  unidad: "€/vehículo BEV"
+  fuente: "MOVES III (prorrogado hasta 31-12-2025, sin nuevas solicitudes desde 2026, según RACE). Relevo: Plan Auto+ (Plan Auto 2030)"
+  url: "https://www.idae.es/ayudas-y-financiacion/para-movilidad-eficiente-y-sostenible/programa-moves-iii"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "No existe un MOVES 2026 confirmado. MOVES III daba hasta 7.000 € con achatarramiento y unos 4.500 € sin él; los expedientes de 2025 aún se resuelven en 2026. Los importes del Plan Auto+ no se han localizado: la cifra central es una estimación."
+ayudas.deduccion_irpf_ve:
+  valor:
+    compra_ve: {porcentaje: 0.15, limite_eur: 3000}
+    punto_recarga: {porcentaje: 0.15, limite_eur: 4000}
+    vigencia: "Hasta 31-12-2025 (RDL 5/2023 y prórroga). Prórroga a 2026 no confirmada."
+  unidad: "% y € de base"
+  fuente: "RDL 5/2023 (deducciones IRPF por compra de VE y puntos de recarga)"
+  url: "https://www.boe.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Dato de memoria. Una fuente indica que RDL 16/2025 (prórroga de deducciones) no fue convalidado; no se ha comprobado si la deducción VE sigue en 2026."
+ayudas.ivtm_bonificacion_ve:
+  valor: [0.25, 0.50, 0.75]
+  unidad: "% de la cuota del IVTM"
+  fuente: "TRLHL art. 95.6 (bonificación hasta 75 % por ordenanza)"
+  url: "https://www.boe.es/buscar/act.php?id=BOE-A-2004-4214"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Dato de memoria. Depende de la ordenanza municipal."
+ayudas.rehabilitacion_envolvente:
+  valor:
+    ahorro_30: {porcentaje: 0.40, tope_eur_vivienda: 3000}
+    ahorro_45: {porcentaje: 0.65, tope_eur_vivienda: 7000}
+    ahorro_60: {porcentaje: 0.80, tope_eur_vivienda: 11000}
+  unidad: "% de la inversión; € por vivienda"
+  fuente: "RD 853/2021 (programas de rehabilitación residencial PRTR)"
+  url: "https://www.boe.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Porcentajes y topes de memoria, con baja confianza; no contrastado. Varían por convocatoria autonómica."
+emisiones.factor_electricidad_mix_medio:
+  valor: [0.08, 0.10, 0.13]
+  unidad: "kgCO2/kWh, media peninsular (emisiones directas)"
+  fuente: "REE suministra factores a la CNMC; CNMC: media 2024 peninsular 80 gCO2eq/kWh (nacional 102). 2025 al alza por mayor uso de ciclos combinados (estimación del Observatorio de Sostenibilidad)"
+  url: "https://www.ree.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "El dato 2024 (0,080) procede de un artículo académico que cita a la CNMC; no hay cifra oficial de 2025. Moda 0,10 por el repunte de 2025."
+emisiones.factor_electricidad_comercializadora_sin_garantia:
+  valor: [0.25, 0.28, 0.32]
+  unidad: "kgCO2/kWh"
+  fuente: "CNMC, mix residual (comercializadoras sin garantías de origen)"
+  url: "https://www.cnmc.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "No contrastado en esta pasada. Estimación de memoria; contrastar con la última publicación de la CNMC."
+emisiones.fv_evitado_marginal:
+  valor: [0.33, 0.37, 0.40]
+  unidad: "kgCO2/kWh"
+  fuente: "Ciclo combinado de gas (tecnología marginal), MITECO / RITE"
+  url: "https://www.miteco.gob.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Valor técnico típico de un CCGT (≈0,35-0,40 kg/kWh). Sin fragmento verificado."
+almacenamiento.capex_bateria_eur_kwh:
+  valor: [450, 650, 900]
+  unidad: "€/kWh instalado, residencial, con IVA"
+  fuente: "IDAE / Wood Mackenzie - estimación de mercado 2025-26"
+  url: "https://www.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Sin fuente consultada. Las baterías pequeñas (5-10 kWh) quedan en la parte alta. Contexto UNEF: en 2025 el 61 % de las nuevas instalaciones residenciales ya incluía almacenamiento."
+almacenamiento.eficiencia_ciclo:
+  valor: [0.88, 0.92, 0.95]
+  unidad: "fracción (ida y vuelta, AC-AC)"
+  fuente: "Fichas técnicas de baterías LFP residenciales"
+  url: "https://www.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Estimación; las fichas suelen dar 90-96 % en CC."
+almacenamiento.dod_util:
+  valor: 0.90
+  unidad: "fracción de la capacidad nominal"
+  fuente: "Fichas técnicas LFP (90-100 % DoD)"
+  url: "https://www.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Estimación. Rango plausible 0,8-1,0."
+almacenamiento.vida_ciclos:
+  valor: 6000
+  unidad: "ciclos"
+  fuente: "Garantías de fabricantes de LFP residencial (6.000-10.000 ciclos)"
+  url: "https://www.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Estimación."
+almacenamiento.vida_calendario_anios:
+  valor: 12
+  unidad: "años"
+  fuente: "Garantías de fabricantes (10-15 años)"
+  url: "https://www.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Estimación. Rango plausible 10-15 años."
+almacenamiento.capacidades_comerciales_kwh:
+  valor: [3.6, 5, 5.12, 7.7, 10, 10.24, 13.5, 15]
+  unidad: "kWh"
+  fuente: "Catálogos comerciales de baterías residenciales"
+  url: "https://www.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Aproximación genérica; no se consultaron catálogos."

@@ -1,0 +1,6 @@
+{
+ "actualizado": "2026-10-19",
+ "sintetico": true,
+ "aviso": "Datos sintéticos de demostración generados por scripts/generar_sintetico.py; ejecuta scripts/fetch_data.py para los reales.",
+ "fuentes": {}
+}

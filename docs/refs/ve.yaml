@@ -1,0 +1,302 @@
+ve.precio_compra_ve_eur:
+  valor: {urbano: [18000,23000,28000], compacto: [28000,34000,42000], suv_berlina: [38000,46000,60000]}
+  unidad: "EUR con IVA, antes de ayudas"
+  fuente: "ANFAC / Autoscout24 / IDAE guía de vehículos"
+  url: "https://www.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Estimación de PVP de mercado español 2025-26 sin ayudas. Marcas chinas bajan el mínimo de urbano a ~17000."
+ve.precio_compra_gasolina_eur:
+  valor: {urbano: [14000,17000,20000], compacto: [20000,25000,30000], suv_berlina: [28000,34000,45000]}
+  unidad: "EUR con IVA"
+  fuente: "ANFAC / Autoscout24"
+  url: "https://anfac.com/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Estimación de PVP nuevo 2025-26."
+ve.precio_compra_diesel_eur:
+  valor: {urbano: [18000,20500,23000], compacto: [24000,28000,33000], suv_berlina: [32000,38000,50000]}
+  unidad: "EUR con IVA"
+  fuente: "ANFAC / Autoscout24"
+  url: "https://anfac.com/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Oferta diésel muy reducida en urbano; estimación."
+ve.precio_compra_hibrido_eur:
+  valor: {urbano: [20000,23000,26000], compacto: [26000,30000,36000], suv_berlina: [34000,40000,52000]}
+  unidad: "EUR con IVA (HEV no enchufable)"
+  fuente: "ANFAC / Autoscout24"
+  url: "https://anfac.com/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Estimación de PVP nuevo 2025-26."
+ve.precio_compra_phev_eur:
+  valor: {urbano: [25000,29000,33000], compacto: [33000,38000,45000], suv_berlina: [42000,50000,65000]}
+  unidad: "EUR con IVA, antes de ayudas"
+  fuente: "ANFAC / Autoscout24"
+  url: "https://anfac.com/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Estimación. Pocos modelos PHEV urbanos."
+ve.ayudas_compra:
+  valor: {deduccion_irpf_fraccion: 0.15, base_maxima_eur: 20000, tope_deduccion_eur: 3000, precio_max_turismo_eur: 54450, deduccion_punto_recarga_eur_max: 4000}
+  unidad: "mixto"
+  fuente: "Medios (Carwow, RACE, Mapfre) sobre RDL que recupera para 2026 la deducción IRPF del 15% por VE enchufable; programa MOVES cerrado, sustituido por Plan Auto+ (400 M EUR)"
+  url: "https://sede.agenciatributaria.gob.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Segunda pasada con WebSearch: solo fuentes secundarias, sin dominio primario. Las cifras del tope de recarga difieren entre medios (600 vs 4000 EUR). Importes de Plan Auto+ por confirmar en BOE/IDAE."
+ve.consumo_wltp_kwh_100km:
+  valor: {urbano: [12.5,14.0,16.0], compacto: [14.5,16.5,18.5], suv_berlina: [16.5,18.5,22.0]}
+  unidad: "kWh/100 km (WLTP combinado, a la batería/enchufe)"
+  fuente: "IDAE Guía de vehículos de turismo de venta en España"
+  url: "https://coches.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Rangos típicos de homologación WLTP. Contraste secundario: VW ID.4 16,9 kWh/100 km WLTP; fuente española orientativa: 12-13 bueno, 16-18 normal, >20 elevado. No se obtuvo la guía IDAE."
+ve.factor_consumo_real_vs_wltp:
+  valor: [1.10,1.20,1.30]
+  unidad: "multiplicador (>1)"
+  fuente: "Estudios ADAC / Geotab / EEA (consumo real vs homologado)"
+  url: "https://www.eea.europa.eu/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Desviación real habitual 10-30% según velocidad y uso. Aplicar sobre consumo WLTP a temperatura templada."
+ve.factor_temperatura_consumo:
+  valor: {0: [1.25,1.35,1.50], 5: [1.15,1.25,1.35], 10: [1.08,1.15,1.22], 15: [1.02,1.06,1.10], 20: [0.98,1.00,1.03], 25: [1.00,1.03,1.07], 30: [1.05,1.10,1.18], 35: [1.10,1.17,1.28]}
+  unidad: "multiplicador del consumo según T media mensual (°C)"
+  fuente: "Geotab (curva consumo/temperatura), ADAC, EEA"
+  url: "https://www.geotab.com/blog/ev-range/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Óptimo ~20-22 °C. Aproximación de la literatura; interpolar linealmente."
+ice.consumo_l_100km:
+  valor:
+    gasolina: {urbano: [5.0,5.8,6.8], compacto: [5.5,6.5,7.5], suv_berlina: [6.5,7.5,9.0]}
+    diesel: {urbano: [4.3,5.0,5.8], compacto: [4.5,5.3,6.2], suv_berlina: [5.2,6.0,7.2]}
+    hibrido: {urbano: [3.8,4.4,5.2], compacto: [4.2,4.9,5.6], suv_berlina: [5.0,5.7,6.8]}
+    phev: {urbano: [1.0,1.5,2.0], compacto: [1.2,1.6,2.2], suv_berlina: [1.5,2.0,2.8]}
+  unidad: "L/100 km (WLTP combinado)"
+  fuente: "IDAE Guía de vehículos de turismo de venta en España"
+  url: "https://coches.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "PHEV es el WLTP ponderado con utility factor; con batería agotada 5.5-7.5 L/100 km. Aplicar también factor real vs WLTP (~1.15-1.25) a ICE/HEV."
+ve.eficiencia_carga_domestica:
+  valor: [0.85,0.90,0.93]
+  unidad: "fracción (energía a batería / energía de red)"
+  fuente: "ICCT y estudios de pérdidas de carga AC (Idaho National Lab, ADAC)"
+  url: "https://theicct.org/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Pérdidas de 7-15% según potencia, temperatura y estado de batería."
+ve.coste_mantenimiento_ve_eur_km:
+  valor: [0.015,0.025,0.035]
+  unidad: "EUR/km"
+  fuente: "Estudios de TCO (ADAC, ICCT, Leaseplan)"
+  url: "https://theicct.org/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Incluye revisiones, frenos y neumáticos. Aprox. 30-50% menos que ICE."
+ice.coste_mantenimiento_eur_km:
+  valor: [0.040,0.055,0.075]
+  unidad: "EUR/km"
+  fuente: "Estudios de TCO (ADAC, ICCT, Leaseplan)"
+  url: "https://theicct.org/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Incluye revisiones, frenos, neumáticos y averías."
+ve.seguro_anual_eur:
+  valor: [350,500,750]
+  unidad: "EUR/año"
+  fuente: "Comparadores de seguros (supuesto)"
+  url: "https://www.dgsfp.mineco.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "VE suele costar 10-20% más por reparación y batería. Depende de edad, provincia y cobertura."
+ice.seguro_anual_eur:
+  valor: [300,450,650]
+  unidad: "EUR/año"
+  fuente: "Comparadores de seguros (supuesto)"
+  url: "https://www.dgsfp.mineco.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Estimación; ver ve.seguro_anual_eur."
+ve.valor_residual_fraccion:
+  valor:
+    ve: {3: [0.48,0.52,0.62], 5: [0.36,0.45,0.53], 8: [0.25,0.32,0.40], 10: [0.18,0.24,0.32], 12: [0.12,0.17,0.24]}
+    ice: {3: [0.60,0.66,0.72], 5: [0.48,0.55,0.62], 8: [0.30,0.38,0.45], 10: [0.22,0.29,0.36], 12: [0.15,0.21,0.28]}
+  unidad: "fracción del precio de compra, por años de antigüedad"
+  fuente: "OCU/BEUC (3 años, 45000 km: VE pierde 50%, PHEV 39%, diésel 36%, gasolina 33%); Ganvam-DAT (VE a 36 meses 52,5%); iSeeCars (VE a 5 años ~39%)"
+  url: "https://www.ocu.org/coches/coches/consejos/comprar-coche-electrico-segunda-mano"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Ajustado con WebSearch a 3 y 5 años (fuentes secundarias). Años 8-12 siguen siendo extrapolación. La brecha VE-gasolina se reduce en 2025 (de 12,9 a 7,7 puntos). No se obtuvo Autavia/Eurotax."
+impuestos.ivtm_medio_eur:
+  valor: [72,95,140]
+  unidad: "EUR/año (turismo 12-15,99 CVF; 16-19,99 CVF desde 89,61 base)"
+  fuente: "TRLRHL art. 95: cuota base 71,94 EUR (12-15,99 CVF) vista en boletín provincial de Guadalajara 2025 y ordenanza de Llerena; coeficientes municipales (p.ej. 1,80 -> 129,49 EUR en San Pedro del Pinatar)"
+  url: "https://www.boe.es/buscar/act.php?id=BOE-A-2004-4214"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "La cuota base 71,94 está respaldada por fuentes municipales, no por fragmento de boe.es. El coeficiente municipal puede llegar hasta 2. Bonificaciones de hasta 75% a eléctricos en muchos ayuntamientos."
+ve.coste_carga_publica_eur_kwh:
+  valor: {ac: [0.35,0.45,0.55], dc: [0.45,0.58,0.75]}
+  unidad: "EUR/kWh con IVA"
+  fuente: "Observatorio de la Movilidad Eléctrica / ANFAC / Electromaps"
+  url: "https://www.electromaps.com/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Estimación. Ultrarrápida >150 kW puede llegar a 0.80-0.90."
+ve.fraccion_carga_publica_por_aparcamiento:
+  valor: {garaje_propio: [0.00,0.05,0.15], garaje_comunitario: [0.05,0.15,0.35], calle: [0.50,0.75,0.95]}
+  unidad: "fracción de la energía anual cargada en puntos públicos"
+  fuente: "Supuesto del modelo"
+  url: "https://www.miteco.gob.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Supuesto."
+ve.km_fin_de_semana_ano:
+  valor: [2500,4000,6000]
+  unidad: "km/año"
+  fuente: "MITMA EMOVE / INE; supuesto"
+  url: "https://www.transportes.gob.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Supuesto de ocio y fin de semana; no es dato directo de la encuesta."
+ve.km_viaje_largo:
+  valor: [250,400,700]
+  unidad: "km por viaje largo (ida)"
+  fuente: "Supuesto del modelo"
+  url: "https://www.transportes.gob.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Supuesto."
+ve.penalizacion_carga_comunitaria:
+  valor: "Sin penalización legal: el derecho a instalar el punto de recarga no puede denegarse y no requiere acuerdo de la junta, solo comunicación previa a la comunidad. Coste a cargo del solicitante."
+  unidad: "nota"
+  fuente: "Ley 49/1960 de Propiedad Horizontal art. 17.5; RD 1053/2014 ITC-BT-52"
+  url: "https://www.boe.es/buscar/act.php?id=BOE-A-1960-10906"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Recordado de la norma, sin fragmento. Penalización real de coste y plazo."
+combustibles.precio_gasolina_95_eur_l:
+  valor: [1.65,1.85,2.05]
+  unidad: "EUR/L"
+  fuente: "Geoportal MITECO (vía fuel-prices.eu: 1,85 EUR/L el 1-oct-2026; Carwow: 1,86 el 14-sep-2026)"
+  url: "https://geoportalgasolineras.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Corregido de 1.55 a 1.85 con agregadores secundarios. Hubo rebaja fiscal de carburantes que vencía el 30-sep-2026. Gasolina +4,6% entre 3-ago y 10-oct. Sin fragmento de dominio primario."
+combustibles.precio_diesel_eur_l:
+  valor: [1.65,1.85,2.05]
+  unidad: "EUR/L"
+  fuente: "Geoportal MITECO (vía Carwow: gasóleo A 1,84 EUR/L el 14-sep-2026; fuel-prices.eu: diésel +3,8% entre 3-ago y 10-oct)"
+  url: "https://geoportalgasolineras.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Corregido de 1.45 a ~1.85. Fuentes secundarias."
+combustibles.inflacion_anual:
+  valor: [0.01,0.02,0.04]
+  unidad: "fracción anual"
+  fuente: "Supuesto del modelo"
+  url: "https://www.miteco.gob.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Supuesto."
+emisiones.gasolina_kgco2_l:
+  valor: 2.30
+  unidad: "kgCO2/L (combustión)"
+  fuente: "MITECO Factores de emisión (registro huella de carbono) / RITE; contraste secundario: Michelin 2,31"
+  url: "https://www.miteco.gob.es/content/dam/miteco/es/cambio-climatico/temas/mitigacion-politicas-y-medidas/factoresemision_tcm30-479095.pdf"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "El PDF MITECO apareció en resultados pero el fragmento no mostraba el valor por litro. Rango 2.20-2.35."
+emisiones.diesel_kgco2_l:
+  valor: 2.65
+  unidad: "kgCO2/L (combustión)"
+  fuente: "MITECO Factores de emisión / RITE; contraste secundario: Michelin 2,67; Inventario nacional 74,10 kgCO2/GJ gasóleo"
+  url: "https://www.miteco.gob.es/content/dam/miteco/es/cambio-climatico/temas/mitigacion-politicas-y-medidas/factoresemision_tcm30-479095.pdf"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Corregido de 2.63 a 2.65. Fragmento primario sin valor por litro. Rango 2.50-2.70."
+emisiones.pozo_a_rueda_gasolina_kgco2_l:
+  valor: 2.76
+  unidad: "kgCO2e/L (incluye upstream)"
+  fuente: "JRC WTT / MITECO"
+  url: "https://joint-research-centre.ec.europa.eu/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Combustión 2.30 + upstream ~0.46. Rango 2.65-2.90."
+emisiones.pozo_a_rueda_diesel_kgco2_l:
+  valor: 3.22
+  unidad: "kgCO2e/L (incluye upstream)"
+  fuente: "JRC WTT / MITECO"
+  url: "https://joint-research-centre.ec.europa.eu/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Combustión 2.65 + upstream ~0.57. Rango 3.05-3.35."
+emisiones.hibrido_reduccion_fraccion:
+  valor: [0.25,0.30,0.38]
+  unidad: "fracción de consumo ahorrada vs gasolina equivalente"
+  fuente: "IDAE guía de vehículos / estudios ICCT"
+  url: "https://theicct.org/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "HEV no enchufable. Mayor ahorro en ciudad."
+emisiones.phev_fraccion_electrica_uso_real:
+  valor: [0.25,0.40,0.55]
+  unidad: "fracción de km en modo eléctrico (utility factor real)"
+  fuente: "ICCT / EEA / Fraunhofer (uso real)"
+  url: "https://theicct.org/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "UF de homologación ~0.7-0.8; real europeo 0.25-0.45."
+cargador.precio_wallbox_instalado_eur:
+  valor: {3.7: [900,1100,1500], 7.4: [1000,1300,1800], 11: [1200,1600,2200]}
+  unidad: "EUR con IVA, instalación incluida"
+  fuente: "Presupuestos de instaladores / IDAE (supuesto)"
+  url: "https://www.idae.es/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "11 kW exige línea trifásica. Instalaciones complejas añaden 500-1500."
+cargador.potencias_kw:
+  valor: [3.7,7.4,11]
+  unidad: "kW"
+  fuente: "RD 1053/2014 ITC-BT-52 / catálogo de mercado"
+  url: "https://www.boe.es/buscar/act.php?id=BOE-A-2014-12623"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Monofásico 3.7 y 7.4; trifásico 11. También existe 22 kW."
+cargador.potencia_contratada_min_ve:
+  valor: {3.7: {sin_gestion_dinamica: 6.9, con_gestion_dinamica: 5.75}, 7.4: {sin_gestion_dinamica: 11.5, con_gestion_dinamica: 6.9}}
+  unidad: "kW de potencia contratada recomendada"
+  fuente: "RD 1053/2014 ITC-BT-52; gestión dinámica de potencia"
+  url: "https://www.boe.es/buscar/act.php?id=BOE-A-2014-12623"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Estimación: base del hogar (~3-4 kW) más cargador. Escalones: 5.75, 6.9, 8.05, 9.2, 10.35, 11.5 kW."
+cargador.eficiencia:
+  valor: [0.90,0.93,0.95]
+  unidad: "fracción"
+  fuente: "Estudios de pérdidas de carga AC (ICCT, INL)"
+  url: "https://theicct.org/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Refuerza ve.eficiencia_carga_domestica. No acumular ambas."
+cargador.factor_simultaneidad_ve:
+  valor: 1.0
+  unidad: "factor"
+  fuente: "ITC-BT-10 y ITC-BT-52 (RD 842/2002; RD 1053/2014)"
+  url: "https://www.boe.es/buscar/act.php?id=BOE-A-2014-12623"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "La recarga VE se considera con simultaneidad 1 en la previsión de cargas; con gestión dinámica puede justificarse menor. Recordado, sin fragmento."
+ve.vida_bateria_garantia:
+  valor: {anos: [8,8,10], km: [100000,160000,200000], estado_salud_minimo: 0.70}
+  unidad: "años / km / fracción SoH"
+  fuente: "Garantías estándar de fabricantes; Reglamento (UE) 2023/1542"
+  url: "https://eur-lex.europa.eu/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Estándar 8 años o 160000 km con SoH >=70%."

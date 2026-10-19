@@ -1,0 +1,4524 @@
+# Generado por scripts/merge_refs.py a partir de docs/refs/*.yaml. No editar a mano: editar la fuente y volver a fusionar.
+acs.bdc_cop_nominal_acs:
+  fecha_consulta: '2026-10-19'
+  fuente: Fichas de fabricantes de BdC ACS monobloc; UE 812/2013
+  nota: Estimación. Rango plausible 2,6-4,2 según modelo.
+  unidad: COP (EN 16147, A7, 15→55 ºC, perfil L)
+  url: https://eur-lex.europa.eu/
+  valor:
+  - 2.8
+  - 3.3
+  - 3.8
+  verificado: false
+acs.bdc_eficiencia_carnot_fraccion:
+  fecha_consulta: '2026-10-19'
+  fuente: Literatura técnica (IEA HPT; estudios de campo)
+  nota: Estimación; la literatura no se consultó en esta sesión.
+  unidad: fracción (COP real / COP Carnot)
+  url: https://heatpumpingtechnologies.org/
+  valor:
+  - 0.3
+  - 0.4
+  - 0.5
+  verificado: false
+acs.bdc_perdidas_espera_kwh_24h:
+  fecha_consulta: '2026-10-19'
+  fuente: Fichas de fabricantes; UE 812/2013
+  nota: Estimación para depósito de 200 L acumulado a ~55 ºC.
+  unidad: kWh/24h (200 L)
+  url: https://eur-lex.europa.eu/
+  valor:
+  - 0.6
+  - 0.9
+  - 1.4
+  verificado: false
+acs.bdc_tmin_aire_c:
+  fecha_consulta: '2026-10-19'
+  fuente: Fichas de fabricantes
+  nota: Algunos modelos operan hasta -15 ºC con apoyo; la mayoría de monobloc de 200 L, -7 a -5 ºC.
+  unidad: ºC (límite de operación sin apoyo eléctrico)
+  url: https://www.idae.es/
+  valor:
+  - -10
+  - -7
+  - -5
+  verificado: false
+acs.capex_bdc_acs_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación de mercado; IDAE
+  nota: Sin subvenciones ni deducciones fiscales. Contrastar con presupuestos.
+  unidad: € instalado 200 L, IVA incluido
+  url: https://www.idae.es/
+  valor:
+  - 1800
+  - 2600
+  - 3800
+  verificado: false
+acs.capex_calentador_gas_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación de mercado
+  nota: Calentador estanco de 11-14 L/min con instalación. No contrastado.
+  unidad: € instalado, IVA incluido
+  url: https://www.idae.es/
+  valor:
+  - 350
+  - 550
+  - 900
+  verificado: false
+acs.capex_termo_electrico_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación de mercado 2025-26
+  nota: Termo de 80-100 L con instalación. No contrastado con precios de 2026.
+  unidad: € instalado, IVA incluido
+  url: https://www.idae.es/
+  valor:
+  - 250
+  - 400
+  - 650
+  verificado: false
+acs.caudal_alcachofa_l_min:
+  fecha_consulta: '2026-10-19'
+  fuente: UNE-EN 1112 / etiquetado de griferías (IDAE, Agencia de la Energía)
+  nota: Estimación. Una ducha estándar sin limitador suele estar en 10-15 L/min.
+  unidad: L/min
+  url: https://www.idae.es/
+  valor:
+    ahorradora:
+    - 5
+    - 6
+    - 8
+    estandar:
+    - 10
+    - 12
+    - 15
+    lluvia:
+    - 14
+    - 17
+    - 22
+  verificado: false
+acs.demanda_referencia_l_persona_dia_60c:
+  fecha_consulta: '2026-10-19'
+  fuente: CTE DB-HE 2019 modificado 2022, HE 4 tabla 4.1 y Anejo F (demanda de referencia de ACS)
+  nota: 'El fragmento de normatia.com (secundaria) cita 28 L/pers·día a 60 ºC para uso residencial privado.
+    No procede de dominio primario. Ocupación mínima de cálculo: 1 dormitorio 1,5 pers; 2 dormitorios
+    3; 3 dormitorios 4; 4 dormitorios 5; 5 dormitorios 6; 6 dormitorios 6; 7 o más 7. Anejo F: D(T)=D(60)·(60−Tred)/(T−Tred).
+    Valor anterior DB-HE 2006/2013: 30 L.'
+  unidad: L/persona·día a 60 ºC
+  url: https://normatia.com/es/normativa/cte-db-he/2022/anejo-f-demanda-de-referencia-de-acs/
+  valor: 28
+  verificado: false
+acs.duracion_ducha_min:
+  fecha_consulta: '2026-10-19'
+  fuente: Tramos de respuesta del usuario; supuesto de la herramienta
+  nota: No es una fuente externa. El tramo mas10 se acota a 18 min.
+  unidad: min
+  url: https://www.idae.es/
+  valor:
+    5a10:
+    - 5
+    - 7
+    - 10
+    mas10:
+    - 10
+    - 12
+    - 18
+    menos5:
+    - 3
+    - 4
+    - 5
+  verificado: false
+acs.mantenimiento_anual_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación; el calentador de gas incluye la revisión obligatoria periódica prorrateada
+  nota: Estimación.
+  unidad: €/año
+  url: https://www.idae.es/
+  valor:
+    bdc:
+    - 40
+    - 80
+    - 150
+    calentador_gas:
+    - 60
+    - 90
+    - 130
+    termo_electrico:
+    - 0
+    - 10
+    - 30
+  verificado: false
+acs.otros_usos_l_persona_dia:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación a partir de la demanda de referencia CTE (28 L a 60 ºC) y guías IDAE
+  nota: Estimación. Rango plausible 6-18 L.
+  unidad: L/persona·día a ~40 ºC (lavabo y cocina)
+  url: https://www.idae.es/
+  valor:
+  - 8
+  - 10
+  - 14
+  verificado: false
+acs.perdidas_espera_termo_kwh_24h:
+  fecha_consulta: '2026-10-19'
+  fuente: Reglamento UE 812/2013 (límites de pérdidas por volumen), fichas de fabricantes
+  nota: Estimación para ΔT ~45 K sobre ambiente. Rango según etiqueta B/C.
+  unidad: kWh/24h por volumen (L)
+  url: https://eur-lex.europa.eu/
+  valor:
+    '100':
+    - 1.2
+    - 1.5
+    - 1.9
+    '150':
+    - 1.6
+    - 2.0
+    - 2.6
+    '50':
+    - 0.7
+    - 0.9
+    - 1.1
+    '80':
+    - 1.0
+    - 1.3
+    - 1.6
+  verificado: false
+acs.rendimiento_caldera_condensacion_pcs:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación; ErP; IDAE (guía de calderas)
+  nota: Sobre PCI hasta 1,05-1,09, es decir 0,95-0,98 sobre PCS en condiciones óptimas. En servicio real
+    de ACS baja a 0,88-0,92.
+  unidad: fracción sobre PCS
+  url: https://www.idae.es/
+  valor:
+  - 0.88
+  - 0.92
+  - 0.97
+  verificado: false
+acs.rendimiento_caldera_estandar_pcs:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación; IDAE
+  nota: Caldera estándar o de baja temperatura. Rendimiento estacional real sobre PCI 80-90 %.
+  unidad: fracción sobre PCS
+  url: https://www.idae.es/
+  valor:
+  - 0.72
+  - 0.78
+  - 0.84
+  verificado: false
+acs.rendimiento_calentador_gas:
+  fecha_consulta: '2026-10-19'
+  fuente: Reglamentos UE 811/2013 y 814/2013; fichas de fabricantes (etiqueta ErP A/B)
+  nota: 'Estimación. Calentador instantáneo estanco: 85-88 % sobre PCI, unos 76-80 % sobre PCS. Caldera
+    mixta de condensación: ver claves siguientes (sobre PCS 0,90-0,98 nominal).'
+  unidad: fracción sobre PCS
+  url: https://eur-lex.europa.eu/
+  valor:
+  - 0.78
+  - 0.84
+  - 0.9
+  verificado: false
+acs.rendimiento_termo_electrico:
+  fecha_consulta: '2026-10-19'
+  fuente: Reglamentos UE 812/2013 y 814/2013
+  nota: Rendimiento de resistencia ~1. La eficiencia ErP perfil M/L, ηwh, ronda 0,35-0,40 sobre energía
+    primaria (coef. 2,5). Pérdidas estimadas, sin dato de fabricante.
+  unidad: fracción / kWh/24h
+  url: https://eur-lex.europa.eu/
+  valor:
+    etiqueta_B_perdidas_kwh_24h_100L:
+    - 1.2
+    - 1.5
+    - 1.8
+    etiqueta_C_perdidas_kwh_24h_100L:
+    - 1.5
+    - 1.9
+    - 2.4
+    rendimiento_fraccion:
+    - 0.95
+    - 0.98
+    - 1.0
+  verificado: false
+acs.t_acumulacion_c:
+  fecha_consulta: '2026-10-19'
+  fuente: RD 487/2022 (legionela); RITE IT 1.1.4.3
+  nota: 'Mínimo 60 ºC en acumulación; 70 ºC para tratamiento térmico periódico. Bomba de calor: uso diario
+    50-55 ºC ([50,55,60]) con ciclos antilegionela a 60 ºC o más. No se verificó el apartado exacto de
+    IT 1.1.4.3.'
+  unidad: ºC
+  url: https://www.boe.es/
+  valor:
+  - 60
+  - 60
+  - 70
+  verificado: false
+acs.t_red_mensual_capitales:
+  fecha_consulta: '2026-10-19'
+  fuente: CTE DB-HE 4, Anejo G (temperatura media del agua fría por capital) / UNE 94002
+  nota: No se encontró la tabla oficial en ningún fragmento de búsqueda (el fragmento secundario indica
+    que está en el Anejo G). Valores reconstruidos de memoria (patrón sinusoidal ligado a la temperatura
+    del aire, retardo de 1-2 meses), error esperado ±1-2 ºC. Sustituir por el Anejo G cuando haya acceso.
+    Se omiten capitales sin estimación fiable (Segovia, Avila, Cuenca, Guadalajara, Palencia, Zamora,
+    Ourense, Lugo, Ciudad Real, Ceuta, Melilla, etc.).
+  unidad: ºC (ene..dic)
+  url: https://www.codigotecnico.org/
+  valor:
+    A Coruna:
+    - 10
+    - 10
+    - 11
+    - 12
+    - 13
+    - 15
+    - 16
+    - 17
+    - 16
+    - 15
+    - 12
+    - 10
+    Albacete:
+    - 7
+    - 8
+    - 10
+    - 12
+    - 14
+    - 17
+    - 20
+    - 20
+    - 18
+    - 14
+    - 10
+    - 7
+    Alicante:
+    - 12
+    - 12
+    - 13
+    - 15
+    - 17
+    - 20
+    - 22
+    - 22
+    - 21
+    - 18
+    - 15
+    - 12
+    Almeria:
+    - 13
+    - 13
+    - 14
+    - 16
+    - 18
+    - 20
+    - 22
+    - 23
+    - 22
+    - 19
+    - 16
+    - 13
+    Badajoz:
+    - 10
+    - 11
+    - 12
+    - 14
+    - 17
+    - 20
+    - 23
+    - 23
+    - 20
+    - 17
+    - 13
+    - 10
+    Barcelona:
+    - 10
+    - 10
+    - 11
+    - 13
+    - 15
+    - 18
+    - 20
+    - 20
+    - 19
+    - 16
+    - 13
+    - 10
+    Bilbao:
+    - 9
+    - 9
+    - 10
+    - 11
+    - 13
+    - 15
+    - 17
+    - 17
+    - 16
+    - 14
+    - 11
+    - 9
+    Burgos:
+    - 5
+    - 6
+    - 8
+    - 9
+    - 11
+    - 14
+    - 16
+    - 16
+    - 14
+    - 11
+    - 8
+    - 5
+    Caceres:
+    - 9
+    - 10
+    - 12
+    - 14
+    - 17
+    - 20
+    - 23
+    - 23
+    - 20
+    - 16
+    - 12
+    - 9
+    Cadiz:
+    - 13
+    - 13
+    - 14
+    - 15
+    - 17
+    - 19
+    - 21
+    - 22
+    - 21
+    - 19
+    - 16
+    - 13
+    Castellon:
+    - 11
+    - 11
+    - 12
+    - 14
+    - 16
+    - 19
+    - 21
+    - 21
+    - 20
+    - 17
+    - 14
+    - 11
+    Cordoba:
+    - 10
+    - 11
+    - 12
+    - 14
+    - 17
+    - 20
+    - 23
+    - 23
+    - 20
+    - 17
+    - 13
+    - 10
+    Girona:
+    - 8
+    - 9
+    - 10
+    - 12
+    - 14
+    - 17
+    - 19
+    - 19
+    - 17
+    - 14
+    - 11
+    - 8
+    Granada:
+    - 8
+    - 9
+    - 11
+    - 13
+    - 16
+    - 19
+    - 22
+    - 22
+    - 19
+    - 15
+    - 11
+    - 8
+    Huelva:
+    - 12
+    - 12
+    - 14
+    - 15
+    - 18
+    - 20
+    - 22
+    - 22
+    - 21
+    - 18
+    - 15
+    - 12
+    Huesca:
+    - 7
+    - 8
+    - 10
+    - 12
+    - 14
+    - 17
+    - 19
+    - 19
+    - 17
+    - 14
+    - 10
+    - 7
+    Jaen:
+    - 9
+    - 10
+    - 12
+    - 14
+    - 17
+    - 20
+    - 23
+    - 23
+    - 20
+    - 16
+    - 12
+    - 9
+    Las Palmas:
+    - 16
+    - 16
+    - 16
+    - 17
+    - 18
+    - 19
+    - 20
+    - 21
+    - 21
+    - 20
+    - 18
+    - 17
+    Leon:
+    - 6
+    - 7
+    - 8
+    - 10
+    - 12
+    - 15
+    - 17
+    - 17
+    - 15
+    - 12
+    - 8
+    - 6
+    Lleida:
+    - 8
+    - 9
+    - 11
+    - 13
+    - 15
+    - 18
+    - 20
+    - 20
+    - 18
+    - 15
+    - 11
+    - 8
+    Logrono:
+    - 8
+    - 9
+    - 10
+    - 12
+    - 14
+    - 17
+    - 19
+    - 19
+    - 17
+    - 14
+    - 10
+    - 8
+    Madrid:
+    - 8
+    - 8
+    - 10
+    - 12
+    - 14
+    - 17
+    - 20
+    - 19
+    - 17
+    - 14
+    - 10
+    - 8
+    Malaga:
+    - 12
+    - 12
+    - 13
+    - 15
+    - 17
+    - 20
+    - 22
+    - 22
+    - 21
+    - 18
+    - 15
+    - 12
+    Murcia:
+    - 11
+    - 11
+    - 13
+    - 15
+    - 17
+    - 20
+    - 22
+    - 22
+    - 20
+    - 17
+    - 14
+    - 11
+    Oviedo:
+    - 9
+    - 9
+    - 10
+    - 11
+    - 13
+    - 15
+    - 17
+    - 17
+    - 16
+    - 14
+    - 11
+    - 9
+    Palma:
+    - 11
+    - 11
+    - 12
+    - 14
+    - 16
+    - 19
+    - 21
+    - 22
+    - 20
+    - 17
+    - 14
+    - 12
+    Pamplona:
+    - 7
+    - 8
+    - 9
+    - 11
+    - 13
+    - 16
+    - 18
+    - 18
+    - 16
+    - 13
+    - 9
+    - 7
+    Pontevedra:
+    - 10
+    - 10
+    - 11
+    - 12
+    - 14
+    - 16
+    - 18
+    - 18
+    - 17
+    - 15
+    - 12
+    - 10
+    Salamanca:
+    - 6
+    - 7
+    - 9
+    - 11
+    - 13
+    - 16
+    - 18
+    - 18
+    - 16
+    - 13
+    - 9
+    - 6
+    Santa Cruz de Tenerife:
+    - 16
+    - 16
+    - 16
+    - 17
+    - 18
+    - 19
+    - 20
+    - 21
+    - 21
+    - 20
+    - 18
+    - 17
+    Santander:
+    - 10
+    - 10
+    - 11
+    - 12
+    - 13
+    - 15
+    - 17
+    - 17
+    - 16
+    - 14
+    - 12
+    - 10
+    Sevilla:
+    - 11
+    - 12
+    - 13
+    - 15
+    - 18
+    - 21
+    - 23
+    - 23
+    - 21
+    - 18
+    - 14
+    - 11
+    Soria:
+    - 5
+    - 6
+    - 7
+    - 9
+    - 11
+    - 14
+    - 16
+    - 16
+    - 14
+    - 11
+    - 7
+    - 5
+    Tarragona:
+    - 10
+    - 10
+    - 12
+    - 14
+    - 16
+    - 19
+    - 21
+    - 21
+    - 20
+    - 17
+    - 13
+    - 10
+    Teruel:
+    - 6
+    - 7
+    - 9
+    - 11
+    - 13
+    - 16
+    - 18
+    - 18
+    - 16
+    - 13
+    - 9
+    - 6
+    Toledo:
+    - 9
+    - 9
+    - 11
+    - 13
+    - 16
+    - 19
+    - 22
+    - 22
+    - 19
+    - 15
+    - 11
+    - 8
+    Valencia:
+    - 11
+    - 11
+    - 12
+    - 14
+    - 16
+    - 19
+    - 21
+    - 21
+    - 20
+    - 17
+    - 14
+    - 11
+    Valladolid:
+    - 6
+    - 7
+    - 9
+    - 11
+    - 13
+    - 16
+    - 18
+    - 18
+    - 16
+    - 13
+    - 9
+    - 6
+    Vitoria:
+    - 7
+    - 7
+    - 9
+    - 10
+    - 12
+    - 15
+    - 17
+    - 17
+    - 15
+    - 12
+    - 9
+    - 7
+    Zaragoza:
+    - 8
+    - 9
+    - 11
+    - 13
+    - 15
+    - 18
+    - 20
+    - 20
+    - 18
+    - 15
+    - 11
+    - 8
+  verificado: false
+acs.t_referencia_c:
+  fecha_consulta: '2026-10-19'
+  fuente: CTE DB-HE 4, Anejo F
+  nota: Coherente con el fragmento secundario anterior. No visto en dominio primario.
+  unidad: ºC
+  url: https://www.codigotecnico.org/
+  valor: 60
+  verificado: false
+acs.t_uso_ducha_c:
+  fecha_consulta: '2026-10-19'
+  fuente: Práctica habitual; guías IDAE de ahorro en agua caliente
+  nota: Estimación. Rango plausible 36-42 ºC.
+  unidad: ºC
+  url: https://www.idae.es/
+  valor:
+  - 37
+  - 38
+  - 40
+  verificado: false
+acs.vida_util_bdc:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación; IDAE
+  nota: Estimación.
+  unidad: años
+  url: https://www.idae.es/
+  valor:
+  - 12
+  - 15
+  - 20
+  verificado: false
+acs.vida_util_calentador:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación; IDAE
+  nota: Estimación.
+  unidad: años
+  url: https://www.idae.es/
+  valor:
+  - 10
+  - 13
+  - 15
+  verificado: false
+acs.vida_util_termo:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación; IDAE / RITE IT 2
+  nota: Depende mucho de la dureza del agua.
+  unidad: años
+  url: https://www.idae.es/
+  valor:
+  - 8
+  - 12
+  - 15
+  verificado: false
+acs.volumen_banera_l:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación; catálogos de fabricantes
+  nota: Volumen de agua mezclada en un baño típico. Rango plausible 100-250 L.
+  unidad: L
+  url: https://www.idae.es/
+  valor:
+  - 120
+  - 150
+  - 200
+  verificado: false
+almacenamiento.capacidades_comerciales_kwh:
+  fecha_consulta: '2026-10-19'
+  fuente: Catálogos comerciales de baterías residenciales
+  nota: Aproximación genérica; no se consultaron catálogos.
+  unidad: kWh
+  url: https://www.idae.es/
+  valor:
+  - 3.6
+  - 5
+  - 5.12
+  - 7.7
+  - 10
+  - 10.24
+  - 13.5
+  - 15
+  verificado: false
+almacenamiento.capex_bateria_eur_kwh:
+  fecha_consulta: '2026-10-19'
+  fuente: IDAE / Wood Mackenzie - estimación de mercado 2025-26
+  nota: 'Sin fuente consultada. Las baterías pequeñas (5-10 kWh) quedan en la parte alta. Contexto UNEF:
+    en 2025 el 61 % de las nuevas instalaciones residenciales ya incluía almacenamiento.'
+  unidad: €/kWh instalado, residencial, con IVA
+  url: https://www.idae.es/
+  valor:
+  - 450
+  - 650
+  - 900
+  verificado: false
+almacenamiento.degradacion_anual_bateria:
+  fecha_consulta: '2026-10-19'
+  fuente: 'Garantias tipicas LFP: 70% a 10-12 anios o 6.000 ciclos (ej. Panasonic EV-X10: 70% a 12 anios)'
+  nota: Garantia 70% a 10-12 anios implica 2,5-3%/anio maximo garantizado; degradacion real tipica 1-2%.
+  unidad: fraccion/anio
+  url: https://www.portlandiaelectric.supply/products/panasonic-evervolt-evhb-i7-x10-9-0kwh
+  valor:
+  - 0.01
+  - 0.02
+  - 0.03
+  verificado: false
+almacenamiento.dod_util:
+  fecha_consulta: '2026-10-19'
+  fuente: Fichas técnicas LFP (90-100 % DoD)
+  nota: Estimación. Rango plausible 0,8-1,0.
+  unidad: fracción de la capacidad nominal
+  url: https://www.idae.es/
+  valor: 0.9
+  verificado: false
+almacenamiento.eficiencia_ciclo:
+  fecha_consulta: '2026-10-19'
+  fuente: Fichas técnicas de baterías LFP residenciales
+  nota: Estimación; las fichas suelen dar 90-96 % en CC.
+  unidad: fracción (ida y vuelta, AC-AC)
+  url: https://www.idae.es/
+  valor:
+  - 0.88
+  - 0.92
+  - 0.95
+  verificado: false
+almacenamiento.potencia_inversor_hibrido_kw:
+  fecha_consulta: '2026-10-19'
+  fuente: Catalogos (POM 3/5/10 kW; Sungrow SH10T 10 kW trifasico)
+  nota: Fuentes comerciales; rango residencial tipico 3-10 kW (monofasico hasta ~6 kW).
+  unidad: kW
+  url: https://www.solartraders.com/es/products/inversor/sungrow-sh10t
+  valor:
+  - 3
+  - 5
+  - 10
+  verificado: false
+almacenamiento.vida_calendario_anios:
+  fecha_consulta: '2026-10-19'
+  fuente: Garantías de fabricantes (10-15 años)
+  nota: Estimación. Rango plausible 10-15 años.
+  unidad: años
+  url: https://www.idae.es/
+  valor: 12
+  verificado: false
+almacenamiento.vida_ciclos:
+  fecha_consulta: '2026-10-19'
+  fuente: Garantías de fabricantes de LFP residencial (6.000-10.000 ciclos)
+  nota: Estimación.
+  unidad: ciclos
+  url: https://www.idae.es/
+  valor: 6000
+  verificado: false
+ayudas.deduccion_irpf_ve:
+  fecha_consulta: '2026-10-19'
+  fuente: RDL 5/2023 (deducciones IRPF por compra de VE y puntos de recarga)
+  nota: Dato de memoria. Una fuente indica que RDL 16/2025 (prórroga de deducciones) no fue convalidado;
+    no se ha comprobado si la deducción VE sigue en 2026.
+  unidad: '% y € de base'
+  url: https://www.boe.es/
+  valor:
+    compra_ve:
+      limite_eur: 3000
+      porcentaje: 0.15
+    punto_recarga:
+      limite_eur: 4000
+      porcentaje: 0.15
+    vigencia: Hasta 31-12-2025 (RDL 5/2023 y prórroga). Prórroga a 2026 no confirmada.
+  verificado: false
+ayudas.ivtm_bonificacion_ve:
+  fecha_consulta: '2026-10-19'
+  fuente: TRLHL art. 95.6 (bonificación hasta 75 % por ordenanza)
+  nota: Dato de memoria. Depende de la ordenanza municipal.
+  unidad: '% de la cuota del IVTM'
+  url: https://www.boe.es/buscar/act.php?id=BOE-A-2004-4214
+  valor:
+  - 0.25
+  - 0.5
+  - 0.75
+  verificado: false
+ayudas.nextgen_aerotermia:
+  fecha_consulta: '2026-10-19'
+  fuente: IDAE, programas de renovables térmicas; convocatorias autonómicas
+  nota: No contrastado. Estimación plausible; depende de la comunidad y de la potencia.
+  unidad: € por vivienda (ayudas renovables térmicas PRTR/FEDER)
+  url: https://www.idae.es/ayudas-y-financiacion
+  valor:
+  - 500
+  - 1500
+  - 3000
+  verificado: false
+ayudas.nextgen_autoconsumo:
+  fecha_consulta: '2026-10-19'
+  fuente: IDAE, ayudas PRTR de autoconsumo y almacenamiento (RD 477/2021 y modificaciones)
+  nota: No contrastado en esta pasada. El PRTR cierra en 2026 y la disponibilidad varía por comunidad.
+    Tratar como opcional.
+  unidad: €/kWp (si hay convocatoria autonómica vigente)
+  url: https://www.idae.es/ayudas-y-financiacion
+  valor:
+  - 150
+  - 300
+  - 600
+  verificado: false
+ayudas.nextgen_ve:
+  fecha_consulta: '2026-10-19'
+  fuente: 'MOVES III (prorrogado hasta 31-12-2025, sin nuevas solicitudes desde 2026, según RACE). Relevo:
+    Plan Auto+ (Plan Auto 2030)'
+  nota: 'No existe un MOVES 2026 confirmado. MOVES III daba hasta 7.000 € con achatarramiento y unos 4.500
+    € sin él; los expedientes de 2025 aún se resuelven en 2026. Los importes del Plan Auto+ no se han
+    localizado: la cifra central es una estimación.'
+  unidad: €/vehículo BEV
+  url: https://www.idae.es/ayudas-y-financiacion/para-movilidad-eficiente-y-sostenible/programa-moves-iii
+  valor:
+  - 2000
+  - 4500
+  - 7000
+  verificado: false
+ayudas.rehabilitacion_envolvente:
+  fecha_consulta: '2026-10-19'
+  fuente: RD 853/2021 (programas de rehabilitación residencial PRTR)
+  nota: Porcentajes y topes de memoria, con baja confianza; no contrastado. Varían por convocatoria autonómica.
+  unidad: '% de la inversión; € por vivienda'
+  url: https://www.boe.es/
+  valor:
+    ahorro_30:
+      porcentaje: 0.4
+      tope_eur_vivienda: 3000
+    ahorro_45:
+      porcentaje: 0.65
+      tope_eur_vivienda: 7000
+    ahorro_60:
+      porcentaje: 0.8
+      tope_eur_vivienda: 11000
+  verificado: false
+calefaccion.bdc_capex_aerotermia_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación de mercado; IDAE
+  nota: Sin subvención. Con cambio de emisores puede llegar a 18.000 € o más.
+  unidad: € instalada vivienda 80-120 m²
+  url: https://www.idae.es/
+  valor:
+  - 8000
+  - 12000
+  - 16000
+  verificado: false
+calefaccion.bdc_scop_aerotermia:
+  fecha_consulta: '2026-10-19'
+  fuente: Reglamento UE 813/2013 (clima medio); estudios de campo
+  nota: El SCOP de etiqueta (clima medio, 35 ºC) suele ser 4,5-5,2. Aquí se descuenta para uso real. Con
+    radiadores a 55 ºC, reducir ~25 %.
+  unidad: SCOP
+  url: https://eur-lex.europa.eu/
+  valor:
+    A:
+    - 4.2
+    - 4.8
+    - 5.3
+    B:
+    - 4.0
+    - 4.5
+    - 5.0
+    C:
+    - 3.7
+    - 4.2
+    - 4.7
+    D:
+    - 3.4
+    - 3.9
+    - 4.4
+    E:
+    - 3.2
+    - 3.6
+    - 4.1
+  verificado: false
+calefaccion.caldera_gas_rendimiento_estacional_pcs:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación; Reglamento UE 813/2013; IDAE
+  nota: Condensación bien regulada 0,88-0,92. Estándar antigua 0,70-0,78.
+  unidad: fracción sobre PCS
+  url: https://www.idae.es/
+  valor:
+  - 0.78
+  - 0.86
+  - 0.92
+  verificado: false
+calefaccion.capex_caldera_condensacion_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación de mercado
+  nota: No contrastado con 2026.
+  unidad: € instalada, IVA incluido
+  url: https://www.idae.es/
+  valor:
+  - 1800
+  - 2600
+  - 3800
+  verificado: false
+calefaccion.demanda_kwh_m2_ano_por_zona:
+  fecha_consulta: '2026-10-19'
+  fuente: Orden de magnitud de IDAE SPAHOUSEC y CTE
+  nota: Estimación para el parque medio. Es demanda útil, no consumo final. Depende de la antigüedad (ver
+    multiplicador).
+  unidad: kWh/m²·año (demanda de calefacción, vivienda media)
+  url: https://www.idae.es/
+  valor:
+    A:
+    - 10
+    - 15
+    - 25
+    B:
+    - 20
+    - 30
+    - 45
+    C:
+    - 35
+    - 50
+    - 70
+    D:
+    - 55
+    - 75
+    - 100
+    E:
+    - 80
+    - 105
+    - 140
+  verificado: false
+calefaccion.demanda_vs_anio_construccion:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación; NBE-CT-79, CTE 2006 y CTE 2013/2019
+  nota: 'Estimación. Rango plausible: pre-1980 1,2-1,7; 2007+ 0,4-0,7.'
+  unidad: multiplicador
+  url: https://www.codigotecnico.org/
+  valor:
+    1980-2006: 1.0
+    2007+: 0.55
+    pre-1980: 1.4
+  verificado: false
+calefaccion.mantenimiento_caldera_eur_ano:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación; RITE IT 3 exige revisión periódica
+  nota: Estimación.
+  unidad: €/año
+  url: https://www.boe.es/
+  valor:
+  - 80
+  - 110
+  - 160
+  verificado: false
+cargador.eficiencia:
+  fecha_consulta: '2026-10-19'
+  fuente: Estudios de pérdidas de carga AC (ICCT, INL)
+  nota: Refuerza ve.eficiencia_carga_domestica. No acumular ambas.
+  unidad: fracción
+  url: https://theicct.org/
+  valor:
+  - 0.9
+  - 0.93
+  - 0.95
+  verificado: false
+cargador.factor_simultaneidad_ve:
+  fecha_consulta: '2026-10-19'
+  fuente: ITC-BT-10 y ITC-BT-52 (RD 842/2002; RD 1053/2014)
+  nota: La recarga VE se considera con simultaneidad 1 en la previsión de cargas; con gestión dinámica
+    puede justificarse menor. Recordado, sin fragmento.
+  unidad: factor
+  url: https://www.boe.es/buscar/act.php?id=BOE-A-2014-12623
+  valor: 1.0
+  verificado: false
+cargador.potencia_contratada_min_ve:
+  fecha_consulta: '2026-10-19'
+  fuente: RD 1053/2014 ITC-BT-52; gestión dinámica de potencia
+  nota: 'Estimación: base del hogar (~3-4 kW) más cargador. Escalones: 5.75, 6.9, 8.05, 9.2, 10.35, 11.5
+    kW.'
+  unidad: kW de potencia contratada recomendada
+  url: https://www.boe.es/buscar/act.php?id=BOE-A-2014-12623
+  valor:
+    3.7:
+      con_gestion_dinamica: 5.75
+      sin_gestion_dinamica: 6.9
+    7.4:
+      con_gestion_dinamica: 6.9
+      sin_gestion_dinamica: 11.5
+  verificado: false
+cargador.potencias_kw:
+  fecha_consulta: '2026-10-19'
+  fuente: RD 1053/2014 ITC-BT-52 / catálogo de mercado
+  nota: Monofásico 3.7 y 7.4; trifásico 11. También existe 22 kW.
+  unidad: kW
+  url: https://www.boe.es/buscar/act.php?id=BOE-A-2014-12623
+  valor:
+  - 3.7
+  - 7.4
+  - 11
+  verificado: false
+cargador.precio_wallbox_instalado_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: Presupuestos de instaladores / IDAE (supuesto)
+  nota: 11 kW exige línea trifásica. Instalaciones complejas añaden 500-1500.
+  unidad: EUR con IVA, instalación incluida
+  url: https://www.idae.es/
+  valor:
+    3.7:
+    - 900
+    - 1100
+    - 1500
+    7.4:
+    - 1000
+    - 1300
+    - 1800
+    11:
+    - 1200
+    - 1600
+    - 2200
+  verificado: false
+cocina.capex_gas_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación de mercado
+  nota: Placa de gas, sin instalación.
+  unidad: €
+  url: https://www.idae.es/
+  valor:
+  - 150
+  - 250
+  - 500
+  verificado: false
+cocina.capex_induccion_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación de mercado
+  nota: Placa de 3 zonas, sin instalación.
+  unidad: €
+  url: https://www.idae.es/
+  valor:
+  - 250
+  - 450
+  - 900
+  verificado: false
+cocina.gas_consumo_kwh_ano_persona:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación derivada de IDAE SPAHOUSEC
+  nota: Estimación; SPAHOUSEC da cocina por vivienda (~2,5 personas).
+  unidad: kWh/persona·año (energía final)
+  url: https://www.idae.es/
+  valor:
+  - 250
+  - 330
+  - 450
+  verificado: false
+cocina.induccion_consumo_kwh_ano_persona:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación derivada de IDAE SPAHOUSEC
+  nota: Estimación.
+  unidad: kWh/persona·año (energía final)
+  url: https://www.idae.es/
+  valor:
+  - 150
+  - 200
+  - 270
+  verificado: false
+cocina.instalacion_induccion_adicional_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación de mercado
+  nota: Línea dedicada y protección; hasta 800 € si hay obra. La ampliación de potencia contratada va
+    aparte.
+  unidad: €
+  url: https://www.idae.es/
+  valor:
+  - 0
+  - 200
+  - 800
+  verificado: false
+cocina.rendimiento_gas_cocina:
+  fecha_consulta: '2026-10-19'
+  fuente: Estudios de laboratorio de eficiencia de cocinado
+  nota: Típico ~40 %; quemadores eficientes hasta ~55 %.
+  unidad: fracción
+  url: https://www.idae.es/
+  valor:
+  - 0.35
+  - 0.4
+  - 0.55
+  verificado: false
+cocina.rendimiento_induccion:
+  fecha_consulta: '2026-10-19'
+  fuente: Estudios de laboratorio de eficiencia de cocinado
+  nota: Típico ~84 % de transferencia al recipiente. No se consultó un estudio concreto.
+  unidad: fracción
+  url: https://www.idae.es/
+  valor:
+  - 0.8
+  - 0.85
+  - 0.9
+  verificado: false
+combustibles.inflacion_anual:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del modelo
+  nota: Supuesto.
+  unidad: fracción anual
+  url: https://www.miteco.gob.es/
+  valor:
+  - 0.01
+  - 0.02
+  - 0.04
+  verificado: false
+combustibles.precio_diesel_eur_l:
+  fecha_consulta: '2026-10-19'
+  fuente: 'Geoportal MITECO (vía Carwow: gasóleo A 1,84 EUR/L el 14-sep-2026; fuel-prices.eu: diésel +3,8%
+    entre 3-ago y 10-oct)'
+  nota: Corregido de 1.45 a ~1.85. Fuentes secundarias.
+  unidad: EUR/L
+  url: https://geoportalgasolineras.es/
+  valor:
+  - 1.65
+  - 1.85
+  - 2.05
+  verificado: false
+combustibles.precio_gasolina_95_eur_l:
+  fecha_consulta: '2026-10-19'
+  fuente: 'Geoportal MITECO (vía fuel-prices.eu: 1,85 EUR/L el 1-oct-2026; Carwow: 1,86 el 14-sep-2026)'
+  nota: Corregido de 1.55 a 1.85 con agregadores secundarios. Hubo rebaja fiscal de carburantes que vencía
+    el 30-sep-2026. Gasolina +4,6% entre 3-ago y 10-oct. Sin fragmento de dominio primario.
+  unidad: EUR/L
+  url: https://geoportalgasolineras.es/
+  valor:
+  - 1.65
+  - 1.85
+  - 2.05
+  verificado: false
+comunidad.ayudas_comunidad_energetica:
+  fecha_consulta: '2026-10-19'
+  fuente: MITECO nota de prensa mayo 2026; La Moncloa oct 2025
+  nota: Verificado solo el cierre del programa, 262 comunidades y 108,4 M EUR (fragmento miteco.gob.es).
+    No hay nueva convocatoria CE Implementa en 2026; el resto proviene de fuentes secundarias.
+  unidad: nota
+  url: https://www.miteco.gob.es/es/prensa/ultimas-noticias/2026/mayo/el-miteco-ha-impulsado-la-creacion-de-262-comunidades-energetica.html
+  valor:
+    IVACE_C_Valenciana: hasta 45%, max 200000 EUR (2024)
+    OTC: segunda convocatoria prevista, 10 M EUR
+    inversion_max_proyecto_conv5: 1 M EUR
+    programa_CE_Implementa: cerrado tras 6 convocatorias; 262 comunidades; unos 108,4 M EUR PRTR asignados
+  verificado: true
+comunidad.bonificaciones_ibi_comunidad:
+  fecha_consulta: '2026-10-19'
+  fuente: TRLRHL art. 74.5 (conocimiento general)
+  nota: No buscado con fragmento; comprobar ordenanza local.
+  unidad: nota
+  url: https://sede.agenciatributaria.gob.es/
+  valor: Los ayuntamientos pueden bonificar hasta el 50% de la cuota del IBI (art. 74.5 TRLRHL) para inmuebles
+    con aprovechamiento solar; ICIO hasta 95%. Depende de ordenanza municipal.
+  verificado: false
+comunidad.capex_fv_comunitaria_eur_wp:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion (UNEF/IDAE)
+  nota: Busqueda sin cifra EUR/Wp; estimacion de mercado.
+  unidad: EUR/Wp con IVA, 20-100 kWp
+  url: https://www.unef.es/
+  valor:
+  - 1.0
+  - 1.25
+  - 1.6
+  verificado: false
+comunidad.coeficientes_reparto_tipos:
+  fecha_consulta: '2026-10-19'
+  fuente: Orden TED/1247/2021 (modifica Anexo I RD 244/2019)
+  nota: Fuentes secundarias coherentes; no dominio primario.
+  unidad: descriptivo
+  url: https://eseficiencia.es/2021/11/18/nuevo-mecanismo-reparto-produccion-energia-autoconsumo-compartido
+  valor:
+    estaticos: Fijos todo el ano; segun potencia contratada, aportacion economica u otro criterio acordado
+      por todos los participantes; suman 1.
+    variables: 'Orden TED/1247/2021: un coeficiente por hora (8760), modificables cada 4 meses; deben
+      sumar 1 en cada hora.'
+  verificado: false
+comunidad.coste_gestion_anual_eur_participante:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion
+  nota: Gestor/reparto/administracion; supuesto.
+  unidad: EUR/ano por participante
+  url: https://www.idae.es/
+  valor:
+  - 15
+  - 30
+  - 60
+  verificado: false
+comunidad.distancia_max_autoconsumo_colectivo_m:
+  fecha_consulta: '2026-10-19'
+  fuente: RD 244/2019; RDL 29/2021; RD 477/2021 (via Osborne Clarke, presentaciones)
+  nota: Los resultados citan 500 m y 2000 m para FV en cubierta/suelo industrial (RD 244/2019 original),
+    y que RDL 29/2021 quita el requisito de BT; no hay fragmento primario BOE. Confirmar texto consolidado
+    de art. 3 RD 244/2019.
+  unidad: m
+  url: https://www.osborneclarke.com/es/insights/publicado-el-real-decreto-ley-292021-de-21-de-diciembre-por-el-que-se-adoptan-medidas
+  valor:
+    baja_tension: RDL 29/2021 amplia a red BT del mismo transformador ... y elimina conexion exclusiva
+      a BT
+    fv_cubierta_o_suelo_industrial_o_estructuras: 2000
+    general: 500
+    referencia_catastral: mismos 14 primeros digitos = proximidad
+  verificado: false
+comunidad.numero_tipico_vecinos:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto; caso Zaragoza 50 kWp con 70 viviendas
+  nota: Rango supuesto.
+  unidad: participantes
+  url: https://www.zaragoza.es/contenidos/urbanismo/energia/talleres_transformacion_comunitaria/Taller_Casetas_CIRCE.pdf
+  valor:
+  - 8
+  - 20
+  - 70
+  verificado: false
+comunidad.potencia_max_compensacion_kw:
+  fecha_consulta: '2026-10-19'
+  fuente: RD 244/2019 art. 4 (compensacion simplificada, potencia <= 100 kW)
+  nota: Dato del encargo y conocimiento general; sin fragmento.
+  unidad: kW
+  url: https://www.boe.es/buscar/act.php?id=BOE-A-2019-5089
+  valor: 100
+  verificado: false
+consumo.electrico_medio_hogar:
+  fecha_consulta: '2026-10-19'
+  fuente: IDAE SPAHOUSEC / Endesa
+  nota: Rango 2.700-3.800.
+  unidad: kWh/año
+  url: https://www.endesa.com/es/blog/blog-de-endesa/luz/consumo-energetico-hogares-espana
+  valor: 3000
+  verificado: false
+consumo.electrico_por_tipo_vivienda:
+  fecha_consulta: '2026-10-19'
+  fuente: IDAE SPAHOUSEC (estimación)
+  nota: Aproximado.
+  unidad: kWh/año
+  url: https://www.miteco.gob.es/content/dam/miteco/images/es/estudio_spahousec-ii_270619_tcm30-498994.pdf
+  valor:
+    piso: 2500
+    unifamiliar: 4800
+  verificado: false
+consumo.reparto_usos_hogar:
+  fecha_consulta: '2026-10-19'
+  fuente: IDAE SPAHOUSEC II
+  nota: De memoria; energía total, no solo eléctrica.
+  unidad: fracción energía total
+  url: https://www.miteco.gob.es/content/dam/miteco/images/es/estudio_spahousec-ii_270619_tcm30-498994.pdf
+  valor:
+    ACS: 0.19
+    calefaccion: 0.47
+    cocina: 0.07
+    electrodomesticos: 0.22
+    iluminacion: 0.04
+    refrigeracion: 0.01
+  verificado: false
+datadis.formato_csv_curva_carga:
+  fecha_consulta: '2026-10-19'
+  fuente: Datadis (conocimiento general); Endesa explica que la curva horaria agrega lecturas cuartohorarias
+  nota: La busqueda no devolvio ninguna pagina de Datadis; formato de memoria. El parser debe tolerar
+    variantes (columnas extra, fecha YYYY/MM/DD, Metodo_obtencion = R real / E estimado).
+  unidad: descriptivo
+  url: https://www.endesa.com/es/la-cara-e/sector-energetico/que-es-la-curva-horaria
+  valor:
+    columnas: CUPS;Fecha;Hora;Consumo_kWh;Metodo_obtencion
+    decimal: ','
+    fecha: DD/MM/YYYY
+    hora: 1-24 (1-25 en dia de cambio horario de octubre, 1-23 en marzo)
+    resolucion: horaria; la contadora digital registra cuartohorario y Datadis puede ofrecer 15 min desde
+      2025/2026 (no confirmado)
+    separador: ;
+  verificado: false
+datadis.url_portal:
+  fecha_consulta: '2026-10-19'
+  fuente: Datadis
+  nota: No aparecio en resultados; URL del organismo conocido.
+  unidad: url
+  url: https://datadis.es
+  valor: https://datadis.es
+  verificado: false
+deducciones.ibi_fv_bonificacion:
+  fecha_consulta: '2026-10-19'
+  fuente: 'TRLHL art. 74.5 (hasta el 50 % para inmuebles con sistemas solares térmicos o eléctricos, por
+    ordenanza). Fuentes: AEAT Madrid, Xataka Home'
+  nota: 'Confirmado en fuentes municipales y prensa, no en el BOE. Ejemplos: Madrid 50 % durante 5 periodos,
+    Barcelona 3 años. Porcentaje y duración los fija cada ordenanza. La AEAT de Madrid indica que no ampara
+    aerotermia ni geotermia.'
+  unidad: '% de la cuota del IBI, años'
+  url: https://www.boe.es/buscar/act.php?id=BOE-A-2004-4214
+  valor:
+    duracion_anios:
+    - 3
+    - 3
+    - 5
+    porcentaje:
+    - 0.0
+    - 0.3
+    - 0.5
+  verificado: false
+deducciones.icio_fv_bonificacion:
+  fecha_consulta: '2026-10-19'
+  fuente: 'TRLHL art. 103.2.b (hasta el 95 % para construcciones con sistemas solares térmicos o eléctricos).
+    Fuente: memoria ICIO del Ayuntamiento de Madrid'
+  nota: Confirmado en fuentes municipales, no en el BOE. Potestativa y dependiente de la ordenanza; algunos
+    municipios la excluyen si la instalación es obligatoria por normativa.
+  unidad: '% de la cuota del ICIO'
+  url: https://www.boe.es/buscar/act.php?id=BOE-A-2004-4214
+  valor:
+  - 0.0
+  - 0.5
+  - 0.95
+  verificado: false
+deducciones.irpf_autoconsumo:
+  fecha_consulta: '2026-10-19'
+  fuente: RDL 18/2022 (disp. adic. 50.ª LIRPF), prorrogado en 2026 por norma convalidada; la AEAT la cita
+    como RDL 7/2026 de 20 de marzo
+  nota: Los porcentajes y plazos proceden de prensa (construible.es, infobae) y no de un fragmento visible
+    de la AEAT. Las fuentes discrepan en el número de la norma (RDL 16/2025, no convalidado según UNEF,
+    frente a RDL 7/2026). Hay que confirmarlo en el BOE. El 40 % exige reducir un 30 % el consumo de energía
+    primaria no renovable o alcanzar clase A/B.
+  unidad: '% sobre inversión y límite en € de base'
+  url: https://sede.agenciatributaria.gob.es/Sede/irpf/novedades-impuesto/novedades-normativa-2026/principales-novedades-tributarias-introducidas-real-marzo.html
+  valor:
+    incompatible_con_ayudas_publicas: true
+    mejora_consumo_energia_primaria_no_renovable:
+      limite_eur: 7500
+      porcentaje: 0.4
+      vigencia: Obras hasta 31-12-2026
+    mejora_demanda_calefaccion_refrigeracion:
+      limite_eur: 5000
+      porcentaje: 0.2
+      vigencia: Obras hasta 31-12-2026; certificado antes de 1-1-2027
+    rehabilitacion_edificio_residencial:
+      limite_anual_eur: 5000
+      limite_eur: 15000
+      porcentaje: 0.6
+      vigencia: Obras hasta 31-12-2027; certificado hasta 1-1-2028. Exceso sobre 5.000 €/año se traslada
+        a los 4 ejercicios siguientes
+  verificado: false
+electrodomesticos.ciclo_energia_kwh:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion a partir de Reglamentos UE 2019/2014 y 2019/2023 (etiqueta en kWh/100 ciclos, programa
+    Eco 40-60 / Eco)
+  nota: 'Busqueda confirmo base de 100 ciclos y programa Eco 40-60; no hay cifras kWh por ciclo. Valores
+    tipicos de mercado, estimados. Cons. IDAE: lavadora ~254 kWh/anio, lavavajillas ~245 kWh/anio.'
+  unidad: kWh por ciclo
+  url: https://eur-lex.europa.eu/eli/reg_del/2019/2014/oj
+  valor:
+    lavadora_40:
+    - 0.6
+    - 0.8
+    - 1.0
+    lavadora_60:
+    - 0.8
+    - 1.0
+    - 1.2
+    lavadora_eco_40_60:
+    - 0.5
+    - 0.65
+    - 0.8
+    lavavajillas_eco:
+    - 0.75
+    - 0.9
+    - 1.05
+    secadora_bomba_calor:
+    - 1.0
+    - 1.3
+    - 1.8
+    secadora_condensacion:
+    - 2.2
+    - 2.8
+    - 3.5
+  verificado: false
+electrodomesticos.consumo_anual:
+  fecha_consulta: '2026-10-19'
+  fuente: IDAE / UE 2017/1369 (estimación)
+  nota: Estimaciones plausibles.
+  unidad: kWh/año [min,moda,max]
+  url: https://www.idae.es
+  valor:
+    congelador:
+    - 150
+    - 250
+    - 350
+    horno:
+    - 100
+    - 150
+    - 250
+    iluminacion_hogar:
+    - 150
+    - 300
+    - 500
+    lavadora:
+    - 100
+    - 150
+    - 250
+    lavavajillas:
+    - 200
+    - 250
+    - 350
+    nevera_combi:
+    - 200
+    - 300
+    - 400
+    ordenador:
+    - 50
+    - 150
+    - 300
+    secadora:
+    - 200
+    - 300
+    - 600
+    standby_total:
+    - 130
+    - 200
+    - 400
+    television:
+    - 80
+    - 130
+    - 250
+  verificado: false
+electrodomesticos.consumo_standby_hogar:
+  fecha_consulta: '2026-10-19'
+  fuente: IDAE/OCU (estimación)
+  nota: 'Endesa: standby ~6,6%.'
+  unidad: W
+  url: https://www.endesa.com/es/blog/blog-de-endesa/luz/consumo-energetico-hogares-espana
+  valor:
+  - 15
+  - 25
+  - 50
+  verificado: false
+electrodomesticos.potencia_nominal_kw:
+  fecha_consulta: '2026-10-19'
+  fuente: Fichas de fabricantes (estimación)
+  nota: Valores típicos.
+  unidad: kW [min,moda,max]
+  url: https://www.idae.es
+  valor:
+    bomba_piscina:
+    - 0.5
+    - 0.75
+    - 1.5
+    calefaccion_radiadores:
+    - 1.5
+    - 3.0
+    - 6.0
+    cargador_ve:
+    - 3.7
+    - 3.7
+    - 7.4
+    horno:
+    - 1.5
+    - 2.2
+    - 3.5
+    induccion_3_fuegos:
+    - 3.7
+    - 6.0
+    - 7.4
+    lavadora:
+    - 1.8
+    - 2.0
+    - 2.4
+    lavavajillas:
+    - 1.8
+    - 2.0
+    - 2.4
+    microondas:
+    - 0.7
+    - 1.2
+    - 1.5
+    plancha:
+    - 1.8
+    - 2.2
+    - 3.0
+    secadora:
+    - 1.5
+    - 2.5
+    - 3.0
+    split_aire_acondicionado:
+    - 0.7
+    - 1.2
+    - 2.5
+    termo_electrico:
+    - 1.2
+    - 1.5
+    - 2.0
+  verificado: false
+electrodomesticos.usos_semana_por_persona:
+  fecha_consulta: '2026-10-19'
+  fuente: 'Supuesto OCU (lavadora y secadora 4/semana, lavavajillas 1/dia) via Menorca.info; IDAE penetracion:
+    lavadora 92,9%, lavavajillas 53%, secadora 28,3%'
+  nota: IDAE no publica frecuencia semanal en lo hallado; son por hogar, no por persona. Estimacion.
+  unidad: usos/semana/hogar
+  url: https://www.menorca.info/actualidad/dudas-respuestas/2025/02/15/2324357/secadora-lavavajillas-descubre-electrodomestico-mas-electricidad-consume.html
+  valor:
+    lavadora_por_hogar:
+    - 3
+    - 4
+    - 5
+    lavavajillas_por_hogar:
+    - 4
+    - 6
+    - 7
+    secadora_por_hogar:
+    - 1
+    - 2
+    - 4
+  verificado: false
+electrodomesticos.ventana_programable:
+  fecha_consulta: '2026-10-19'
+  fuente: Criterio de diseno del proyecto
+  nota: Nota descriptiva, sin cifra a verificar.
+  unidad: nota
+  url: https://www.idae.es
+  valor: Programar ciclos en horas valle/solares (P3 2.0TD 00-08h y fines de semana, o 10-18h con autoconsumo).
+    Lavadoras/lavavajillas admiten diferido 1-24 h; secadora tras lavadora.
+  verificado: false
+emisiones.acv_por_tecnologia_gco2_kwh:
+  fecha_consulta: '2026-10-19'
+  fuente: IPCC AR5 WGIII Anexo III (medianas, de memoria; no buscado)
+  nota: No se hizo busqueda para este dato; medianas AR5 recordadas, verificar.
+  unidad: gCO2eq/kWh
+  url: https://www.ipcc.ch/report/ar5/wg3/
+  valor:
+    carbon: 820
+    ciclo_combinado: 490
+    eolica_marina: 12
+    eolica_terrestre: 11
+    hidraulica: 24
+    nuclear: 12
+    solar_fv_tejado: 41
+    solar_fv_utility: 48
+  verificado: false
+emisiones.butano_kgco2_kwh_pci:
+  fecha_consulta: '2026-10-19'
+  fuente: Documento reconocido RITE (GLP)
+  nota: 'Valor de memoria para GLP. Referido a PCI. Energía primaria no renovable GLP: 1,201 kWh/kWh.'
+  unidad: kgCO2/kWh (PCI, energía final)
+  url: https://www.certificadosenergeticos.com/wp-content/uploads/2015/01/2014_03_03_Factores_de_emision_CO2_y_Factores_de_paso_Efinal_Eprimaria_V.pdf
+  valor: 0.254
+  verificado: false
+emisiones.diesel_kgco2_l:
+  fecha_consulta: '2026-10-19'
+  fuente: 'MITECO Factores de emisión / RITE; contraste secundario: Michelin 2,67; Inventario nacional
+    74,10 kgCO2/GJ gasóleo'
+  nota: Corregido de 2.63 a 2.65. Fragmento primario sin valor por litro. Rango 2.50-2.70.
+  unidad: kgCO2/L (combustión)
+  url: https://www.miteco.gob.es/content/dam/miteco/es/cambio-climatico/temas/mitigacion-politicas-y-medidas/factoresemision_tcm30-479095.pdf
+  valor: 2.65
+  verificado: false
+emisiones.electricidad_peninsula_ep_no_renovable_kwh_kwh:
+  fecha_consulta: '2026-10-19'
+  fuente: Documento reconocido RITE
+  nota: Valor de memoria (total 2,368). Ver nota anterior.
+  unidad: kWh EP no renovable / kWh final
+  url: https://www.certificadosenergeticos.com/wp-content/uploads/2015/01/2014_03_03_Factores_de_emision_CO2_y_Factores_de_paso_Efinal_Eprimaria_V.pdf
+  valor: 1.954
+  verificado: false
+emisiones.electricidad_peninsula_rite_kgco2_kwh:
+  fecha_consulta: '2026-10-19'
+  fuente: Documento reconocido RITE, electricidad peninsular
+  nota: Valor de memoria. Factor convencional del RITE; el real del mix actual es bastante menor (~0,10-0,15).
+    No se comprobó si hay una actualización posterior del documento.
+  unidad: kgCO2/kWh final (peninsular, RITE)
+  url: https://www.certificadosenergeticos.com/wp-content/uploads/2015/01/2014_03_03_Factores_de_emision_CO2_y_Factores_de_paso_Efinal_Eprimaria_V.pdf
+  valor: 0.331
+  verificado: false
+emisiones.factor_electricidad_comercializadora_sin_garantia:
+  fecha_consulta: '2026-10-19'
+  fuente: CNMC, mix residual (comercializadoras sin garantías de origen)
+  nota: No contrastado en esta pasada. Estimación de memoria; contrastar con la última publicación de
+    la CNMC.
+  unidad: kgCO2/kWh
+  url: https://www.cnmc.es/
+  valor:
+  - 0.25
+  - 0.28
+  - 0.32
+  verificado: false
+emisiones.factor_electricidad_mix_medio:
+  fecha_consulta: '2026-10-19'
+  fuente: 'REE suministra factores a la CNMC; CNMC: media 2024 peninsular 80 gCO2eq/kWh (nacional 102).
+    2025 al alza por mayor uso de ciclos combinados (estimación del Observatorio de Sostenibilidad)'
+  nota: El dato 2024 (0,080) procede de un artículo académico que cita a la CNMC; no hay cifra oficial
+    de 2025. Moda 0,10 por el repunte de 2025.
+  unidad: kgCO2/kWh, media peninsular (emisiones directas)
+  url: https://www.ree.es/
+  valor:
+  - 0.08
+  - 0.1
+  - 0.13
+  verificado: false
+emisiones.factor_por_tecnologia_kgco2_mwh:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion (REE publica factores por tecnologia en ree.es/en/datos/generation; no se vieron
+    los valores)
+  nota: 'REE confirma que existe factor t CO2eq/MWh por tecnologia, valores no obtenidos. Rangos plausibles:
+    CC 340-400, carbon 850-1000, cogeneracion 350-400, turbina de gas 450-550, motores diesel 700-850,
+    fuel 700-850.'
+  unidad: kgCO2eq/MWh
+  url: https://www.ree.es/en/datos/generation
+  valor:
+    carbon: 950
+    ciclo_combinado: 370
+    cogeneracion: 370
+    eolica: 0
+    fuel_gas: 780
+    hidraulica: 0
+    motores_diesel: 780
+    nuclear: 0
+    residuos_no_renovables: 240
+    solar: 0
+    turbina_gas: 500
+    turbina_vapor: 780
+  verificado: false
+emisiones.fv_evitado_marginal:
+  fecha_consulta: '2026-10-19'
+  fuente: Ciclo combinado de gas (tecnología marginal), MITECO / RITE
+  nota: Valor técnico típico de un CCGT (≈0,35-0,40 kg/kWh). Sin fragmento verificado.
+  unidad: kgCO2/kWh
+  url: https://www.miteco.gob.es/
+  valor:
+  - 0.33
+  - 0.37
+  - 0.4
+  verificado: false
+emisiones.gas_conversion_pcs_pci:
+  fecha_consulta: '2026-10-19'
+  fuente: Relación estándar del gas natural (~1,10-1,11); dato del brief
+  nota: Sin fragmento primario. Para el GLP la relación es ~1,085.
+  unidad: PCS/PCI
+  url: https://www.miteco.gob.es/
+  valor: 1.11
+  verificado: false
+emisiones.gas_natural_kgco2_kwh_pci:
+  fecha_consulta: '2026-10-19'
+  fuente: 'Documento reconocido RITE: Factores de emisión de CO2 y coeficientes de paso a energía primaria
+    (MINETUR/IDAE)'
+  nota: 'Valor de memoria. La búsqueda confirmó la existencia del documento (copia de 2014; aplicación
+    desde 14-01-2016) pero no el número. Referido a PCI. Energía primaria no renovable gas natural: 1,195
+    kWh/kWh.'
+  unidad: kgCO2/kWh (PCI, energía final)
+  url: https://www.certificadosenergeticos.com/wp-content/uploads/2015/01/2014_03_03_Factores_de_emision_CO2_y_Factores_de_paso_Efinal_Eprimaria_V.pdf
+  valor: 0.252
+  verificado: false
+emisiones.gasolina_kgco2_l:
+  fecha_consulta: '2026-10-19'
+  fuente: 'MITECO Factores de emisión (registro huella de carbono) / RITE; contraste secundario: Michelin
+    2,31'
+  nota: El PDF MITECO apareció en resultados pero el fragmento no mostraba el valor por litro. Rango 2.20-2.35.
+  unidad: kgCO2/L (combustión)
+  url: https://www.miteco.gob.es/content/dam/miteco/es/cambio-climatico/temas/mitigacion-politicas-y-medidas/factoresemision_tcm30-479095.pdf
+  valor: 2.3
+  verificado: false
+emisiones.hibrido_reduccion_fraccion:
+  fecha_consulta: '2026-10-19'
+  fuente: IDAE guía de vehículos / estudios ICCT
+  nota: HEV no enchufable. Mayor ahorro en ciudad.
+  unidad: fracción de consumo ahorrada vs gasolina equivalente
+  url: https://theicct.org/
+  valor:
+  - 0.25
+  - 0.3
+  - 0.38
+  verificado: false
+emisiones.mix_medio_peninsular_ultimo_anio:
+  fecha_consulta: '2026-10-19'
+  fuente: 'CNMC, emisiones directas 2024: 80 gCO2eq/kWh peninsular, 102 nacional (via paper Unizar)'
+  nota: Dato 2024, fuente secundaria que cita CNMC. Etiqueta 2025 nacional media 107 g/kWh (Barcelona
+    Energia).
+  unidad: kgCO2/kWh
+  url: https://despapiro.unizar.es/ojs/index.php/jji3a/article/download/12018/9893/46922
+  valor: 0.08
+  verificado: false
+emisiones.mix_residual_cnmc_ultimo_anio:
+  fecha_consulta: '2026-10-19'
+  fuente: CNMC etiquetado electricidad; fragmento Barcelona Energia 2025 muestra un mix de 258 g/kWh (comercializador,
+    no confirmado como residual)
+  nota: Valor residual 2025 no hallado en la busqueda. 0,258 es de un comercializador concreto y solo
+    orientativo; rango plausible 0,2-0,3. Consultar gdo.cnmc.es.
+  unidad: kgCO2/kWh
+  url: https://www.cnmc.es/sites/default/files/3373089_9.pdf
+  valor: 0.26
+  verificado: false
+emisiones.phev_fraccion_electrica_uso_real:
+  fecha_consulta: '2026-10-19'
+  fuente: ICCT / EEA / Fraunhofer (uso real)
+  nota: UF de homologación ~0.7-0.8; real europeo 0.25-0.45.
+  unidad: fracción de km en modo eléctrico (utility factor real)
+  url: https://theicct.org/
+  valor:
+  - 0.25
+  - 0.4
+  - 0.55
+  verificado: false
+emisiones.pozo_a_rueda_diesel_kgco2_l:
+  fecha_consulta: '2026-10-19'
+  fuente: JRC WTT / MITECO
+  nota: Combustión 2.65 + upstream ~0.57. Rango 3.05-3.35.
+  unidad: kgCO2e/L (incluye upstream)
+  url: https://joint-research-centre.ec.europa.eu/
+  valor: 3.22
+  verificado: false
+emisiones.pozo_a_rueda_gasolina_kgco2_l:
+  fecha_consulta: '2026-10-19'
+  fuente: JRC WTT / MITECO
+  nota: Combustión 2.30 + upstream ~0.46. Rango 2.65-2.90.
+  unidad: kgCO2e/L (incluye upstream)
+  url: https://joint-research-centre.ec.europa.eu/
+  valor: 2.76
+  verificado: false
+envolvente.ahorro_tipico_fraccion:
+  fecha_consulta: '2026-10-19'
+  fuente: Diario de Avisos 2026 (SATE 25-35%) + rango IDAE de la peticion
+  nota: SATE 25-35% en fuente secundaria; resto estimacion.
+  unidad: fraccion de la demanda de calefaccion
+  url: https://diariodeavisos.elespanol.com/canariasenred/rehabilitacion-de-fachada-precios-ite-y-ayudas-en-2026/
+  valor:
+    cubierta:
+    - 0.1
+    - 0.15
+    - 0.25
+    sate_fachada:
+    - 0.25
+    - 0.3
+    - 0.4
+    ventanas:
+    - 0.1
+    - 0.15
+    - 0.2
+  verificado: false
+envolvente.coste_aislamiento_cubierta_eur_m2:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion (Generador de precios / COAC)
+  nota: No buscado con exito; estimacion. Cubierta plana invertida o trasdosado de falso techo 25-90 EUR/m2
+    segun solucion.
+  unidad: EUR/m2 con IVA
+  url: https://generadordeprecios.info/
+  valor:
+  - 25
+  - 45
+  - 90
+  verificado: false
+envolvente.coste_aislamiento_sate_eur_m2:
+  fecha_consulta: '2026-10-19'
+  fuente: Diario de Avisos guia 2026 (EPS 75-115, lana mineral 90-140); Cronoshare 50-95; Habitissimo
+    ~65-72
+  nota: Fuentes privadas, sin referencia IDAE/COAC. Rango plausible 50-140.
+  unidad: EUR/m2 con IVA (sin andamio 12-25 EUR/m2 ni honorarios 5-10%)
+  url: https://diariodeavisos.elespanol.com/canariasenred/rehabilitacion-de-fachada-precios-ite-y-ayudas-en-2026/
+  valor:
+  - 65
+  - 95
+  - 140
+  verificado: false
+envolvente.coste_ventana_eur_m2:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion (Generador de precios / mercado)
+  nota: Sin fragmento. Rango plausible 250-700.
+  unidad: EUR/m2 de hueco con IVA, instalada, PVC/aluminio RPT doble vidrio bajo emisivo
+  url: https://generadordeprecios.info/
+  valor:
+  - 250
+  - 400
+  - 700
+  verificado: false
+envolvente.grados_dia_calefaccion_por_zona:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion a partir de CTE DB-HE / IDAE (documento de zonas climaticas)
+  nota: No hallado fragmento. Valores centrales aproximados; Madrid (D3) ~2000-2200 GD base 15/15; Barcelona
+    (C2) ~1300-1500. Rango +-25%.
+  unidad: grados-dia anuales base ~15-20 C (orden de magnitud por zona CTE)
+  url: https://www.codigotecnico.org/
+  valor:
+    A: 800
+    B: 1200
+    C: 1600
+    D: 2200
+    E: 2800
+    alfa: 400
+  verificado: false
+envolvente.reduccion_infiltracion_ventana:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion
+  nota: Supuesto; sin fuente primaria.
+  unidad: fraccion de infiltracion eliminada al cambiar ventana (clase 3-4)
+  url: https://www.idae.es/
+  valor:
+  - 0.3
+  - 0.5
+  - 0.7
+  verificado: false
+envolvente.superficie_fachada_ratio:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto de modelizacion
+  nota: Supuesto geometrico propio; sin fuente.
+  unidad: m2 fachada opaca / m2 util
+  url: https://www.idae.es/
+  valor:
+    piso_intermedio:
+    - 0.5
+    - 0.7
+    - 0.9
+    piso_ultima_o_esquina:
+    - 0.8
+    - 1.0
+    - 1.3
+    unifamiliar_adosada:
+    - 0.7
+    - 0.9
+    - 1.1
+    unifamiliar_aislada:
+    - 1.1
+    - 1.4
+    - 1.8
+  verificado: false
+envolvente.superficie_huecos_ratio:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto de modelizacion
+  nota: 'Supuesto: 12-25% de superficie util.'
+  unidad: m2 hueco / m2 util
+  url: https://www.codigotecnico.org/
+  valor:
+  - 0.12
+  - 0.17
+  - 0.25
+  verificado: false
+envolvente.transmitancia_u_limite_por_zona:
+  fecha_consulta: '2026-10-19'
+  fuente: CTE DB-HE 2019 (RD 732/2019) tabla 3.1.1.a-HE1; muros y cubiertas segun fragmentos de Normatia/Fenercom
+  nota: 'Muros y cubiertas reproducidos en fuentes secundarias (no dominio primario). Fila de huecos cortada
+    en los resultados: valores de memoria; Fenercom da 2.7/2.7/2.0/2.0/1.6/1.5 como valores orientativos
+    (no limite). Verificar en codigotecnico.org/BOE.'
+  unidad: W/m2K
+  url: https://normatia.com/es/blog/transmitancia-maxima-envolvente-termica-zona-climatica-cte-db-he/
+  valor:
+    cubiertas_aire:
+      A: 0.5
+      B: 0.44
+      C: 0.4
+      D: 0.35
+      E: 0.33
+      alfa: 0.55
+    huecos_Uh:
+      A: 2.7
+      B: 2.0
+      C: 1.8
+      D: 1.7
+      E: 1.5
+      alfa: 2.7
+    muros_suelos_aire:
+      A: 0.7
+      B: 0.56
+      C: 0.49
+      D: 0.41
+      E: 0.37
+      alfa: 0.8
+  verificado: false
+envolvente.u_tipica_sin_aislar:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion (IDAE guia rehabilitacion / Catalogo Elementos Constructivos CTE)
+  nota: No hubo fragmento primario. Rangos tipicos de la bibliografia (catalogo CTE, ficha IDAE de rehabilitacion);
+    depende de espesor y epoca.
+  unidad: W/m2K
+  url: https://www.codigotecnico.org/
+  valor:
+    cubierta:
+    - 1.4
+    - 2.0
+    - 2.6
+    muro_ladrillo_hueco_pre1980:
+    - 1.2
+    - 1.6
+    - 2.0
+    ventana_doble_aluminio:
+    - 2.8
+    - 3.3
+    - 4.0
+    ventana_simple:
+    - 5.0
+    - 5.7
+    - 6.0
+  verificado: false
+envolvente.vida_util_aislamiento:
+  fecha_consulta: '2026-10-19'
+  fuente: 'Estimacion (fabricantes SATE: 30-50 anos)'
+  nota: Sin fragmento primario.
+  unidad: anos
+  url: https://www.idae.es/
+  valor:
+  - 30
+  - 40
+  - 50
+  verificado: false
+forma.acs:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Duchas mañana y noche.
+  unidad: '-'
+  url: ''
+  valor:
+  - 0.1
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.1
+  - 0.4
+  - 1.6
+  - 2
+  - 1.2
+  - 0.6
+  - 0.4
+  - 0.4
+  - 0.5
+  - 0.5
+  - 0.4
+  - 0.4
+  - 0.5
+  - 0.7
+  - 1
+  - 1.2
+  - 1.4
+  - 1.5
+  - 0.9
+  - 0.3
+  verificado: false
+forma.actividad_casa:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Casi siempre en casa.
+  unidad: '-'
+  url: ''
+  valor:
+  - 0.4
+  - 0.35
+  - 0.3
+  - 0.3
+  - 0.3
+  - 0.4
+  - 0.7
+  - 1
+  - 1.1
+  - 1.2
+  - 1.2
+  - 1.2
+  - 1.3
+  - 1.4
+  - 1.2
+  - 1.1
+  - 1.1
+  - 1.1
+  - 1.3
+  - 1.5
+  - 1.7
+  - 1.6
+  - 1.2
+  - 0.7
+  verificado: false
+forma.actividad_finde:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Fines de semana y festivos.
+  unidad: '-'
+  url: ''
+  valor:
+  - 0.4
+  - 0.35
+  - 0.3
+  - 0.3
+  - 0.3
+  - 0.3
+  - 0.5
+  - 0.7
+  - 1
+  - 1.3
+  - 1.4
+  - 1.4
+  - 1.5
+  - 1.5
+  - 1.3
+  - 1.2
+  - 1.2
+  - 1.2
+  - 1.4
+  - 1.6
+  - 1.7
+  - 1.6
+  - 1.2
+  - 0.7
+  verificado: false
+forma.actividad_fuera:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Forma diaria laborable de la actividad eléctrica general con la casa vacía en horario laboral.
+  unidad: '-'
+  url: ''
+  valor:
+  - 0.4
+  - 0.35
+  - 0.3
+  - 0.3
+  - 0.3
+  - 0.4
+  - 0.9
+  - 1.4
+  - 1
+  - 0.5
+  - 0.4
+  - 0.4
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.6
+  - 0.9
+  - 1.3
+  - 1.8
+  - 2
+  - 1.9
+  - 1.4
+  - 0.8
+  verificado: false
+forma.actividad_parcial:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Teletrabajo parcial.
+  unidad: '-'
+  url: ''
+  valor:
+  - 0.4
+  - 0.35
+  - 0.3
+  - 0.3
+  - 0.3
+  - 0.4
+  - 0.8
+  - 1.2
+  - 1.1
+  - 1
+  - 1
+  - 1
+  - 1.1
+  - 1.1
+  - 1
+  - 0.9
+  - 0.9
+  - 1
+  - 1.3
+  - 1.6
+  - 1.8
+  - 1.7
+  - 1.3
+  - 0.7
+  verificado: false
+forma.calefaccion:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Calefacción eléctrica.
+  unidad: '-'
+  url: ''
+  valor:
+  - 0.6
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.6
+  - 0.9
+  - 1.6
+  - 1.6
+  - 1.1
+  - 0.7
+  - 0.6
+  - 0.6
+  - 0.7
+  - 0.7
+  - 0.6
+  - 0.6
+  - 0.8
+  - 1.2
+  - 1.5
+  - 1.7
+  - 1.7
+  - 1.5
+  - 1.2
+  - 0.8
+  verificado: false
+forma.cocina:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Picos de comida y cena.
+  unidad: '-'
+  url: ''
+  valor:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0.2
+  - 0.5
+  - 0.4
+  - 0.2
+  - 0.3
+  - 0.8
+  - 1.6
+  - 1.8
+  - 0.8
+  - 0.3
+  - 0.3
+  - 0.4
+  - 0.7
+  - 1.5
+  - 1.9
+  - 1.2
+  - 0.4
+  - 0.1
+  verificado: false
+forma.piscina:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Depuradora diurna.
+  unidad: '-'
+  url: ''
+  valor:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0.2
+  - 0.8
+  - 1.2
+  - 1.4
+  - 1.4
+  - 1.4
+  - 1.4
+  - 1.4
+  - 1.2
+  - 0.8
+  - 0.4
+  - 0.2
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  verificado: false
+forma.plana:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Cargas continuas (nevera, standby).
+  unidad: '-'
+  url: ''
+  valor:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  verificado: false
+forma.refrigeracion:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Refrigeración.
+  unidad: '-'
+  url: ''
+  valor:
+  - 0.8
+  - 0.6
+  - 0.5
+  - 0.4
+  - 0.4
+  - 0.4
+  - 0.4
+  - 0.4
+  - 0.5
+  - 0.6
+  - 0.8
+  - 1
+  - 1.3
+  - 1.5
+  - 1.6
+  - 1.7
+  - 1.7
+  - 1.6
+  - 1.5
+  - 1.4
+  - 1.4
+  - 1.3
+  - 1.1
+  - 0.9
+  verificado: false
+forma.ve_casa:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Carga doméstica 'conectar al llegar' sin gestión.
+  unidad: '-'
+  url: ''
+  valor:
+  - 1.2
+  - 1.2
+  - 1.1
+  - 1
+  - 0.9
+  - 0.6
+  - 0.2
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0.1
+  - 0.4
+  - 0.9
+  - 1.5
+  - 1.8
+  - 1.8
+  - 1.6
+  - 1.4
+  verificado: false
+fv.area_por_plaza_garaje_m2:
+  fecha_consulta: '2026-10-19'
+  fuente: CTE DB-SUA (codigotecnico.org)
+  nota: Dato de memoria, sin fragmento del CTE.
+  unidad: m² por plaza (CTE DB-SUA, 2,2×4,5 ≈ 10 m² útiles; 15 m² con maniobra)
+  url: https://www.codigotecnico.org/
+  valor:
+  - 15
+  - 15
+  - 15
+  verificado: false
+fv.area_tejado_por_kwp_m2:
+  fecha_consulta: '2026-10-19'
+  fuente: Derivado de potencia_modulo_w_m2 más separaciones y estructura
+  nota: 1000 W / 210 W/m² ≈ 4,8 m² de módulo por kWp; con pasillos, obstáculos y estructura en cubierta
+    plana 6-8 m²/kWp.
+  unidad: m² de tejado útil por kWp
+  url: https://www.idae.es/
+  valor:
+  - 5.0
+  - 6.0
+  - 8.0
+  verificado: false
+fv.capex_residencial_eur_wp:
+  fecha_consulta: '2026-10-19'
+  fuente: IDAE / UNEF (Anuario FV) - estimación propia a partir de rangos de mercado 2025-26
+  nota: La búsqueda no devolvió ningún precio en €/Wp de UNEF (solo potencia y nº de viviendas). Rango
+    plausible 1,2-2,2 €/Wp llave en mano; 2-3 kWp en la parte alta, 5-6 kWp en la baja. IVA 21% salvo
+    reducciones puntuales.
+  unidad: €/Wp con IVA, tejado residencial 2-6 kWp, sin batería
+  url: https://www.unef.es/
+  valor:
+  - 1.2
+  - 1.6
+  - 2.2
+  verificado: false
+fv.compensacion_simplificada_potencia_max_kw:
+  fecha_consulta: '2026-10-19'
+  fuente: RD 244/2019, art. 4 (compensación simplificada, instalaciones renovables hasta 100 kW). Confirmado
+    por resúmenes secundarios (Osborne Clarke, Pérez-Llorca)
+  nota: Los fragmentos recuperados son de fuentes secundarias, no del BOE; por la regla del brief no se
+    marca true.
+  unidad: kW
+  url: https://www.boe.es/buscar/act.php?id=BOE-A-2019-5089
+  valor: 100
+  verificado: false
+fv.compensacion_tope:
+  fecha_consulta: '2026-10-19'
+  fuente: RD 244/2019, art. 14. Resumen secundario (Osborne Clarke; SurgePV sobre no arrastre)
+  nota: Fuente secundaria, sin fragmento del BOE. La no acumulación mensual procede de un blog comercial,
+    menos fiable.
+  unidad: texto
+  url: https://www.boe.es/buscar/act.php?id=BOE-A-2019-5089
+  valor: El valor económico de los excedentes compensados no puede superar el de la energía horaria consumida
+    de la red en el periodo de facturación (máx. 1 mes), es decir, el término de energía de la factura;
+    el saldo no se arrastra al mes siguiente.
+  verificado: false
+fv.degradacion_anual:
+  fecha_consulta: '2026-10-19'
+  fuente: Garantías lineales de fabricantes tier 1 (≈0,4-0,55 %/año) y NREL (mediana ≈0,5 %/año)
+  nota: 'Sin fragmento verificado. Garantías típicas: 30 años con 87-90 % de potencia residual.'
+  unidad: fracción/año
+  url: https://www.nrel.gov/
+  valor:
+  - 0.003
+  - 0.005
+  - 0.007
+  verificado: false
+fv.factor_orientacion_norte:
+  fecha_consulta: '2026-10-19'
+  fuente: PVGIS (JRC, ec.europa.eu) - estimación
+  nota: No se ejecutó PVGIS. Orientación norte con 30º produce típicamente 55-70 % del sur en la península.
+  unidad: fracción de la producción de orientación sur, inclinación 30º
+  url: https://re.jrc.ec.europa.eu/pvg_tools/es/
+  valor:
+  - 0.55
+  - 0.65
+  - 0.75
+  verificado: false
+fv.horas_equivalentes_espana:
+  fecha_consulta: '2026-10-19'
+  fuente: PVGIS (JRC) / UNEF - estimación
+  nota: Norte ≈1.250-1.400; centro ≈1.550-1.650; sur y Levante ≈1.650-1.800.
+  unidad: kWh/kWp·año, península, óptimo
+  url: https://re.jrc.ec.europa.eu/pvg_tools/es/
+  valor:
+  - 1300
+  - 1550
+  - 1800
+  verificado: false
+fv.inclinacion_estructura_plana:
+  fecha_consulta: '2026-10-19'
+  fuente: Criterio de diseño FV (óptimo ≈30º en la península)
+  nota: En cubierta plana se usan 10-15º (viento, sombras entre filas) o 30º (máxima producción); 25º
+    como compromiso.
+  unidad: grados
+  url: https://re.jrc.ec.europa.eu/pvg_tools/es/
+  valor:
+  - 15
+  - 25
+  - 35
+  verificado: false
+fv.inclinacion_tejado_teja:
+  fecha_consulta: '2026-10-19'
+  fuente: Pendiente típica del 30-45 % (arctan 0,30 = 16,7º; 0,40 = 21,8º; 0,45 = 24,2º)
+  nota: Conversión matemática desde la pendiente.
+  unidad: grados
+  url: https://www.codigotecnico.org/
+  valor:
+  - 18
+  - 22
+  - 25
+  verificado: false
+fv.inflacion_electricidad:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto de modelización
+  nota: Supuesto. 2 % alineado con el objetivo del BCE.
+  unidad: fracción/año
+  url: https://www.ine.es/
+  valor:
+  - 0.0
+  - 0.02
+  - 0.04
+  verificado: false
+fv.opex_anual_fraccion_capex:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación propia (limpieza, seguro, revisiones)
+  nota: Supuesto. Rango plausible 0,5-1,5 %/año.
+  unidad: fracción del CAPEX por año
+  url: https://www.idae.es/
+  valor:
+  - 0.005
+  - 0.01
+  - 0.015
+  verificado: false
+fv.perdidas_sombreado:
+  fecha_consulta: '2026-10-19'
+  fuente: IDAE, Pliego de Condiciones Técnicas de instalaciones FV conectadas a red
+  nota: Criterio técnico, no citado literalmente. El pliego IDAE exige en general pérdidas por sombras
+    inferiores al 10 % (de memoria).
+  unidad: fracción de producción anual perdida
+  url: https://www.idae.es/
+  valor:
+    mucha:
+    - 0.2
+    - 0.3
+    - 0.45
+    ninguna:
+    - 0.0
+    - 0.02
+    - 0.05
+    parcial:
+    - 0.05
+    - 0.1
+    - 0.2
+  verificado: false
+fv.potencia_modulo_w_m2:
+  fecha_consulta: '2026-10-19'
+  fuente: Fichas técnicas de módulos mono 400-450 Wp (≈1,72×1,13 m)
+  nota: 430 Wp / ≈1,95 m² ≈ 220 W/m²; 210 W/m² como central.
+  unidad: W/m² de superficie de módulo
+  url: https://www.idae.es/
+  valor:
+  - 190
+  - 210
+  - 225
+  verificado: false
+fv.precio_excedentes_medio:
+  fecha_consulta: '2026-10-19'
+  fuente: Ofertas de comercializadoras y PVPC excedentes (referencia OMIE), CNMC
+  nota: 'La búsqueda no aportó precios de excedentes. Estimación: comercializadoras suelen pagar 0,04-0,10
+    €/kWh; el PVPC excedentes sigue el mercado horario, bajo en horas solares.'
+  unidad: €/kWh
+  url: https://www.cnmc.es/
+  valor:
+  - 0.04
+  - 0.07
+  - 0.1
+  verificado: false
+fv.sustitucion_inversor_anio:
+  fecha_consulta: '2026-10-19'
+  fuente: Garantías de fabricantes de inversores string
+  nota: Vida típica 10-15 años; microinversores y optimizadores duran más. Estimación.
+  unidad: año desde la puesta en marcha
+  url: https://www.idae.es/
+  valor:
+  - 10
+  - 13
+  - 17
+  verificado: false
+fv.sustitucion_inversor_coste_eur_kw:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación propia a partir de precios de mercado de inversores residenciales
+  nota: Rango plausible 120-300 €/kW; se espera que baje con el tiempo.
+  unidad: €/kW (con instalación e IVA)
+  url: https://www.idae.es/
+  valor:
+  - 120
+  - 200
+  - 300
+  verificado: false
+fv.tasa_descuento_hogar:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto de modelización
+  nota: Supuesto del modelo, no un dato observable.
+  unidad: fracción/año (real)
+  url: https://www.bde.es/
+  valor:
+  - 0.02
+  - 0.035
+  - 0.05
+  verificado: false
+fv.vida_util:
+  fecha_consulta: '2026-10-19'
+  fuente: Garantías de producto y de rendimiento de fabricantes tier 1 (25-30 años)
+  nota: Estimación. Usar 25 años como horizonte financiero prudente.
+  unidad: años
+  url: https://www.idae.es/
+  valor:
+  - 25
+  - 30
+  - 35
+  verificado: false
+gas.alquiler_contador:
+  fecha_consulta: '2026-10-19'
+  fuente: Orden ITC/3993/2006 (estimación)
+  nota: Rango 1,4-1,8.
+  unidad: €/mes sin IVA
+  url: https://www.boe.es
+  valor: 1.6
+  verificado: false
+gas.butano_pcs:
+  fecha_consulta: '2026-10-19'
+  fuente: Conocimiento técnico
+  nota: Rango 13,6-13,8.
+  unidad: kWh/kg
+  url: https://www.miteco.gob.es/es/energia/hidrocarburos.html
+  valor: 13.6
+  verificado: false
+gas.butano_precio_bombona:
+  fecha_consulta: '2026-10-19'
+  fuente: Resolución DGPEM; Endesa (marzo 2026)
+  nota: Último dato hallado; revisiones posteriores no localizadas. Rango 15-18.
+  unidad: €/bombona 12,5 kg
+  url: https://www.endesa.com/es/blog/blog-de-endesa/luz/precio-bombona-butano
+  valor: 16.35
+  verificado: false
+gas.gas_natural_impuesto_hidrocarburos:
+  fecha_consulta: '2026-10-19'
+  fuente: Ley 38/1992 art. 50
+  nota: De memoria.
+  unidad: €/kWh (0,65 €/GJ)
+  url: https://www.boe.es/buscar/act.php?id=BOE-A-1992-28741
+  valor: 0.00234
+  verificado: false
+gas.iva:
+  fecha_consulta: '2026-10-19'
+  fuente: Ley 37/1992
+  nota: Tipo general.
+  unidad: '%'
+  url: https://sede.agenciatributaria.gob.es
+  valor: 21
+  verificado: false
+gas.oferta_libre_tipica:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación comparador CNMC
+  nota: Sin fuente.
+  unidad: €/kWh
+  url: https://comparador.cnmc.gob.es
+  valor:
+  - 0.045
+  - 0.06
+  - 0.075
+  verificado: false
+gas.tur_termino_fijo_tur1:
+  fecha_consulta: '2026-10-19'
+  fuente: Resolución DGPEM TUR 1-oct-2026
+  nota: Fuente secundaria.
+  unidad: €/mes sin impuestos
+  url: https://roams.es/actualidad/energia/tur-gas-octubre-kwh-sube-22-factura-alcanza-52-hogar-660-kwh/
+  valor: 3.83
+  verificado: false
+gas.tur_termino_fijo_tur2:
+  fecha_consulta: '2026-10-19'
+  fuente: Resolución DGPEM TUR 1-oct-2026
+  nota: Fuente secundaria.
+  unidad: €/mes sin impuestos
+  url: https://www.papernest.es/estudios/tur-gas-octubre-2026/
+  valor: 8.17
+  verificado: false
+gas.tur_termino_variable_tur1:
+  fecha_consulta: '2026-10-19'
+  fuente: Resolución DGPEM TUR 1-oct-2026
+  nota: Fuente secundaria.
+  unidad: €/kWh sin impuestos
+  url: https://selectra.es/energia/noticias/tur-gas-2026-octubre-subida-recibo-hogares
+  valor: 0.0525
+  verificado: false
+gas.tur_termino_variable_tur2:
+  fecha_consulta: '2026-10-19'
+  fuente: Resolución DGPEM TUR 1-oct-2026
+  nota: Fuente secundaria.
+  unidad: €/kWh sin impuestos
+  url: https://www.papernest.es/estudios/tur-gas-octubre-2026/
+  valor: 0.0504
+  verificado: false
+huella.arboles_absorcion_kgco2_ano:
+  fecha_consulta: '2026-10-19'
+  fuente: Fundacion Aquae (10-30 kg/ano) via resultados; calculadora MITECO no consultada
+  nota: Depende de especie y edad; fuente no oficial.
+  unidad: kgCO2/ano por arbol adulto
+  url: https://www.miteco.gob.es/es/cambio-climatico/temas/mitigacion-politicas-y-medidas/calculadoras.html
+  valor:
+  - 10
+  - 20
+  - 30
+  verificado: false
+huella.factor_autobus:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion; SNCF 0.038, blog 0.065-0.070
+  nota: Depende de ocupacion.
+  unidad: kgCO2e/pkm
+  url: https://www.miteco.gob.es/es/cambio-climatico/temas/mitigacion-politicas-y-medidas/factores-emision.html
+  valor:
+  - 0.03
+  - 0.05
+  - 0.07
+  verificado: false
+huella.factor_avion_kgco2_pkm:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion (DEFRA/MITECO); SNCF 0.125; blog 0.19-0.285
+  nota: No se hallo tabla MITECO. Corto <1500 km ~0.15-0.25, largo ~0.15 sin forzamiento radiativo.
+  unidad: kgCO2e/pkm
+  url: https://www.miteco.gob.es/es/cambio-climatico/temas/mitigacion-politicas-y-medidas/factores-emision.html
+  valor:
+  - 0.13
+  - 0.18
+  - 0.25
+  verificado: false
+huella.factor_gasoleo_calefaccion_kgco2_kwh:
+  fecha_consulta: '2026-10-19'
+  fuente: MITECO factor gasoleo ~2.868 kgCO2e/l (fragmento secundario de 2019) / ~10.0-10.7 kWh/l
+  nota: 2.868 kg/l / 10.6 kWh/l = 0.27; rango 0.26-0.28; dato de 2019 de terceros, no del dominio MITECO.
+  unidad: kgCO2/kWh (PCI)
+  url: https://www.miteco.gob.es/es/cambio-climatico/temas/mitigacion-politicas-y-medidas/factores-emision.html
+  valor: 0.27
+  verificado: false
+huella.factor_tren_cercanias:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion (MITECO/AEMA); SNCF TGV 0.0035
+  nota: Cercanias electrico ~0.025-0.04 segun mix; sin fragmento.
+  unidad: kgCO2e/pkm
+  url: https://www.miteco.gob.es/es/cambio-climatico/temas/mitigacion-politicas-y-medidas/factores-emision.html
+  valor:
+  - 0.02
+  - 0.03
+  - 0.05
+  verificado: false
+huella.media_hogar_espana_tco2:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion (INE cuentas de emisiones / Inventario MITECO); per capita total 6-8 t
+  nota: Sin cifra oficial hallada; per capita total citado 5.95-8 t (fuentes secundarias).
+  unidad: tCO2e/ano por hogar (energia domestica y calefaccion, sin transporte)
+  url: https://www.ine.es/
+  valor:
+  - 2.0
+  - 2.5
+  - 3.5
+  verificado: false
+huella.vuelos_tipicos_km:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto (dato del encargo)
+  nota: Supuesto de modelizacion.
+  unidad: km
+  url: https://www.miteco.gob.es/
+  valor:
+    corto: 1000
+    largo: 8000
+    medio: 2500
+  verificado: false
+ice.consumo_l_100km:
+  fecha_consulta: '2026-10-19'
+  fuente: IDAE Guía de vehículos de turismo de venta en España
+  nota: PHEV es el WLTP ponderado con utility factor; con batería agotada 5.5-7.5 L/100 km. Aplicar también
+    factor real vs WLTP (~1.15-1.25) a ICE/HEV.
+  unidad: L/100 km (WLTP combinado)
+  url: https://coches.idae.es/
+  valor:
+    diesel:
+      compacto:
+      - 4.5
+      - 5.3
+      - 6.2
+      suv_berlina:
+      - 5.2
+      - 6.0
+      - 7.2
+      urbano:
+      - 4.3
+      - 5.0
+      - 5.8
+    gasolina:
+      compacto:
+      - 5.5
+      - 6.5
+      - 7.5
+      suv_berlina:
+      - 6.5
+      - 7.5
+      - 9.0
+      urbano:
+      - 5.0
+      - 5.8
+      - 6.8
+    hibrido:
+      compacto:
+      - 4.2
+      - 4.9
+      - 5.6
+      suv_berlina:
+      - 5.0
+      - 5.7
+      - 6.8
+      urbano:
+      - 3.8
+      - 4.4
+      - 5.2
+    phev:
+      compacto:
+      - 1.2
+      - 1.6
+      - 2.2
+      suv_berlina:
+      - 1.5
+      - 2.0
+      - 2.8
+      urbano:
+      - 1.0
+      - 1.5
+      - 2.0
+  verificado: false
+ice.coste_mantenimiento_eur_km:
+  fecha_consulta: '2026-10-19'
+  fuente: Estudios de TCO (ADAC, ICCT, Leaseplan)
+  nota: Incluye revisiones, frenos, neumáticos y averías.
+  unidad: EUR/km
+  url: https://theicct.org/
+  valor:
+  - 0.04
+  - 0.055
+  - 0.075
+  verificado: false
+ice.seguro_anual_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: Comparadores de seguros (supuesto)
+  nota: Estimación; ver ve.seguro_anual_eur.
+  unidad: EUR/año
+  url: https://www.dgsfp.mineco.es/
+  valor:
+  - 300
+  - 450
+  - 650
+  verificado: false
+impuestos.ivtm_medio_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: 'TRLRHL art. 95: cuota base 71,94 EUR (12-15,99 CVF) vista en boletín provincial de Guadalajara
+    2025 y ordenanza de Llerena; coeficientes municipales (p.ej. 1,80 -> 129,49 EUR en San Pedro del Pinatar)'
+  nota: La cuota base 71,94 está respaldada por fuentes municipales, no por fragmento de boe.es. El coeficiente
+    municipal puede llegar hasta 2. Bonificaciones de hasta 75% a eléctricos en muchos ayuntamientos.
+  unidad: EUR/año (turismo 12-15,99 CVF; 16-19,99 CVF desde 89,61 base)
+  url: https://www.boe.es/buscar/act.php?id=BOE-A-2004-4214
+  valor:
+  - 72
+  - 95
+  - 140
+  verificado: false
+lcoe.capex_eur_kw:
+  fecha_consulta: '2026-10-19'
+  fuente: IRENA Renewable Power Generation Costs in 2024 (FV 691 USD/kW, eolica terrestre 1.041 USD/kW,
+    marina 2.852 USD/kW globales 2024); resto estimacion (IEA/NEA 2020, Lazard 2025, PNIEC)
+  nota: Solo se leyeron en fragmentos las medias globales IRENA 2024 (FV, eolica); el fragmento de Lazard
+    no dio USD/kW. El resto de rangos son estimaciones plausibles (USD~EUR 0,9-1). FV residencial en Espana
+    y ciclo combinado, nuclear y bombeo no verificados con fuente.
+  unidad: EUR/kW
+  url: https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2025/Jul/IRENA_TEC_RPGC_in_2024_Summary_2025.pdf
+  valor:
+    ciclo_combinado:
+    - 800
+    - 1000
+    - 1400
+    eolica_marina:
+    - 2400
+    - 2800
+    - 3800
+    eolica_terrestre:
+    - 1000
+    - 1250
+    - 1600
+    hidraulica_bombeo:
+    - 1200
+    - 1800
+    - 2800
+    nuclear_existente_ampliacion:
+    - 3500
+    - 5500
+    - 8500
+    solar_fv_residencial:
+    - 1000
+    - 1300
+    - 1800
+    solar_fv_utility:
+    - 550
+    - 700
+    - 950
+  verificado: false
+lcoe.costes_combustible_nuclear_eur_mwh:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion (ciclo de combustible nuclear tipico 5-8 EUR/MWh)
+  nota: Sin fragmento; estimacion.
+  unidad: EUR/MWh
+  url: https://www.csn.es
+  valor:
+  - 4
+  - 6
+  - 9
+  verificado: false
+lcoe.factor_capacidad_espana:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion a partir de REE Informe del sistema electrico 2025 (no se obtuvieron tablas por tecnologia)
+  nota: La busqueda dio solo cuotas de mix 2025 (FV 21,3%, eolica 20,6%, nuclear 18,1%, CC ~17%; 142,5
+    GW instalados), no horas equivalentes. Valores derivables de generacion/potencia; aqui estimados.
+  unidad: fraccion (horas equivalentes / 8760)
+  url: https://www.ree.es/sites/default/files/2026-03/1103_NP_ISE_2025.pdf
+  valor:
+    ciclo_combinado:
+    - 0.1
+    - 0.18
+    - 0.4
+    eolica_marina:
+    - 0.35
+    - 0.4
+    - 0.45
+    eolica_terrestre:
+    - 0.22
+    - 0.26
+    - 0.3
+    hidraulica_bombeo:
+    - 0.08
+    - 0.12
+    - 0.2
+    nuclear_existente_ampliacion:
+    - 0.85
+    - 0.9
+    - 0.93
+    solar_fv_residencial:
+    - 0.14
+    - 0.16
+    - 0.19
+    solar_fv_utility:
+    - 0.19
+    - 0.22
+    - 0.26
+  verificado: false
+lcoe.factor_emision_ccgt_t_mwh:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion (gas 0,202 tCO2/MWh PCI / rendimiento 0,55); PGLib-CO2 cita ~0,36 para CCGT
+  nota: Calculo propio; valor de REE por tecnologia no hallado.
+  unidad: tCO2/MWh electrico
+  url: https://arxiv.org/pdf/2506.14662
+  valor:
+  - 0.34
+  - 0.37
+  - 0.4
+  verificado: false
+lcoe.opex_fijo_eur_kw_ano:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion (rangos tipicos IRENA/IEA-NEA/Lazard)
+  nota: Sin fragmento que de la cifra; estimacion. Rango plausible segun fuentes tipicas IRENA/NEA.
+  unidad: EUR/kW/anio
+  url: https://www.irena.org/Publications
+  valor:
+    ciclo_combinado:
+    - 12
+    - 18
+    - 28
+    eolica_marina:
+    - 60
+    - 85
+    - 120
+    eolica_terrestre:
+    - 25
+    - 38
+    - 50
+    hidraulica_bombeo:
+    - 15
+    - 25
+    - 40
+    nuclear_existente_ampliacion:
+    - 100
+    - 150
+    - 200
+    solar_fv_residencial:
+    - 15
+    - 20
+    - 30
+    solar_fv_utility:
+    - 8
+    - 12
+    - 18
+  verificado: false
+lcoe.opex_variable_eur_mwh:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion (IEA/NEA Projected Costs 2020, Lazard)
+  nota: Estimacion; no confirmado en busqueda.
+  unidad: EUR/MWh (sin combustible ni CO2)
+  url: https://www.iea.org/reports/projected-costs-of-generating-electricity-2020
+  valor:
+    ciclo_combinado:
+    - 2
+    - 3
+    - 5
+    eolica_marina:
+    - 0
+    - 3
+    - 6
+    eolica_terrestre:
+    - 0
+    - 2
+    - 5
+    hidraulica_bombeo:
+    - 1
+    - 3
+    - 6
+    nuclear_existente_ampliacion:
+    - 1
+    - 2
+    - 4
+    solar_fv_residencial:
+    - 0
+    - 0
+    - 2
+    solar_fv_utility:
+    - 0
+    - 0
+    - 2
+  verificado: false
+lcoe.precio_co2_eur_t:
+  fecha_consulta: '2026-10-19'
+  fuente: 'Cotizaciones EUA Dec-25: ~69,64 (ene 2025) y ~76,69 (sep 2025), MNI/MarketNews'
+  nota: No se hallo media anual 2025; los EUA subieron ~11,6% en el anio segun Grupo ASE. Valor central
+    estimado.
+  unidad: EUR/t
+  url: https://www.mnimarkets.com/articles/eu-mid-day-carbon-summary-euas-fall-on-eu-gas-equities-losses-1758539597347
+  valor:
+  - 65
+  - 73
+  - 85
+  verificado: false
+lcoe.precio_gas_ttf_eur_mwh:
+  fecha_consulta: '2026-10-19'
+  fuente: 'AleaSoft: futuros TTF front-month ICE promedio 2025 = 36,33 EUR/MWh (+4,8% vs 2024); pico febrero
+    2025 50,27'
+  nota: Fuente secundaria (AleaSoft), no dominio primario. Ano 2025; rango min/max es supuesto. No se
+    obtuvo media MIBGAS.
+  unidad: EUR/MWh
+  url: https://aleasoft.com/?p=163750
+  valor:
+  - 28
+  - 36
+  - 50
+  verificado: false
+lcoe.rendimiento_ciclo_combinado:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion tecnica (CCGT modernos 55-60%, parque espanol con carga parcial menor)
+  nota: Sin fragmento; estimacion.
+  unidad: fraccion PCI
+  url: https://www.ree.es/es/datos/generacion
+  valor:
+  - 0.5
+  - 0.55
+  - 0.58
+  verificado: false
+lcoe.vida_util_anios:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion (IRENA/NEA/Lazard)
+  nota: Estimacion estandar de la literatura; no verificada en esta busqueda.
+  unidad: anios
+  url: https://www.irena.org/Publications
+  valor:
+    ciclo_combinado:
+    - 25
+    - 30
+    - 35
+    eolica_marina:
+    - 25
+    - 30
+    - 35
+    eolica_terrestre:
+    - 20
+    - 25
+    - 30
+    hidraulica_bombeo:
+    - 50
+    - 60
+    - 80
+    nuclear_existente_ampliacion:
+    - 40
+    - 60
+    - 80
+    solar_fv_residencial:
+    - 25
+    - 30
+    - 35
+    solar_fv_utility:
+    - 25
+    - 30
+    - 35
+  verificado: false
+lcoe.wacc:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del proyecto (referencias IRENA/Lazard no confirmadas)
+  nota: Supuesto; rango plausible 3-10% real.
+  unidad: fraccion real
+  url: https://www.irena.org/Publications
+  valor:
+    ciclo_combinado:
+    - 0.05
+    - 0.07
+    - 0.09
+    eolica_marina:
+    - 0.05
+    - 0.065
+    - 0.085
+    eolica_terrestre:
+    - 0.04
+    - 0.055
+    - 0.075
+    hidraulica_bombeo:
+    - 0.04
+    - 0.06
+    - 0.08
+    nuclear_existente_ampliacion:
+    - 0.05
+    - 0.08
+    - 0.1
+    solar_fv_residencial:
+    - 0.03
+    - 0.04
+    - 0.06
+    solar_fv_utility:
+    - 0.04
+    - 0.05
+    - 0.07
+  verificado: false
+mercado.costes_variables_eur_mwh:
+  fecha_consulta: '2026-10-19'
+  fuente: 'Calculo ilustrativo: gas TTF 36 EUR/MWh / 0,55 + CO2 73 EUR/t x 0,37 + O&M ~3 = ~95'
+  nota: 'Solo para ilustrar el precio marginal. Hidraulica: valor de agua, no coste real. Rangos estimados.'
+  unidad: EUR/MWh
+  url: https://aleasoft.com/?p=163750
+  valor:
+    carbon:
+    - 90
+    - 120
+    - 160
+    ciclo_combinado:
+    - 75
+    - 100
+    - 130
+    cogeneracion:
+    - 60
+    - 90
+    - 120
+    hidraulica:
+    - 0
+    - 20
+    - 60
+    nuclear:
+    - 8
+    - 12
+    - 18
+  verificado: false
+mercado.mecanismo_ajuste_gas_descripcion:
+  fecha_consulta: '2026-10-19'
+  fuente: BOE RDL 10/2022 (via resumen Comillas IIT, Clifford Chance, Cuatrecasas)
+  nota: Datos de fuentes secundarias; discrepancia sobre duracion del tramo inicial (6 vs 7 meses). Identificador
+    BOE-A-2022-7843 no confirmado en busqueda.
+  unidad: texto
+  url: https://www.boe.es/buscar/act.php?id=BOE-A-2022-7843
+  valor: 'RDL 10/2022 (13 mayo, BOE 14 mayo): mecanismo ibérico de ajuste que fija un precio de referencia
+    del gas (tope) 40 EUR/MWh los primeros 6 meses, +5 EUR/MWh cada mes hasta 70 EUR/MWh; duracion 12
+    meses (hasta 31 mayo 2023); aplicable desde 14 junio 2022. Las centrales de ciclo combinado, carbon
+    y cogeneracion sin regimen regulado peninsulares ofertan con el gas topado; la diferencia con el coste
+    real del gas la pagan las unidades de adquisicion (consumidores comercializadores) como compensacion.
+    No aplica a contratos bilaterales fisicos. Hoy extinguido.'
+  verificado: false
+mercado.omie_mtu_15min_inicio:
+  fecha_consulta: '2026-10-19'
+  fuente: 'Market Coupling Steering Committee / NEMO Committee: go-live 15-min MTU SDAC, dia de entrega
+    1 oct 2025 (negociacion 30 sep)'
+  nota: Confirmado en varios fragmentos (NEMO Committee, EXAA, SouthPool), ninguno de dominio de la lista
+    primaria; 96 periodos/dia.
+  unidad: fecha ISO (dia de entrega)
+  url: https://nemo-committee.eu/assets/files/15-minute-mtu-in-sdac-was-implemented.pdf
+  valor: '2025-10-01'
+  verificado: false
+mercado.omie_precio_min_max:
+  fecha_consulta: '2026-10-19'
+  fuente: ACER Decision 01/2023 sobre HMMCP SDAC (referencia +4000/-500; el maximo sube 500 si el precio
+    supera el 70% en alguna zona). Existe ACER Decision 02/2026 (4 feb 2026) no leida.
+  nota: Texto de ACER 2023 lo dice explicitamente, pero ACER no esta en la lista de dominios primarios
+    y no se vio el articulo de la decision 02/2026; revisar si el maximo vigente cambio.
+  unidad: EUR/MWh
+  url: https://www.acer.europa.eu/sites/default/files/documents/Individual%20Decisions_annex/ACER%20Decision%2001-2023%20on%20HMMCP%20SDAC%20-%20Annex%201.pdf
+  valor:
+    maximo: 4000
+    minimo: -500
+  verificado: false
+mercado.precio_pvpc_descripcion:
+  fecha_consulta: '2026-10-19'
+  fuente: RD 446/2023, BOE (via eseficiencia.es / MITECO)
+  nota: Calendario 25/40/55% de fuente secundaria (eseficiencia); no vi el texto BOE. Pesos de 2026 a
+    confirmar.
+  unidad: texto
+  url: https://boe.es/boe/dias/2023/06/14/pdfs/BOE-A-2023-14048.pdf
+  valor: 'PVPC: tarifa regulada para consumidores <=10 kW. Termino de potencia y de energia regulados;
+    el termino de energia se indexa al mercado horario. Desde 1 ene 2024 (RD 446/2023, BOE-A-2023-14048)
+    se pondera con mercados a plazo: 25% en 2024, 40% en 2025, 55% en 2026 (resto, mercado diario/intradiario).
+    Peajes y cargos por periodos P1-P3 (2.0TD).'
+  verificado: false
+mercado.tecnologias_marginales_orden_merito:
+  fecha_consulta: '2026-10-19'
+  fuente: Orden de merito tipico segun costes variables (descriptivo; REE/OMIE)
+  nota: 'Nota descriptiva: renovables y nuclear ofertan cerca de 0 o a coste bajo; gas, carbon y bombeo
+    (coste de oportunidad del agua) suelen fijar el precio marginal en horas de mayor demanda. El orden
+    real varia por hora.'
+  unidad: lista (de menor a mayor coste variable tipico)
+  url: https://www.omie.es
+  valor:
+  - fotovoltaica
+  - eolica
+  - nuclear
+  - hidraulica_fluyente
+  - cogeneracion
+  - ciclo_combinado
+  - carbon
+  - hidraulica_de_bombeo
+  verificado: false
+perfil.acs_ducha_min:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Duración por defecto de ducha.
+  unidad: min
+  url: ''
+  valor:
+  - 4
+  - 7
+  - 10
+  verificado: false
+perfil.acs_duchas_persona_dia:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Uso por defecto para el consumo eléctrico del termo.
+  unidad: duchas/persona·día
+  url: ''
+  valor:
+  - 0.8
+  - 1.0
+  - 1.3
+  verificado: false
+perfil.edad_vivienda_defecto:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Tramo de antigüedad por defecto para escalar la demanda térmica.
+  unidad: '-'
+  url: ''
+  valor: 1980-2006
+  verificado: false
+perfil.estacionalidad_actividad:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Iluminación y uso interior algo mayores en invierno.
+  unidad: '-'
+  url: ''
+  valor:
+  - 1.12
+  - 1.08
+  - 1.03
+  - 1.0
+  - 0.97
+  - 0.95
+  - 0.95
+  - 0.95
+  - 0.98
+  - 1.03
+  - 1.08
+  - 1.12
+  verificado: false
+perfil.exponente_personas:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: El consumo de actividad escala con (personas/2,5)^exponente.
+  unidad: '-'
+  url: ''
+  valor: 0.6
+  verificado: false
+perfil.factura_mes_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Tramos de respuesta de la pregunta de la factura media mensual.
+  unidad: €/mes con impuestos
+  url: ''
+  valor:
+    40-70:
+    - 40
+    - 55
+    - 70
+    70-120:
+    - 70
+    - 95
+    - 120
+    <40:
+    - 20
+    - 32
+    - 40
+    '>120':
+    - 120
+    - 150
+    - 230
+  verificado: false
+perfil.fraccion_superficie_climatizada_refrig:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Parte de la vivienda que se refrigera con aire acondicionado.
+  unidad: fracción
+  url: ''
+  valor:
+  - 0.25
+  - 0.4
+  - 0.7
+  verificado: false
+perfil.meses_piscina:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Mayo a septiembre.
+  unidad: meses (0=enero)
+  url: ''
+  valor:
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  verificado: false
+perfil.personas:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Respuesta cualitativa traducida a rango numérico.
+  unidad: personas
+  url: ''
+  valor:
+    '1':
+    - 1
+    - 1
+    - 1
+    '2':
+    - 2
+    - 2
+    - 2
+    3-4:
+    - 3
+    - 3.5
+    - 4
+    5+:
+    - 5
+    - 5
+    - 6
+  verificado: false
+perfil.personas_referencia:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Hogar medio de referencia (INE).
+  unidad: personas
+  url: ''
+  valor: 2.5
+  verificado: false
+perfil.piscina_dias:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Temporada de piscina.
+  unidad: días/año
+  url: ''
+  valor:
+  - 120
+  - 180
+  - 240
+  verificado: false
+perfil.piscina_horas_dia:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Horas de depuración.
+  unidad: h/día
+  url: ''
+  valor:
+  - 4
+  - 6
+  - 8
+  verificado: false
+perfil.sg_componente:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Dispersión de cada componente del consumo.
+  unidad: desviación geométrica
+  url: ''
+  valor: 1.25
+  verificado: false
+perfil.sg_factura:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Incertidumbre del consumo anual inferido de un tramo de factura.
+  unidad: desviación geométrica
+  url: ''
+  valor: 1.12
+  verificado: false
+perfil.sg_prior_consumo:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Incertidumbre del consumo anual sin dato de factura.
+  unidad: desviación geométrica
+  url: ''
+  valor: 1.35
+  verificado: false
+perfil.superficie_m2:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Superficie útil por tramo de respuesta; el valor central es el punto medio aproximado del tramo.
+  unidad: m²
+  url: ''
+  valor:
+    piso_70_120:
+    - 70
+    - 90
+    - 120
+    piso_<70:
+    - 40
+    - 60
+    - 70
+    piso_>120:
+    - 120
+    - 140
+    - 200
+    unif_<120:
+    - 80
+    - 100
+    - 120
+    unif_>120:
+    - 120
+    - 160
+    - 250
+  verificado: false
+perfil.t_base_calefaccion_c:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Temperatura base para repartir la calefacción eléctrica en el año.
+  unidad: ºC
+  url: ''
+  valor: 15
+  verificado: false
+perfil.t_base_refrigeracion_c:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Temperatura base para repartir la refrigeración en el año.
+  unidad: ºC
+  url: ''
+  valor: 24
+  verificado: false
+perfil.ve_km_dia:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Uso por defecto del VE en el perfil si no se ha hecho T04.
+  unidad: km/día
+  url: ''
+  valor:
+  - 15
+  - 35
+  - 70
+  verificado: false
+refrigeracion.capex_split_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación de mercado
+  nota: Split 1x1 inverter de ~2,5 kW (9000 BTU).
+  unidad: € por equipo 2,5 kW instalado
+  url: https://www.idae.es/
+  valor:
+  - 700
+  - 1000
+  - 1600
+  verificado: false
+refrigeracion.demanda_kwh_m2_ano_por_zona:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación; CTE e IDAE
+  nota: La zona CTE (A-E) es de invierno; la refrigeración depende más de la severidad de verano y varía
+    mucho dentro de cada zona. Hasta 40 kWh/m² en el sur.
+  unidad: kWh/m²·año
+  url: https://www.idae.es/
+  valor:
+    A:
+    - 5
+    - 10
+    - 20
+    B:
+    - 10
+    - 20
+    - 30
+    C:
+    - 5
+    - 12
+    - 22
+    D:
+    - 3
+    - 8
+    - 15
+    E:
+    - 0
+    - 3
+    - 8
+  verificado: false
+refrigeracion.potencia_frigorifica_w_m2:
+  fecha_consulta: '2026-10-19'
+  fuente: Regla práctica de dimensionado
+  nota: Rango plausible 50-150 W/m² según orientación y clima.
+  unidad: W/m²
+  url: https://www.idae.es/
+  valor:
+  - 60
+  - 90
+  - 120
+  verificado: false
+refrigeracion.seer_split:
+  fecha_consulta: '2026-10-19'
+  fuente: Reglamento UE 626/2011 (etiquetado); catálogos
+  nota: Estimación. A++ SEER >= 6,1; A+++ >= 8,5. El 626/2011 fue sustituido por el Reglamento UE 2019/2016
+    (escala A-G); se mantiene como referencia.
+  unidad: SEER
+  url: https://eur-lex.europa.eu/
+  valor:
+  - 5.6
+  - 6.5
+  - 8.5
+  verificado: false
+refrigeracion.setpoint_c:
+  fecha_consulta: '2026-10-19'
+  fuente: RITE IT 1.1.4.1.2
+  nota: Rango 23-25 ºC dado por el brief. No se vio el texto en un fragmento primario.
+  unidad: ºC verano
+  url: https://www.boe.es/
+  valor:
+  - 23
+  - 24
+  - 25
+  verificado: false
+simultaneidad.base_kw:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Carga base simultánea (nevera, iluminación, TV, ordenador).
+  unidad: kW
+  url: ''
+  valor:
+  - 0.3
+  - 0.7
+  - 1.4
+  verificado: false
+simultaneidad.dias_activos:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Días de uso estacional; el resto de aparatos se supone todo el año.
+  unidad: días/año
+  url: ''
+  valor:
+    aire_acondicionado: 120
+    calefaccion_electrica: 110
+    piscina: 150
+  verificado: false
+simultaneidad.dias_exceso_limitador:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Respuesta '¿salta el limitador?' traducida a días con corte.
+  unidad: días/año
+  url: ''
+  valor:
+    a_menudo:
+    - 7
+    - 20
+    - 60
+    alguna:
+    - 1
+    - 3
+    - 6
+    nunca:
+    - 0
+    - 0
+    - 0
+  verificado: false
+simultaneidad.prob_pico_diario:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Probabilidad de que cada aparato esté en marcha en el cuarto de hora de máxima demanda de un día
+    con uso.
+  unidad: prob./día
+  url: ''
+  valor:
+    aire_acondicionado: 0.45
+    calefaccion_electrica: 0.5
+    horno: 0.12
+    induccion: 0.35
+    lavadora: 0.12
+    lavavajillas: 0.1
+    microondas: 0.15
+    piscina: 0.25
+    plancha: 0.06
+    secadora: 0.06
+    termo_electrico: 0.3
+    ve: 0.6
+  verificado: false
+solar_termica.area_captador_m2:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion (catalogos)
+  nota: Tipico 2 m2 de apertura.
+  unidad: m2 por captador
+  url: https://www.idae.es/
+  valor:
+  - 1.8
+  - 2.0
+  - 2.5
+  verificado: false
+solar_termica.capex_eur_m2:
+  fecha_consulta: '2026-10-19'
+  fuente: Habitissimo (estimacion de mercado)
+  nota: Fuente privada; no IDAE.
+  unidad: EUR/m2 captador, instalacion completa, captador plano (tubos de vacio 900-1400)
+  url: https://www.habitissimo.es/presupuestos/instalar-energia-solar-termica-calefaccion-o-acs
+  valor:
+  - 600
+  - 800
+  - 1000
+  verificado: false
+solar_termica.capex_vivienda_2_captadores_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: 'Habitissimo: ~6000 EUR ACS vivienda 150 m2; derivado de 600-1000 EUR/m2'
+  nota: Estimacion central; rango plausible 3500-7000.
+  unidad: EUR con IVA (2 captadores ~4 m2 + acumulador 150-200 l)
+  url: https://www.habitissimo.es/presupuestos/instalar-energia-solar-termica-calefaccion-o-acs
+  valor:
+  - 3500
+  - 4800
+  - 6500
+  verificado: false
+solar_termica.contribucion_minima_hs4_por_zona:
+  fecha_consulta: '2026-10-19'
+  fuente: CTE DB-HE 4 tabla 2.1 (version original; extraccion de documento UPM)
+  nota: 'Texto PDF desordenado, fuente no primaria. Aviso: segun Ferroli, la version vigente (HE 2019)
+    elimina la distincion por zona y exige 60% (<5000 l/d) o 70% (>=5000 l/d), segun contribucion renovable
+    total; confirmar en BOE. Para vivienda unifamiliar (<5000 l/d) la regla antigua da 30-70% segun zona.'
+  unidad: '% de la demanda ACS a 60 C'
+  url: https://moodle.upm.es/en-abierto/pluginfile.php/172/mod_label/intro/CTEHEzonasclimaticasradiacion.pdf
+  valor:
+    tabla_2_1_original_pct_zonas_I_a_V:
+      10000-12500:
+      - 30
+      - 65
+      - 70
+      - 70
+      - 70
+      12500-15000:
+      - 30
+      - 70
+      - 70
+      - 70
+      - 70
+      15000-17500:
+      - 35
+      - 70
+      - 70
+      - 70
+      - 70
+      17500-20000:
+      - 45
+      - 70
+      - 70
+      - 70
+      - 70
+      50-5000 l/d:
+      - 30
+      - 30
+      - 50
+      - 60
+      - 70
+      5000-6000:
+      - 30
+      - 30
+      - 55
+      - 65
+      - 70
+      6000-7000:
+      - 30
+      - 35
+      - 61
+      - 70
+      - 70
+      7000-8000:
+      - 30
+      - 45
+      - 63
+      - 70
+      - 70
+      8000-9000:
+      - 30
+      - 52
+      - 65
+      - 70
+      - 70
+      9000-10000:
+      - 30
+      - 55
+      - 70
+      - 70
+      - 70
+      '>20000':
+      - 52
+      - 70
+      - 70
+      - 70
+      - 70
+  verificado: false
+solar_termica.fraccion_solar_tipica:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion (IDAE; consistente con minimos HE4 30-70%)
+  nota: Rango tipico 40-75%; sin fragmento.
+  unidad: fraccion solar anual ACS (diseno vivienda)
+  url: https://www.idae.es/
+  valor:
+    I: 0.45
+    II: 0.55
+    III: 0.6
+    IV: 0.65
+    V: 0.7
+  verificado: false
+solar_termica.mantenimiento_anual_fraccion:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion
+  nota: Supuesto 1-2%.
+  unidad: fraccion del CAPEX por ano
+  url: https://www.idae.es/
+  valor:
+  - 0.01
+  - 0.015
+  - 0.02
+  verificado: false
+solar_termica.rendimiento_captador:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion captador plano selectivo (EN 12975 / ISO 9806 / Solar Keymark)
+  nota: 'Busqueda no confirmo valores. Comillas: rendimiento plano ~50% a (tm-ta)/G~1 (unidades del estudio).'
+  unidad: eta0 adim.; a1 W/m2K; a2 W/m2K2
+  url: https://www.solarkeymark.eu/
+  valor:
+    a1:
+    - 3.0
+    - 3.8
+    - 4.5
+    a2:
+    - 0.005
+    - 0.012
+    - 0.02
+    eta0:
+    - 0.7
+    - 0.78
+    - 0.83
+  verificado: false
+solar_termica.vida_util:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimacion (IDAE)
+  nota: Sin fragmento.
+  unidad: anos
+  url: https://www.idae.es/
+  valor:
+  - 20
+  - 25
+  - 30
+  verificado: false
+solar_termica.volumen_acumulador_l_m2:
+  fecha_consulta: '2026-10-19'
+  fuente: 'CTE DB-HE 4: 50 < V/A < 180 (dato del encargo)'
+  nota: Relacion no confirmada en fragmentos; tipico 60-100 en vivienda.
+  unidad: l de acumulacion por m2 de captador
+  url: https://www.codigotecnico.org/
+  valor:
+  - 50
+  - 75
+  - 180
+  verificado: false
+solar_termica.zonas_climaticas_solares_he4:
+  fecha_consulta: '2026-10-19'
+  fuente: CTE DB-HE 4 tabla 2.2 (limites de zonas); aproximacion
+  nota: Solo relacion aproximada; limites 3.8/4.2/4.6/5.0 de memoria (mapa de zonas por provincia no obtenido).
+  unidad: kWh/m2 dia sobre superficie horizontal (media anual)
+  url: https://moodle.upm.es/en-abierto/pluginfile.php/172/mod_label/intro/CTEHEzonasclimaticasradiacion.pdf
+  valor:
+    zona_I:
+      ejemplo: Galicia norte, Cantabria, Pais Vasco
+      irradiacion_kwh_m2_dia: < 3.8
+    zona_II:
+      ejemplo: Asturias, Navarra, Barcelona
+      irradiacion_kwh_m2_dia: 3.8-4.2
+    zona_III:
+      ejemplo: Zaragoza, Valencia norte, Madrid periferia
+      irradiacion_kwh_m2_dia: 4.2-4.6
+    zona_IV:
+      ejemplo: Madrid, Valencia, Castilla-La Mancha
+      irradiacion_kwh_m2_dia: 4.6-5.0
+    zona_V:
+      ejemplo: Andalucia, Extremadura, Murcia, Canarias
+      irradiacion_kwh_m2_dia: '>= 5.0'
+  verificado: false
+tarifa.ajuste_gas_fin:
+  fecha_consulta: '2026-10-19'
+  fuente: RDL 10/2022, prórrogas RDL 5/2023 y 8/2023
+  nota: De memoria.
+  unidad: fecha ISO
+  url: https://www.boe.es/buscar/act.php?id=BOE-A-2023-12694
+  valor: '2023-12-31'
+  verificado: false
+tarifa.ajuste_gas_inicio:
+  fecha_consulta: '2026-10-19'
+  fuente: RDL 10/2022
+  nota: De memoria.
+  unidad: fecha ISO
+  url: https://www.boe.es/buscar/act.php?id=BOE-A-2022-7843
+  valor: '2022-06-15'
+  verificado: false
+tarifa.ajuste_gas_tope_gas_inicial:
+  fecha_consulta: '2026-10-19'
+  fuente: RDL 10/2022
+  nota: 40 €/MWh, +5 €/mes desde el 7º mes (media primer semestre ~48,8).
+  unidad: €/MWh gas
+  url: https://www.boe.es/buscar/act.php?id=BOE-A-2022-7843
+  valor: 40
+  verificado: false
+tarifa.alpha_corte:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Probabilidad anual admisible de que la demanda máxima supere la potencia contratada.
+  unidad: probabilidad
+  url: ''
+  valor: 0.1
+  verificado: false
+tarifa.alquiler_contador:
+  fecha_consulta: '2026-10-19'
+  fuente: Orden ITC/3860/2007
+  nota: Conocimiento previo; analógico 0,54. Sin IVA.
+  unidad: €/mes
+  url: https://www.boe.es/buscar/act.php?id=BOE-A-2007-22438
+  valor: 0.81
+  verificado: false
+tarifa.bono_social_descuento:
+  fecha_consulta: '2026-10-19'
+  fuente: RD 897/2017 y prórrogas
+  nota: No confirmado; verificar.
+  unidad: '% (57,5% severo)'
+  url: https://www.boe.es/buscar/act.php?id=BOE-A-2017-11505
+  valor: 42.5
+  verificado: false
+tarifa.cargo_energia_p1:
+  fecha_consulta: '2026-10-19'
+  fuente: 'Orden TED/1524/2025 (derivado: total Eleia 0,097553 - peaje)'
+  nota: Derivado de web comercial (peaje+cargo) menos peaje oficial; no leído en la orden.
+  unidad: €/kWh
+  url: https://eleiaenergia.com/tarifas-electricas-2-0td-tramos-horarios-y-potencias/
+  valor: 0.064292
+  verificado: false
+tarifa.cargo_energia_p2:
+  fecha_consulta: '2026-10-19'
+  fuente: 'Orden TED/1524/2025 (derivado: 0,029267 - peaje)'
+  nota: Derivado, ver P1.
+  unidad: €/kWh
+  url: https://eleiaenergia.com/tarifas-electricas-2-0td-tramos-horarios-y-potencias/
+  valor: 0.012858
+  verificado: false
+tarifa.cargo_energia_p3:
+  fecha_consulta: '2026-10-19'
+  fuente: 'Orden TED/1524/2025 (derivado: 0,003292 - peaje)'
+  nota: Derivado, ver P1.
+  unidad: €/kWh
+  url: https://eleiaenergia.com/tarifas-electricas-2-0td-tramos-horarios-y-potencias/
+  valor: 0.003215
+  verificado: false
+tarifa.cargo_potencia_p1:
+  fecha_consulta: '2026-10-19'
+  fuente: Orden TED/1524/2025 segmento 1 (2.0TD)
+  nota: Coincide con total peaje+cargo 27,704413.
+  unidad: €/kW·año
+  url: https://www.derecho.com/boe/orden-ted15242025
+  valor: 4.379461
+  verificado: true
+tarifa.cargo_potencia_p2:
+  fecha_consulta: '2026-10-19'
+  fuente: Orden TED/1524/2025 segmento 1 (2.0TD)
+  nota: Coincide con total peaje+cargo 0,725423.
+  unidad: €/kW·año
+  url: https://www.derecho.com/boe/orden-ted15242025
+  valor: 0.281653
+  verificado: true
+tarifa.dias_anio:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Año de facturación.
+  unidad: días
+  url: ''
+  valor: 365
+  verificado: false
+tarifa.festivos_nacionales_fijos:
+  fecha_consulta: '2026-10-19'
+  fuente: Estatuto de los Trabajadores art. 37.2
+  nota: Viernes Santo móvil (2026-04-03), no incluido.
+  unidad: MM-DD
+  url: https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430
+  valor:
+  - 01-01
+  - 01-06
+  - 05-01
+  - 08-15
+  - 10-12
+  - 11-01
+  - 12-06
+  - 12-08
+  - 12-25
+  verificado: false
+tarifa.horas_periodos:
+  fecha_consulta: '2026-10-19'
+  fuente: CNMC Circular 3/2020
+  nota: De conocimiento de la norma.
+  unidad: horas 0-23
+  url: https://www.cnmc.es
+  valor:
+    P1_punta_laborables:
+    - 10
+    - 11
+    - 12
+    - 13
+    - 18
+    - 19
+    - 20
+    - 21
+    P2_llano_laborables:
+    - 8
+    - 9
+    - 14
+    - 15
+    - 16
+    - 17
+    - 22
+    - 23
+    P3_valle_laborables:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    fines_de_semana_y_festivos_nacionales: todo P3 (0-23)
+  verificado: false
+tarifa.iee_minimo_domestico:
+  fecha_consulta: '2026-10-19'
+  fuente: Ley 38/1992 art. 99
+  nota: De memoria de la norma.
+  unidad: €/kWh (1 €/MWh)
+  url: https://www.boe.es/buscar/act.php?id=BOE-A-1992-28741
+  valor: 0.001
+  verificado: false
+tarifa.iee_tipo:
+  fecha_consulta: '2026-10-19'
+  fuente: Ley 38/1992 art. 99; Selectra/Repsol oct-2026
+  nota: Octubre 2026 sin rebaja. Rebaja a 0,5% (IVA 10%) condicionada a IPC electricidad >15% interanual;
+    evaluación sept-2026 podría afectar a noviembre. Fuentes discrepan en la norma (RDL 25/2026 vs 18/2026).
+  unidad: '%'
+  url: https://selectra.es/energia/noticias/iva-luz-2026-noviembre-rebaja-ipc
+  valor: 5.11269632
+  verificado: false
+tarifa.indexada_margen:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación ofertas indexadas
+  nota: Sin fuente primaria.
+  unidad: €/MWh
+  url: https://comparador.cnmc.gob.es
+  valor:
+  - 5
+  - 15
+  - 35
+  verificado: false
+tarifa.indexada_perdidas:
+  fecha_consulta: '2026-10-19'
+  fuente: RD 1164/2001 / CNMC
+  nota: De memoria.
+  unidad: fracción
+  url: https://www.cnmc.es
+  valor:
+  - 0.12
+  - 0.13
+  - 0.14
+  verificado: false
+tarifa.indexada_servicios_ajuste:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación REE/OMIE
+  nota: Sin fuente hallada.
+  unidad: €/MWh
+  url: https://www.ree.es
+  valor:
+  - 10
+  - 18
+  - 30
+  verificado: false
+tarifa.iva_electricidad:
+  fecha_consulta: '2026-10-19'
+  fuente: Ley 37/1992; Selectra/Repsol
+  nota: 21% en octubre 2026. IVA reducido 10% para potencia <=10 kW solo en periodos con rebaja (22-mar
+    a 31-may-2026) o si se activa la salvaguarda por IPC.
+  unidad: '%'
+  url: https://selectra.es/energia/noticias/iva-luz-2026-noviembre-rebaja-ipc
+  valor: 21
+  verificado: false
+tarifa.oferta_fija_energia_tipica:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación comparador CNMC
+  nota: Rango plausible 0,09-0,20.
+  unidad: €/kWh
+  url: https://comparador.cnmc.gob.es
+  valor:
+  - 0.1
+  - 0.13
+  - 0.18
+  verificado: false
+tarifa.oferta_fija_potencia_tipica:
+  fecha_consulta: '2026-10-19'
+  fuente: Estimación ofertas 2.0TD
+  nota: Regulado peaje+cargo P1 = 0,076 €/kW·día.
+  unidad: €/kW·día
+  url: https://comparador.cnmc.gob.es
+  valor:
+  - 0.07
+  - 0.09
+  - 0.12
+  verificado: false
+tarifa.peaje_energia_p1:
+  fecha_consulta: '2026-10-19'
+  fuente: CNMC Resolución 18-dic-2025; MITECO
+  unidad: €/kWh
+  url: https://www.miteco.gob.es/en/energia/energia-electrica/electricidad/peajes.html
+  valor: 0.033261
+  verificado: true
+tarifa.peaje_energia_p2:
+  fecha_consulta: '2026-10-19'
+  fuente: CNMC Resolución 18-dic-2025; MITECO
+  unidad: €/kWh
+  url: https://www.miteco.gob.es/en/energia/energia-electrica/electricidad/peajes.html
+  valor: 0.016409
+  verificado: true
+tarifa.peaje_energia_p3:
+  fecha_consulta: '2026-10-19'
+  fuente: CNMC Resolución 18-dic-2025; MITECO
+  unidad: €/kWh
+  url: https://www.miteco.gob.es/en/energia/energia-electrica/electricidad/peajes.html
+  valor: 7.7e-05
+  verificado: true
+tarifa.peaje_potencia_p1:
+  fecha_consulta: '2026-10-19'
+  fuente: CNMC Resolución 18-dic-2025 (BOE-A-2025-26348)
+  unidad: €/kW·año
+  url: https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-26348
+  valor: 23.324952
+  verificado: true
+tarifa.peaje_potencia_p2:
+  fecha_consulta: '2026-10-19'
+  fuente: CNMC Resolución 18-dic-2025 (BOE-A-2025-26348)
+  unidad: €/kW·año
+  url: https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-26348
+  valor: 0.44377
+  verificado: true
+tarifa.potencias_normalizadas:
+  fecha_consulta: '2026-10-19'
+  fuente: RD 1164/2001 / REBT
+  nota: En 2.0TD se puede contratar cualquier potencia hasta 15 kW.
+  unidad: kW
+  url: https://www.boe.es/buscar/act.php?id=BOE-A-2001-20850
+  valor:
+  - 1.15
+  - 1.73
+  - 2.3
+  - 3.46
+  - 4.6
+  - 5.75
+  - 6.9
+  - 8.05
+  - 9.2
+  - 10.35
+  - 11.5
+  - 14.49
+  verificado: false
+tarifa.pvpc_margen_comercializacion:
+  fecha_consulta: '2026-10-19'
+  fuente: RD 446/2023
+  nota: De memoria; rango 3,0-3,3.
+  unidad: €/kW·año
+  url: https://www.miteco.gob.es
+  valor: 3.113
+  verificado: false
+tarifa.pvpc_peso_futuros:
+  fecha_consulta: '2026-10-19'
+  fuente: RD 446/2023
+  nota: 2027 por la norma. Cesta futuros 10% mensual, 36% trimestral, 54% anual.
+  unidad: fracción
+  url: https://www.miteco.gob.es/es/prensa/230613_ndpelgobiernoapruebalanuevametodologiadecalculodelatarifareguladadelaelectricidad_tcm30-589760.pdf
+  valor:
+    2024: 0.25
+    2025: 0.4
+    2026: 0.55
+    2027: 0.7
+  verificado: true
+tarifa.ratio_periodos_fija:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: 'Ofertas con precio por periodo: relación respecto al precio único típico.'
+  unidad: '-'
+  url: ''
+  valor:
+    P1: 1.25
+    P2: 1.0
+    P3: 0.75
+  verificado: false
+tarifa.sg_precio_nivel:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del autor (hipótesis de modelado)
+  nota: Reservado.
+  unidad: '-'
+  url: ''
+  valor: 1.0
+  verificado: false
+ve.ayudas_compra:
+  fecha_consulta: '2026-10-19'
+  fuente: Medios (Carwow, RACE, Mapfre) sobre RDL que recupera para 2026 la deducción IRPF del 15% por
+    VE enchufable; programa MOVES cerrado, sustituido por Plan Auto+ (400 M EUR)
+  nota: 'Segunda pasada con WebSearch: solo fuentes secundarias, sin dominio primario. Las cifras del
+    tope de recarga difieren entre medios (600 vs 4000 EUR). Importes de Plan Auto+ por confirmar en BOE/IDAE.'
+  unidad: mixto
+  url: https://sede.agenciatributaria.gob.es/
+  valor:
+    base_maxima_eur: 20000
+    deduccion_irpf_fraccion: 0.15
+    deduccion_punto_recarga_eur_max: 4000
+    precio_max_turismo_eur: 54450
+    tope_deduccion_eur: 3000
+  verificado: false
+ve.consumo_wltp_kwh_100km:
+  fecha_consulta: '2026-10-19'
+  fuente: IDAE Guía de vehículos de turismo de venta en España
+  nota: 'Rangos típicos de homologación WLTP. Contraste secundario: VW ID.4 16,9 kWh/100 km WLTP; fuente
+    española orientativa: 12-13 bueno, 16-18 normal, >20 elevado. No se obtuvo la guía IDAE.'
+  unidad: kWh/100 km (WLTP combinado, a la batería/enchufe)
+  url: https://coches.idae.es/
+  valor:
+    compacto:
+    - 14.5
+    - 16.5
+    - 18.5
+    suv_berlina:
+    - 16.5
+    - 18.5
+    - 22.0
+    urbano:
+    - 12.5
+    - 14.0
+    - 16.0
+  verificado: false
+ve.coste_carga_publica_eur_kwh:
+  fecha_consulta: '2026-10-19'
+  fuente: Observatorio de la Movilidad Eléctrica / ANFAC / Electromaps
+  nota: Estimación. Ultrarrápida >150 kW puede llegar a 0.80-0.90.
+  unidad: EUR/kWh con IVA
+  url: https://www.electromaps.com/
+  valor:
+    ac:
+    - 0.35
+    - 0.45
+    - 0.55
+    dc:
+    - 0.45
+    - 0.58
+    - 0.75
+  verificado: false
+ve.coste_mantenimiento_ve_eur_km:
+  fecha_consulta: '2026-10-19'
+  fuente: Estudios de TCO (ADAC, ICCT, Leaseplan)
+  nota: Incluye revisiones, frenos y neumáticos. Aprox. 30-50% menos que ICE.
+  unidad: EUR/km
+  url: https://theicct.org/
+  valor:
+  - 0.015
+  - 0.025
+  - 0.035
+  verificado: false
+ve.eficiencia_carga_domestica:
+  fecha_consulta: '2026-10-19'
+  fuente: ICCT y estudios de pérdidas de carga AC (Idaho National Lab, ADAC)
+  nota: Pérdidas de 7-15% según potencia, temperatura y estado de batería.
+  unidad: fracción (energía a batería / energía de red)
+  url: https://theicct.org/
+  valor:
+  - 0.85
+  - 0.9
+  - 0.93
+  verificado: false
+ve.factor_consumo_real_vs_wltp:
+  fecha_consulta: '2026-10-19'
+  fuente: Estudios ADAC / Geotab / EEA (consumo real vs homologado)
+  nota: Desviación real habitual 10-30% según velocidad y uso. Aplicar sobre consumo WLTP a temperatura
+    templada.
+  unidad: multiplicador (>1)
+  url: https://www.eea.europa.eu/
+  valor:
+  - 1.1
+  - 1.2
+  - 1.3
+  verificado: false
+ve.factor_temperatura_consumo:
+  fecha_consulta: '2026-10-19'
+  fuente: Geotab (curva consumo/temperatura), ADAC, EEA
+  nota: Óptimo ~20-22 °C. Aproximación de la literatura; interpolar linealmente.
+  unidad: multiplicador del consumo según T media mensual (°C)
+  url: https://www.geotab.com/blog/ev-range/
+  valor:
+    0:
+    - 1.25
+    - 1.35
+    - 1.5
+    5:
+    - 1.15
+    - 1.25
+    - 1.35
+    10:
+    - 1.08
+    - 1.15
+    - 1.22
+    15:
+    - 1.02
+    - 1.06
+    - 1.1
+    20:
+    - 0.98
+    - 1.0
+    - 1.03
+    25:
+    - 1.0
+    - 1.03
+    - 1.07
+    30:
+    - 1.05
+    - 1.1
+    - 1.18
+    35:
+    - 1.1
+    - 1.17
+    - 1.28
+  verificado: false
+ve.fraccion_carga_publica_por_aparcamiento:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del modelo
+  nota: Supuesto.
+  unidad: fracción de la energía anual cargada en puntos públicos
+  url: https://www.miteco.gob.es/
+  valor:
+    calle:
+    - 0.5
+    - 0.75
+    - 0.95
+    garaje_comunitario:
+    - 0.05
+    - 0.15
+    - 0.35
+    garaje_propio:
+    - 0.0
+    - 0.05
+    - 0.15
+  verificado: false
+ve.km_fin_de_semana_ano:
+  fecha_consulta: '2026-10-19'
+  fuente: MITMA EMOVE / INE; supuesto
+  nota: Supuesto de ocio y fin de semana; no es dato directo de la encuesta.
+  unidad: km/año
+  url: https://www.transportes.gob.es/
+  valor:
+  - 2500
+  - 4000
+  - 6000
+  verificado: false
+ve.km_viaje_largo:
+  fecha_consulta: '2026-10-19'
+  fuente: Supuesto del modelo
+  nota: Supuesto.
+  unidad: km por viaje largo (ida)
+  url: https://www.transportes.gob.es/
+  valor:
+  - 250
+  - 400
+  - 700
+  verificado: false
+ve.penalizacion_carga_comunitaria:
+  fecha_consulta: '2026-10-19'
+  fuente: Ley 49/1960 de Propiedad Horizontal art. 17.5; RD 1053/2014 ITC-BT-52
+  nota: Recordado de la norma, sin fragmento. Penalización real de coste y plazo.
+  unidad: nota
+  url: https://www.boe.es/buscar/act.php?id=BOE-A-1960-10906
+  valor: 'Sin penalización legal: el derecho a instalar el punto de recarga no puede denegarse y no requiere
+    acuerdo de la junta, solo comunicación previa a la comunidad. Coste a cargo del solicitante.'
+  verificado: false
+ve.precio_compra_diesel_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: ANFAC / Autoscout24
+  nota: Oferta diésel muy reducida en urbano; estimación.
+  unidad: EUR con IVA
+  url: https://anfac.com/
+  valor:
+    compacto:
+    - 24000
+    - 28000
+    - 33000
+    suv_berlina:
+    - 32000
+    - 38000
+    - 50000
+    urbano:
+    - 18000
+    - 20500
+    - 23000
+  verificado: false
+ve.precio_compra_gasolina_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: ANFAC / Autoscout24
+  nota: Estimación de PVP nuevo 2025-26.
+  unidad: EUR con IVA
+  url: https://anfac.com/
+  valor:
+    compacto:
+    - 20000
+    - 25000
+    - 30000
+    suv_berlina:
+    - 28000
+    - 34000
+    - 45000
+    urbano:
+    - 14000
+    - 17000
+    - 20000
+  verificado: false
+ve.precio_compra_hibrido_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: ANFAC / Autoscout24
+  nota: Estimación de PVP nuevo 2025-26.
+  unidad: EUR con IVA (HEV no enchufable)
+  url: https://anfac.com/
+  valor:
+    compacto:
+    - 26000
+    - 30000
+    - 36000
+    suv_berlina:
+    - 34000
+    - 40000
+    - 52000
+    urbano:
+    - 20000
+    - 23000
+    - 26000
+  verificado: false
+ve.precio_compra_phev_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: ANFAC / Autoscout24
+  nota: Estimación. Pocos modelos PHEV urbanos.
+  unidad: EUR con IVA, antes de ayudas
+  url: https://anfac.com/
+  valor:
+    compacto:
+    - 33000
+    - 38000
+    - 45000
+    suv_berlina:
+    - 42000
+    - 50000
+    - 65000
+    urbano:
+    - 25000
+    - 29000
+    - 33000
+  verificado: false
+ve.precio_compra_ve_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: ANFAC / Autoscout24 / IDAE guía de vehículos
+  nota: Estimación de PVP de mercado español 2025-26 sin ayudas. Marcas chinas bajan el mínimo de urbano
+    a ~17000.
+  unidad: EUR con IVA, antes de ayudas
+  url: https://www.idae.es/
+  valor:
+    compacto:
+    - 28000
+    - 34000
+    - 42000
+    suv_berlina:
+    - 38000
+    - 46000
+    - 60000
+    urbano:
+    - 18000
+    - 23000
+    - 28000
+  verificado: false
+ve.seguro_anual_eur:
+  fecha_consulta: '2026-10-19'
+  fuente: Comparadores de seguros (supuesto)
+  nota: VE suele costar 10-20% más por reparación y batería. Depende de edad, provincia y cobertura.
+  unidad: EUR/año
+  url: https://www.dgsfp.mineco.es/
+  valor:
+  - 350
+  - 500
+  - 750
+  verificado: false
+ve.valor_residual_fraccion:
+  fecha_consulta: '2026-10-19'
+  fuente: 'OCU/BEUC (3 años, 45000 km: VE pierde 50%, PHEV 39%, diésel 36%, gasolina 33%); Ganvam-DAT
+    (VE a 36 meses 52,5%); iSeeCars (VE a 5 años ~39%)'
+  nota: Ajustado con WebSearch a 3 y 5 años (fuentes secundarias). Años 8-12 siguen siendo extrapolación.
+    La brecha VE-gasolina se reduce en 2025 (de 12,9 a 7,7 puntos). No se obtuvo Autavia/Eurotax.
+  unidad: fracción del precio de compra, por años de antigüedad
+  url: https://www.ocu.org/coches/coches/consejos/comprar-coche-electrico-segunda-mano
+  valor:
+    ice:
+      3:
+      - 0.6
+      - 0.66
+      - 0.72
+      5:
+      - 0.48
+      - 0.55
+      - 0.62
+      8:
+      - 0.3
+      - 0.38
+      - 0.45
+      10:
+      - 0.22
+      - 0.29
+      - 0.36
+      12:
+      - 0.15
+      - 0.21
+      - 0.28
+    ve:
+      3:
+      - 0.48
+      - 0.52
+      - 0.62
+      5:
+      - 0.36
+      - 0.45
+      - 0.53
+      8:
+      - 0.25
+      - 0.32
+      - 0.4
+      10:
+      - 0.18
+      - 0.24
+      - 0.32
+      12:
+      - 0.12
+      - 0.17
+      - 0.24
+  verificado: false
+ve.vida_bateria_garantia:
+  fecha_consulta: '2026-10-19'
+  fuente: Garantías estándar de fabricantes; Reglamento (UE) 2023/1542
+  nota: Estándar 8 años o 160000 km con SoH >=70%.
+  unidad: años / km / fracción SoH
+  url: https://eur-lex.europa.eu/
+  valor:
+    anos:
+    - 8
+    - 8
+    - 10
+    estado_salud_minimo: 0.7
+    km:
+    - 100000
+    - 160000
+    - 200000
+  verificado: false

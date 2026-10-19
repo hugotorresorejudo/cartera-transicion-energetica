@@ -1,0 +1,215 @@
+lcoe.capex_eur_kw:
+  valor:
+    solar_fv_utility: [550, 700, 950]
+    solar_fv_residencial: [1000, 1300, 1800]
+    eolica_terrestre: [1000, 1250, 1600]
+    eolica_marina: [2400, 2800, 3800]
+    ciclo_combinado: [800, 1000, 1400]
+    nuclear_existente_ampliacion: [3500, 5500, 8500]
+    hidraulica_bombeo: [1200, 1800, 2800]
+  unidad: "EUR/kW"
+  fuente: "IRENA Renewable Power Generation Costs in 2024 (FV 691 USD/kW, eolica terrestre 1.041 USD/kW, marina 2.852 USD/kW globales 2024); resto estimacion (IEA/NEA 2020, Lazard 2025, PNIEC)"
+  url: "https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2025/Jul/IRENA_TEC_RPGC_in_2024_Summary_2025.pdf"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Solo se leyeron en fragmentos las medias globales IRENA 2024 (FV, eolica); el fragmento de Lazard no dio USD/kW. El resto de rangos son estimaciones plausibles (USD~EUR 0,9-1). FV residencial en Espana y ciclo combinado, nuclear y bombeo no verificados con fuente."
+lcoe.opex_fijo_eur_kw_ano:
+  valor: {solar_fv_utility: [8, 12, 18], solar_fv_residencial: [15, 20, 30], eolica_terrestre: [25, 38, 50], eolica_marina: [60, 85, 120], ciclo_combinado: [12, 18, 28], nuclear_existente_ampliacion: [100, 150, 200], hidraulica_bombeo: [15, 25, 40]}
+  unidad: "EUR/kW/anio"
+  fuente: "Estimacion (rangos tipicos IRENA/IEA-NEA/Lazard)"
+  url: "https://www.irena.org/Publications"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Sin fragmento que de la cifra; estimacion. Rango plausible segun fuentes tipicas IRENA/NEA."
+lcoe.opex_variable_eur_mwh:
+  valor: {solar_fv_utility: [0, 0, 2], solar_fv_residencial: [0, 0, 2], eolica_terrestre: [0, 2, 5], eolica_marina: [0, 3, 6], ciclo_combinado: [2, 3, 5], nuclear_existente_ampliacion: [1, 2, 4], hidraulica_bombeo: [1, 3, 6]}
+  unidad: "EUR/MWh (sin combustible ni CO2)"
+  fuente: "Estimacion (IEA/NEA Projected Costs 2020, Lazard)"
+  url: "https://www.iea.org/reports/projected-costs-of-generating-electricity-2020"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Estimacion; no confirmado en busqueda."
+lcoe.factor_capacidad_espana:
+  valor: {solar_fv_utility: [0.19, 0.22, 0.26], solar_fv_residencial: [0.14, 0.16, 0.19], eolica_terrestre: [0.22, 0.26, 0.30], eolica_marina: [0.35, 0.40, 0.45], ciclo_combinado: [0.10, 0.18, 0.40], nuclear_existente_ampliacion: [0.85, 0.90, 0.93], hidraulica_bombeo: [0.08, 0.12, 0.20]}
+  unidad: "fraccion (horas equivalentes / 8760)"
+  fuente: "Estimacion a partir de REE Informe del sistema electrico 2025 (no se obtuvieron tablas por tecnologia)"
+  url: "https://www.ree.es/sites/default/files/2026-03/1103_NP_ISE_2025.pdf"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "La busqueda dio solo cuotas de mix 2025 (FV 21,3%, eolica 20,6%, nuclear 18,1%, CC ~17%; 142,5 GW instalados), no horas equivalentes. Valores derivables de generacion/potencia; aqui estimados."
+lcoe.vida_util_anios:
+  valor: {solar_fv_utility: [25, 30, 35], solar_fv_residencial: [25, 30, 35], eolica_terrestre: [20, 25, 30], eolica_marina: [25, 30, 35], ciclo_combinado: [25, 30, 35], nuclear_existente_ampliacion: [40, 60, 80], hidraulica_bombeo: [50, 60, 80]}
+  unidad: "anios"
+  fuente: "Estimacion (IRENA/NEA/Lazard)"
+  url: "https://www.irena.org/Publications"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Estimacion estandar de la literatura; no verificada en esta busqueda."
+lcoe.wacc:
+  valor: {solar_fv_utility: [0.04, 0.05, 0.07], solar_fv_residencial: [0.03, 0.04, 0.06], eolica_terrestre: [0.04, 0.055, 0.075], eolica_marina: [0.05, 0.065, 0.085], ciclo_combinado: [0.05, 0.07, 0.09], nuclear_existente_ampliacion: [0.05, 0.08, 0.10], hidraulica_bombeo: [0.04, 0.06, 0.08]}
+  unidad: "fraccion real"
+  fuente: "Supuesto del proyecto (referencias IRENA/Lazard no confirmadas)"
+  url: "https://www.irena.org/Publications"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Supuesto; rango plausible 3-10% real."
+lcoe.rendimiento_ciclo_combinado:
+  valor: [0.50, 0.55, 0.58]
+  unidad: "fraccion PCI"
+  fuente: "Estimacion tecnica (CCGT modernos 55-60%, parque espanol con carga parcial menor)"
+  url: "https://www.ree.es/es/datos/generacion"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Sin fragmento; estimacion."
+lcoe.precio_gas_ttf_eur_mwh:
+  valor: [28, 36, 50]
+  unidad: "EUR/MWh"
+  fuente: "AleaSoft: futuros TTF front-month ICE promedio 2025 = 36,33 EUR/MWh (+4,8% vs 2024); pico febrero 2025 50,27"
+  url: "https://aleasoft.com/?p=163750"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Fuente secundaria (AleaSoft), no dominio primario. Ano 2025; rango min/max es supuesto. No se obtuvo media MIBGAS."
+lcoe.precio_co2_eur_t:
+  valor: [65, 73, 85]
+  unidad: "EUR/t"
+  fuente: "Cotizaciones EUA Dec-25: ~69,64 (ene 2025) y ~76,69 (sep 2025), MNI/MarketNews"
+  url: "https://www.mnimarkets.com/articles/eu-mid-day-carbon-summary-euas-fall-on-eu-gas-equities-losses-1758539597347"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "No se hallo media anual 2025; los EUA subieron ~11,6% en el anio segun Grupo ASE. Valor central estimado."
+lcoe.factor_emision_ccgt_t_mwh:
+  valor: [0.34, 0.37, 0.40]
+  unidad: "tCO2/MWh electrico"
+  fuente: "Estimacion (gas 0,202 tCO2/MWh PCI / rendimiento 0,55); PGLib-CO2 cita ~0,36 para CCGT"
+  url: "https://arxiv.org/pdf/2506.14662"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Calculo propio; valor de REE por tecnologia no hallado."
+lcoe.costes_combustible_nuclear_eur_mwh:
+  valor: [4, 6, 9]
+  unidad: "EUR/MWh"
+  fuente: "Estimacion (ciclo de combustible nuclear tipico 5-8 EUR/MWh)"
+  url: "https://www.csn.es"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Sin fragmento; estimacion."
+mercado.omie_mtu_15min_inicio:
+  valor: "2025-10-01"
+  unidad: "fecha ISO (dia de entrega)"
+  fuente: "Market Coupling Steering Committee / NEMO Committee: go-live 15-min MTU SDAC, dia de entrega 1 oct 2025 (negociacion 30 sep)"
+  url: "https://nemo-committee.eu/assets/files/15-minute-mtu-in-sdac-was-implemented.pdf"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Confirmado en varios fragmentos (NEMO Committee, EXAA, SouthPool), ninguno de dominio de la lista primaria; 96 periodos/dia."
+mercado.omie_precio_min_max:
+  valor: {maximo: 4000, minimo: -500}
+  unidad: "EUR/MWh"
+  fuente: "ACER Decision 01/2023 sobre HMMCP SDAC (referencia +4000/-500; el maximo sube 500 si el precio supera el 70% en alguna zona). Existe ACER Decision 02/2026 (4 feb 2026) no leida."
+  url: "https://www.acer.europa.eu/sites/default/files/documents/Individual%20Decisions_annex/ACER%20Decision%2001-2023%20on%20HMMCP%20SDAC%20-%20Annex%201.pdf"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Texto de ACER 2023 lo dice explicitamente, pero ACER no esta en la lista de dominios primarios y no se vio el articulo de la decision 02/2026; revisar si el maximo vigente cambio."
+mercado.tecnologias_marginales_orden_merito:
+  valor: [fotovoltaica, eolica, nuclear, hidraulica_fluyente, cogeneracion, ciclo_combinado, carbon, hidraulica_de_bombeo]
+  unidad: "lista (de menor a mayor coste variable tipico)"
+  fuente: "Orden de merito tipico segun costes variables (descriptivo; REE/OMIE)"
+  url: "https://www.omie.es"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Nota descriptiva: renovables y nuclear ofertan cerca de 0 o a coste bajo; gas, carbon y bombeo (coste de oportunidad del agua) suelen fijar el precio marginal en horas de mayor demanda. El orden real varia por hora."
+mercado.costes_variables_eur_mwh:
+  valor: {nuclear: [8, 12, 18], hidraulica: [0, 20, 60], ciclo_combinado: [75, 100, 130], cogeneracion: [60, 90, 120], carbon: [90, 120, 160]}
+  unidad: "EUR/MWh"
+  fuente: "Calculo ilustrativo: gas TTF 36 EUR/MWh / 0,55 + CO2 73 EUR/t x 0,37 + O&M ~3 = ~95"
+  url: "https://aleasoft.com/?p=163750"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Solo para ilustrar el precio marginal. Hidraulica: valor de agua, no coste real. Rangos estimados."
+mercado.mecanismo_ajuste_gas_descripcion:
+  valor: "RDL 10/2022 (13 mayo, BOE 14 mayo): mecanismo ibérico de ajuste que fija un precio de referencia del gas (tope) 40 EUR/MWh los primeros 6 meses, +5 EUR/MWh cada mes hasta 70 EUR/MWh; duracion 12 meses (hasta 31 mayo 2023); aplicable desde 14 junio 2022. Las centrales de ciclo combinado, carbon y cogeneracion sin regimen regulado peninsulares ofertan con el gas topado; la diferencia con el coste real del gas la pagan las unidades de adquisicion (consumidores comercializadores) como compensacion. No aplica a contratos bilaterales fisicos. Hoy extinguido."
+  unidad: "texto"
+  fuente: "BOE RDL 10/2022 (via resumen Comillas IIT, Clifford Chance, Cuatrecasas)"
+  url: "https://www.boe.es/buscar/act.php?id=BOE-A-2022-7843"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Datos de fuentes secundarias; discrepancia sobre duracion del tramo inicial (6 vs 7 meses). Identificador BOE-A-2022-7843 no confirmado en busqueda."
+mercado.precio_pvpc_descripcion:
+  valor: "PVPC: tarifa regulada para consumidores <=10 kW. Termino de potencia y de energia regulados; el termino de energia se indexa al mercado horario. Desde 1 ene 2024 (RD 446/2023, BOE-A-2023-14048) se pondera con mercados a plazo: 25% en 2024, 40% en 2025, 55% en 2026 (resto, mercado diario/intradiario). Peajes y cargos por periodos P1-P3 (2.0TD)."
+  unidad: "texto"
+  fuente: "RD 446/2023, BOE (via eseficiencia.es / MITECO)"
+  url: "https://boe.es/boe/dias/2023/06/14/pdfs/BOE-A-2023-14048.pdf"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Calendario 25/40/55% de fuente secundaria (eseficiencia); no vi el texto BOE. Pesos de 2026 a confirmar."
+emisiones.factor_por_tecnologia_kgco2_mwh:
+  valor: {ciclo_combinado: 370, carbon: 950, cogeneracion: 370, residuos_no_renovables: 240, motores_diesel: 780, turbina_gas: 500, turbina_vapor: 780, fuel_gas: 780, nuclear: 0, eolica: 0, solar: 0, hidraulica: 0}
+  unidad: "kgCO2eq/MWh"
+  fuente: "Estimacion (REE publica factores por tecnologia en ree.es/en/datos/generation; no se vieron los valores)"
+  url: "https://www.ree.es/en/datos/generation"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "REE confirma que existe factor t CO2eq/MWh por tecnologia, valores no obtenidos. Rangos plausibles: CC 340-400, carbon 850-1000, cogeneracion 350-400, turbina de gas 450-550, motores diesel 700-850, fuel 700-850."
+emisiones.acv_por_tecnologia_gco2_kwh:
+  valor: {carbon: 820, ciclo_combinado: 490, solar_fv_utility: 48, solar_fv_tejado: 41, eolica_terrestre: 11, eolica_marina: 12, nuclear: 12, hidraulica: 24}
+  unidad: "gCO2eq/kWh"
+  fuente: "IPCC AR5 WGIII Anexo III (medianas, de memoria; no buscado)"
+  url: "https://www.ipcc.ch/report/ar5/wg3/"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "No se hizo busqueda para este dato; medianas AR5 recordadas, verificar."
+emisiones.mix_residual_cnmc_ultimo_anio:
+  valor: 0.26
+  unidad: "kgCO2/kWh"
+  fuente: "CNMC etiquetado electricidad; fragmento Barcelona Energia 2025 muestra un mix de 258 g/kWh (comercializador, no confirmado como residual)"
+  url: "https://www.cnmc.es/sites/default/files/3373089_9.pdf"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Valor residual 2025 no hallado en la busqueda. 0,258 es de un comercializador concreto y solo orientativo; rango plausible 0,2-0,3. Consultar gdo.cnmc.es."
+emisiones.mix_medio_peninsular_ultimo_anio:
+  valor: 0.080
+  unidad: "kgCO2/kWh"
+  fuente: "CNMC, emisiones directas 2024: 80 gCO2eq/kWh peninsular, 102 nacional (via paper Unizar)"
+  url: "https://despapiro.unizar.es/ojs/index.php/jji3a/article/download/12018/9893/46922"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Dato 2024, fuente secundaria que cita CNMC. Etiqueta 2025 nacional media 107 g/kWh (Barcelona Energia)."
+electrodomesticos.ciclo_energia_kwh:
+  valor: {lavadora_eco_40_60: [0.50, 0.65, 0.80], lavadora_60: [0.8, 1.0, 1.2], lavadora_40: [0.6, 0.8, 1.0], lavavajillas_eco: [0.75, 0.90, 1.05], secadora_bomba_calor: [1.0, 1.3, 1.8], secadora_condensacion: [2.2, 2.8, 3.5]}
+  unidad: "kWh por ciclo"
+  fuente: "Estimacion a partir de Reglamentos UE 2019/2014 y 2019/2023 (etiqueta en kWh/100 ciclos, programa Eco 40-60 / Eco)"
+  url: "https://eur-lex.europa.eu/eli/reg_del/2019/2014/oj"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Busqueda confirmo base de 100 ciclos y programa Eco 40-60; no hay cifras kWh por ciclo. Valores tipicos de mercado, estimados. Cons. IDAE: lavadora ~254 kWh/anio, lavavajillas ~245 kWh/anio."
+electrodomesticos.usos_semana_por_persona:
+  valor: {lavadora_por_hogar: [3, 4, 5], lavavajillas_por_hogar: [4, 6, 7], secadora_por_hogar: [1, 2, 4]}
+  unidad: "usos/semana/hogar"
+  fuente: "Supuesto OCU (lavadora y secadora 4/semana, lavavajillas 1/dia) via Menorca.info; IDAE penetracion: lavadora 92,9%, lavavajillas 53%, secadora 28,3%"
+  url: "https://www.menorca.info/actualidad/dudas-respuestas/2025/02/15/2324357/secadora-lavavajillas-descubre-electrodomestico-mas-electricidad-consume.html"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "IDAE no publica frecuencia semanal en lo hallado; son por hogar, no por persona. Estimacion."
+electrodomesticos.ventana_programable:
+  valor: "Programar ciclos en horas valle/solares (P3 2.0TD 00-08h y fines de semana, o 10-18h con autoconsumo). Lavadoras/lavavajillas admiten diferido 1-24 h; secadora tras lavadora."
+  unidad: "nota"
+  fuente: "Criterio de diseno del proyecto"
+  url: "https://www.idae.es"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Nota descriptiva, sin cifra a verificar."
+almacenamiento.potencia_inversor_hibrido_kw:
+  valor: [3, 5, 10]
+  unidad: "kW"
+  fuente: "Catalogos (POM 3/5/10 kW; Sungrow SH10T 10 kW trifasico)"
+  url: "https://www.solartraders.com/es/products/inversor/sungrow-sh10t"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Fuentes comerciales; rango residencial tipico 3-10 kW (monofasico hasta ~6 kW)."
+almacenamiento.degradacion_anual_bateria:
+  valor: [0.01, 0.02, 0.03]
+  unidad: "fraccion/anio"
+  fuente: "Garantias tipicas LFP: 70% a 10-12 anios o 6.000 ciclos (ej. Panasonic EV-X10: 70% a 12 anios)"
+  url: "https://www.portlandiaelectric.supply/products/panasonic-evervolt-evhb-i7-x10-9-0kwh"
+  fecha_consulta: "2026-10-19"
+  verificado: false
+  nota: "Garantia 70% a 10-12 anios implica 2,5-3%/anio maximo garantizado; degradacion real tipica 1-2%."
