@@ -1,6 +1,9 @@
 {
- "actualizado": "2026-10-19",
- "sintetico": true,
+ "actualizado": "2026-10-20",
+ "sintetico": false,
  "aviso": "Datos sintéticos de demostración generados por scripts/generar_sintetico.py; ejecuta scripts/fetch_data.py para los reales.",
- "fuentes": {}
+ "fuentes": {
+  "omie": "https://www.omie.es (marginalpdbc)",
+  "redata": "https://apidatos.ree.es"
+ }
 }
